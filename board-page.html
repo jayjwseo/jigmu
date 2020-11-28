@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="JK Board">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e3bd8cad6a.js" crossorigin="anonymous"></script>
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/jk-favicon.png">
+
+    <title>JK Board</title>
+</head>
+
+<body>
+    <header>
+        <!-- Navigation -->
+        <div class="container-fluid">
+            <nav class="navbar navbar-dark bg-light">
+                <a href="" class="navbar-brand"><img class="logo" src="/images/logo.png" alt="logo">JK Board</a>
+            </nav>
+        </div>
+
+    </header>
+    <main>
+        <!-- Board Menu -->
+        <div id="board-menu" class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <span>Upcoming Tasks</span>
+            </div>
+        </div>
+        <!-- Task Board -->
+        <div class="container-fluid">
+            <div class="card border border-info rounded task-board">
+                <div class="task-board-title">Backlog</div>
+
+            </div>
+
+
+        </div>
+
+        <!-- Modal Form -->
+        <div class="container modald">
+            <div class="modal-header">
+                <span class="modal-name">Task Name</span>
+                <button class="modal-close-button">&times;</button>
+            </div>
+            <div>
+                <form>
+                    <div class="form-group">
+                        <label for="description"><i class="fas fa-quote-left"></i> Description</label>
+                        <textarea class="form-control" id="description" rows="3"
+                            placeholder="Add description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"> Email</label>
+                        <input type="email" class="form-control" id="email"></input>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checklistItem1">
+                            <label class="form-check-label" for="checklistItem1">
+                                Checklist item 1
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checklistItem2">
+                            <label class="form-check-label" for="checklistItem2">
+                                Checklist item 2
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- Footer -->
+    </footer>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+        </script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
