@@ -32,8 +32,12 @@ h2 {
   background: #a18a75;
 }
 
-.logo {
+.landing-logo {
   font-size: 2rem;
+  font-family: Pacifico;
+}
+
+.board-logo {
   font-family: Pacifico;
 }
 
@@ -53,6 +57,30 @@ h2 {
 
 .btn-signup:hover {
   color: #a18a75;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-drop-item {
+  color: #2f2e41;
+}
+
+.user-drop-item:hover {
+  background: #a18a75;
+  color: #fff;
+  font-weight: bold;
+}
+
+.user-drop {
+  background: #fffcf9;
+}
+
+@media (min-width: 576px) {
+  .position-sm-rel {
+    position: relative !important;
+  }
 }
 
 /* Banner */
@@ -106,9 +134,14 @@ h2 {
 }
 
 /* Board Menu */
-#board-menu {
-  background: #fff6ed9c;
+/* .menu-bg {
+  background: #fff6ed;
 }
+
+.menu-item {
+  color: #2f2e41 !important;
+  font-weight: bold;
+} */
 
 /* Features */
 .features {
@@ -134,6 +167,57 @@ h2 {
 }
 
 /* Task Board */
+.board-wrapper {
+  position: relative;
+  overflow-y: auto;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.board-wrapper p {
+  font-size: 1rem;
+}
+
+.card-bg {
+  background: #edd8c4;
+}
+
+.board-canvas {
+  white-space: nowrap;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  /* position: absolute; */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+}
+
+.list-wrapper {
+  width: 272px;
+  margin: 25px 20px;
+  height: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.list-canvas {
+  background-color: #ebecf0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+}
 
 /* Modal Form */
 .modal {

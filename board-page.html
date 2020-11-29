@@ -30,32 +30,83 @@
 <body>
     <header>
         <!-- Navigation -->
-        <div class="container-fluid">
-            <nav class="navbar navbar-dark bg-light">
-                <a href="" class="navbar-brand"><img class="logo" src="/images/logo.png" alt="logo">JK Board</a>
+        <section class="navigation">
+            <nav class="navbar navbar-dark nav-bg navbar-expand py-2">
+                <a href="" class="board-logo navbar-brand"><i class="fas fa-border-style"></i> JK Board</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class=" position-sm-rel nav-item dropdown position-static active">
+                            <a class="user-name nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jay JW SEO
+                            </a>
+                            <div class="user-drop dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                <a class="user-drop-item dropdown-item" href="#">Account</a>
+                                <a class="user-drop-item dropdown-item" href="#">Help</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="user-drop-item dropdown-item" href="#">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </nav>
-        </div>
-
+        </section>
     </header>
     <main>
         <!-- Board Menu -->
-        <div id="board-menu" class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <span>Upcoming Tasks</span>
+        <!-- <div class="navbar navbar-dark menu-bg navbar-expand-sm py-2">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="menu-item nav-link" href="#">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="menu-item nav-link" href="#">Member</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <!-- Task Board -->
-        <div class="container-fluid">
-            <div class="card border border-info rounded task-board">
-                <div class="task-board-title">Backlog</div>
+        </div> -->
+
+        <!-- Board -->
+        <div class="board-wrapper">
+            <div id="board" class="board-canvas">
+                <div class="list-wrapper">
+                    <div id="list" class="list-canvas">
+                        <div class="card card-bg">
+                            <div class="card-body">
+                                <h5 class="card-title text-uppercase font-weight-bold py-2">To Do</h5>
+                                <div class="items border border-light">
+                                    <div class="card draggable shadow-sm" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title">
+                                                <h5>EPIC 1</h5>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa numquam
+                                                fugit neque. Laborum, facere. Totam fuga maxime animi? Cum, harum.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="dropzone rounded" ondrop="" ondragover="" ondragleave=""></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
-
         </div>
 
         <!-- Modal Form -->
-        <div class="container modald">
+        <div class="container modal-d">
             <div class="modal-header">
                 <span class="modal-name">Task Name</span>
                 <button class="modal-close-button">&times;</button>
