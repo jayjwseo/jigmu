@@ -76,27 +76,405 @@
         </div> -->
 
         <!-- Board -->
-        <div class="board-wrapper">
-            <div id="board" class="board-canvas">
+        <div class="board-wrapper container-fluid">
+            <div id="board" class="board-canvas container-fluid">
+                <!-- list -->
                 <div class="list-wrapper">
                     <div id="list" class="list-canvas">
-                        <div class="card card-bg">
+                        <div class="card list-bg">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase font-weight-bold py-2">To Do</h5>
-                                <div class="items border border-light">
-                                    <div class="card draggable shadow-sm" id="" draggable="true" ondragstart="">
+                                <h5 class="card-title list-title py-2">To Do <a id="newTask"
+                                        class="add-task float-right" data-toggle="modal" data-target="#newTaskModal"><i
+                                            class="fas fa-plus"></i></a>
+                                </h5>
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
                                         <div class="card-body p-2">
-                                            <div class="card-title">
-                                                <h5>EPIC 1</h5>
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right ">
+                                                <h6>EPIC1: Board Dev</h6>
                                             </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
                                             <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa numquam
-                                                fugit neque. Laborum, facere. Totam fuga maxime animi? Cum, harum.
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
                                             </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="dropzone rounded" ondrop="" ondragover="" ondragleave=""></div>
+                                    <div class="drop-loc"></div>
                                 </div>
+                                <!-- Task-card -->
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- Task-card -->
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- button for add new task -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- list -->
+                <div class="list-wrapper">
+                    <div id="list" class="list-canvas">
+                        <div class="card list-bg">
+                            <div class="card-body">
+                                <h5 class="card-title list-title py-2">To Do <a href="" class="add-task float-right"><i
+                                            class="fas fa-plus"></i></a></h5>
+
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right ">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- button for add new task -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- list -->
+                <div class="list-wrapper">
+                    <div id="list" class="list-canvas">
+                        <div class="card list-bg">
+                            <div class="card-body">
+                                <h5 class="card-title list-title py-2">To Do <a href="" class="add-task float-right"><i
+                                            class="fas fa-plus"></i></a></h5>
+
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right ">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- Task-card -->
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- button for add new task -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- list -->
+                <div class="list-wrapper">
+                    <div id="list" class="list-canvas">
+                        <div class="card list-bg">
+                            <div class="card-body">
+                                <h5 class="card-title list-title py-2">To Do <a href="" class="add-task float-right"><i
+                                            class="fas fa-plus"></i></a></h5>
+
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right ">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- Task-card -->
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- Task-card -->
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- button for add new task -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- list -->
+                <div class="list-wrapper">
+                    <div id="list" class="list-canvas">
+                        <div class="card list-bg">
+                            <div class="card-body">
+                                <h5 class="card-title list-title py-2">To Do <a href="" class="add-task float-right"><i
+                                            class="fas fa-plus"></i></a></h5>
+
+                                <div class="task-card">
+                                    <div class="card border-dark" id="" draggable="true" ondragstart="">
+                                        <div class="card-body p-2">
+                                            <div class="card-title task-card-title">
+                                                <img src="images/jk-favicon.png"
+                                                    class="card-member-img rounded-circle float-right ">
+                                                <h6>EPIC1: Board Dev</h6>
+                                            </div>
+                                            <div class="dropdown-divider task-card-divider"></div>
+                                            <p>
+                                                Excerpt Lorem ipsum dolor sit amet consect adipisicing.
+
+                                            </p>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="far fa-calendar-alt"></i> 15-Dec-2020</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-tag"></i> Development</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-star-half-alt"></i> Up-to-date</p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div>
+                                                <p><i class="fas fa-user"></i> Jay, Kim</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="drop-loc"></div>
+                                </div>
+                                <!-- button for add new task -->
                             </div>
                         </div>
                     </div>
@@ -106,38 +484,73 @@
         </div>
 
         <!-- Modal Form -->
-        <div class="container modal-d">
-            <div class="modal-header">
-                <span class="modal-name">Task Name</span>
-                <button class="modal-close-button">&times;</button>
-            </div>
-            <div>
-                <form>
-                    <div class="form-group">
-                        <label for="description"><i class="fas fa-quote-left"></i> Description</label>
-                        <textarea class="form-control" id="description" rows="3"
-                            placeholder="Add description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="email"> Email</label>
-                        <input type="email" class="form-control" id="email"></input>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checklistItem1">
-                            <label class="form-check-label" for="checklistItem1">
-                                Checklist item 1
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checklistItem2">
-                            <label class="form-check-label" for="checklistItem2">
-                                Checklist item 2
-                            </label>
-                        </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="newTaskModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria=label="close"><span
+                                aria-hidden="true">&times;</span></button>
                     </div>
-                </form>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="task-title"></label>
+                                <input type="text" class="form-control" name="" id="task-title"
+                                    placeholder="Task Title">
+                            </div>
+                            <div class="form-group pb-2">
+                                <label for="task-desc"></label>
+                                <textarea name="" id="task-desc" class="form-control" rows="3"
+                                    placeholder="Description..."></textarea>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="form-group form-margin row">
+                                <label for="task-tag" class="col-1 col-form-label"><i class="fas fa-tag"></i>
+                                </label>
+                                <div class="col-11 col-sm-5 p-0">
+                                    <select required id="task-tag" class="form-control">
+                                        <option value="">Tag</option>
+                                        <option value="">DEV</option>
+                                        <option value="">BUG</option>
+                                        <option value="">TEST</option>
+                                        <option value="">PUSH</option>
+                                    </select>
+                                </div>
+                                <label for="due-date" class="col-1 col-form-label mt-3 mt-sm-0"><i
+                                        class="far fa-calendar-alt"></i></label>
+                                <div class="col-11 col-sm-5 p-0 mt-3 mt-sm-0">
+                                    <input required="" type="text" class="form-control" placeholder="Due Date"
+                                        onfocus="(this.type='date')">
+                                </div>
+
+                            </div>
+                            <div class="form-group form-margin row my-2">
+                                <label for="due-date" class="col-1 col-form-label"><i class="fas fa-user"></i></label>
+                                <div class="col-11 col-sm-5 p-0">
+                                    <input type="text" class="form-control" placeholder="Members">
+                                </div>
+                                <label for=" task-tag" class="col-1 col-form-label mt-3 mt-sm-0"><i
+                                        class="fas fa-star-half-alt"></i>
+                                </label>
+                                <div class="col-11 col-sm-5 p-0 mt-3 mt-sm-0">
+                                    <select required id="task-tag" class="form-control">
+                                        <option value="">Status</option>
+                                        <option value="">Planning</option>
+                                        <option value="">Up-to-date</option>
+                                        <option value="">Urgent!</option>
+                                        <option value="">Obsolete</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-sm btn-success">Add Task</button>
+                        <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

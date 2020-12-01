@@ -55,6 +55,11 @@ h2 {
   color: #a18a75;
 }
 
+.btn-login:focus {
+  background: white;
+  color: #a18a75;
+}
+
 .btn-signup:hover {
   color: #a18a75;
 }
@@ -167,24 +172,25 @@ h2 {
 }
 
 /* Task Board */
-.board-wrapper {
-  position: relative;
-  overflow-y: auto;
-  outline: none;
+/* .board-wrapper {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-}
+  margin-right: 0;
+  position: relative;
+  transition: margin 0.1s ease-in;
+} */
 
 .board-wrapper p {
   font-size: 1rem;
-}
-
-.card-bg {
-  background: #edd8c4;
+  margin: 0;
 }
 
 .board-canvas {
+  position: relative;
+  flex-grow: 1;
+  -webkit-user-select: none;
+  user-select: none;
   white-space: nowrap;
   margin-bottom: 8px;
   overflow-x: auto;
@@ -195,12 +201,23 @@ h2 {
   right: 0;
   bottom: 0;
   left: 0;
-  display: block;
+}
+
+/* Task List */
+.list-bg {
+  background: #edd8c4;
+  color: #2f2e41;
+}
+
+.list-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #a18a75;
 }
 
 .list-wrapper {
   width: 272px;
-  margin: 25px 20px;
+  margin: 25px 10px 25px 20px;
   height: 100%;
   box-sizing: border-box;
   display: inline-block;
@@ -209,7 +226,7 @@ h2 {
 }
 
 .list-canvas {
-  background-color: #ebecf0;
+  background-color: #fff6ed;
   border-radius: 3px;
   box-sizing: border-box;
   display: flex;
@@ -219,7 +236,50 @@ h2 {
   white-space: normal;
 }
 
+.drop-loc {
+  height: 20px;
+}
+
+.add-task {
+  color: #a18a75;
+  cursor: pointer;
+}
+
+.add-task:hover {
+  color: #5290a1;
+}
+
+/* Task Card */
+
+.task-card h6 {
+  color: #2f2e41;
+  font-weight: bold;
+}
+
+.task-card p {
+  color: #2f2e41;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.card-member-img {
+  width: 25px;
+}
+
 /* Modal Form */
-.modal {
-  height: 80vh;
+.modal-body {
+  padding-top: 0;
+  font-size: 1rem;
+}
+
+.modal-body textarea {
+  resize: none;
+}
+
+.modal-body .form-group {
+  margin: 0;
+}
+
+.modal-body .form-margin {
+  margin: 1rem 0;
 }
