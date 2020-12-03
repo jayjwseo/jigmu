@@ -283,3 +283,14 @@ h2 {
 .modal-body .form-margin {
   margin: 1rem 0;
 }
+
+
+
+/* checklist */
+.checklist {
+  margin: 0 2rem;
+}
+
+ul {
+  list-style: none;
+}
