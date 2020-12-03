@@ -17,6 +17,8 @@ body {
   padding: 0;
   font-family: "Nunito Sans";
   background: #fff6ed;
+  display: flex;
+  height: 100vh;
 }
 
 p {
@@ -181,26 +183,18 @@ h2 {
   transition: margin 0.1s ease-in;
 } */
 
-.board-wrapper p {
-  font-size: 1rem;
-  margin: 0;
-}
-
 .board-canvas {
   position: relative;
   flex-grow: 1;
-  -webkit-user-select: none;
-  user-select: none;
   white-space: nowrap;
-  margin-bottom: 8px;
+  margin: 0;
   overflow-x: auto;
   overflow-y: hidden;
-  padding-bottom: 8px;
-  /* position: absolute; */
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+}
+
+.board-canvas p {
+  font-size: 1rem;
+  margin: 0;
 }
 
 /* Task List */
@@ -284,9 +278,7 @@ h2 {
   margin: 1rem 0;
 }
 
-
-
-/* checklist */
+/* Modal Form - Checklist */
 .checklist {
   margin: 0 2rem;
 }
