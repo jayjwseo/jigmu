@@ -281,7 +281,20 @@ h2 {
 
 /* Modal Form - Checklist */
 .checklist {
-  margin: 0 2rem;
+  margin: 0 1rem;
+}
+
+.input-group-text{
+  background-color: white;
+  border: none;
+}
+
+.checkbox-container {
+  margin: 0rem 3rem ;
+}
+
+ul {
+  list-style: none;
 }
 
 ul {
