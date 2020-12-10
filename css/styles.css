@@ -288,9 +288,15 @@ h2 {
 
 /* checklist */
 .checklist {
-  margin: 0 2rem;
+  margin: 0 1rem;
 }
 
-ul {
-  list-style: none;
+.input-group-text{
+  background-color: white;
+  border: none;
+}
+
+.checkbox-container {
+  margin: 0rem 3rem ;
+
 }
