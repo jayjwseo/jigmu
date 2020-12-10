@@ -18,7 +18,8 @@ body {
   font-family: "Nunito Sans";
   background: #fff6ed;
   display: flex;
-  height: 100vh;
+  height: 100%;
+  flex-direction: column;
 }
 
 p {
