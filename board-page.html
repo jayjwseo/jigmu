@@ -95,7 +95,7 @@
                     <div class="card list-bg">
                         <div class="card-body">
                             <h5 class="card-title list-title py-2">To Do<a id="newTask" class="add-task float-right"
-                                    data-toggle="modal" data-target="#newTaskModal"><i class="fas fa-plus"></i></a>
+                                    data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                             </h5>
                             <div class="task-card">
                                 <div class="card border-dark" id="" draggable="true" ondragstart="">
@@ -494,18 +494,23 @@
 
         <!-- Modal Form -->
 
-        <div class="modal fade" tabindex="-1" role="dialog" id="newTaskModal">
+        <div class="modal fade" tabindex="-1" role="dialog" id="new-task-modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add New Task</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria=label="close"><span
-                                aria-hidden="true">&times;</span></button>
+                        <h5 class="modal-title align-self-center">Add New Task</h5>
+                        <button type="button" class="close new-task-modal-close" data-dismiss="modal"
+                            aria=label="close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <div id="error-fields" class="pt-3 text-danger d-none">*Please enter all required fields.</div>
-                        <div id="error-date" class="pt-3 text-danger d-none">*Due date cannot be in the past.</div>
-                        <div id="success-new" class="pt-3 text-success d-none">Successfully created a new task</div>
+                        <div id="error-fields" class="new-task-form-message pt-3 text-danger d-none">*Please enter all
+                            required fields.</div>
+                        <div id="error-date" class="new-task-form-message pt-3 text-danger d-none">*Due date cannot be
+                            in the
+                            past.</div>
+                        <div id="success-new" class="new-task-form-message pt-3 text-success d-none">Successfully
+                            created a
+                            new task</div>
                         <form id="new-task-form">
                             <div class="form-group">
                                 <label for="new-task-title"></label>
@@ -557,7 +562,7 @@
                                 </div>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <!-- Checklist ***PLACED INSIDE THE FORM-->
+                            <!-- Checklist-->
                             <div class="form-group">
                                 <label for=" task-checklist" class="col-1 col-form-label mt-3 mt-sm-0"><i
                                         class="far fa-check-square"></i></label>Checklist
@@ -590,22 +595,14 @@
                                     </div>
                                     <span class="input-group-text">Create board page with board canvas</span>
                                 </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-text">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            aria-label="Checkbox for following text input">
-                                    </div>
-                                    <span class="input-group-text">Create modal form</span>
-                                </div>
-
                             </div>
                             <!-- End Checklist -->
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" form="new-task-form" class="btn btn-sm btn-success">Add Task</button>
-                        <button class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-sm btn-secondary new-task-modal-close"
+                            data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>

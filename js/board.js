@@ -9,9 +9,13 @@ const newStatusInput = document.querySelector("#new-task-status");
 const errorFields = document.querySelector("#error-fields");
 const errorDate = document.querySelector("#error-date");
 const successNew = document.querySelector("#success-new");
+const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
+const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
 
 newTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  // Check all fields have input
   const userDate = new Date(newDateInput.value);
   if (
     newTitleInput.value &&
@@ -20,9 +24,11 @@ newTaskForm.addEventListener("submit", (e) => {
     newDateInput.value &&
     newStatusInput.value
   ) {
+    // Check due date input is not in the past
     if (userDate > yesterday()) {
       successNew.classList.remove("d-none");
       errorDate.classList.add("d-none");
+      newTaskForm.reset();
     } else {
       errorDate.classList.remove("d-none");
       successNew.classList.add("d-none");
@@ -32,7 +38,8 @@ newTaskForm.addEventListener("submit", (e) => {
     errorFields.classList.remove("d-none");
     successNew.classList.add("d-none");
   }
-  //   Check Input Values
+
+  // Check user input values
   console.log(newTitleInput.value);
   console.log(newDescInput.value);
   console.log(newMemberInput.value);
@@ -41,7 +48,22 @@ newTaskForm.addEventListener("submit", (e) => {
   console.log(newStatusInput.value);
 });
 
-// Yesterday
+// Reset form on close
+newTaskModalClose.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    newTaskForm.reset();
+    clearMessages(newTaskFormMessages);
+  });
+});
+
+// Clear form messages
+function clearMessages(messages) {
+  messages.forEach((msg) => {
+    msg.classList.add("d-none");
+  });
+}
+
+// Date value generator for date input validation
 function yesterday() {
   const today = new Date();
   const yesterday = new Date(today);
