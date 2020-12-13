@@ -281,7 +281,7 @@ h2 {
 
 /* Modal Form - Checklist */
 .checklist {
-  margin: 0 1rem;
+  margin-top: 0.5rem;
 }
 
 .input-group-text {
@@ -291,8 +291,4 @@ h2 {
 
 .checkbox-container {
   margin: 0rem 3rem;
-}
-
-ul {
-  list-style: none;
 }
