@@ -264,6 +264,7 @@ h2 {
 /* Modal Form */
 .modal-body {
   padding-top: 0;
+  padding-bottom: 0;
   font-size: 1rem;
 }
 
