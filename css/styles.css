@@ -175,20 +175,12 @@ h2 {
 }
 
 /* Task Board */
-/* .board-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-right: 0;
-  position: relative;
-  transition: margin 0.1s ease-in;
-} */
-
 .board-canvas {
   position: relative;
   flex-grow: 1;
   white-space: nowrap;
   margin: 0;
+  padding: 10px;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -199,10 +191,6 @@ h2 {
 }
 
 /* Task List */
-.list-bg {
-  background: #edd8c4;
-  color: #2f2e41;
-}
 
 .list-title {
   font-weight: bold;
@@ -212,27 +200,17 @@ h2 {
 
 .list-wrapper {
   width: 272px;
-  margin: 25px 10px 25px 20px;
+  margin: 10px;
   height: 100%;
-  box-sizing: border-box;
   display: inline-block;
-  vertical-align: top;
+  /* vertical-align: top; */
   white-space: nowrap;
 }
 
 .list-canvas {
-  background-color: #fff6ed;
-  border-radius: 3px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
-  position: relative;
+  background: #edd8c4;
+  /* max-height: 100%; */
   white-space: normal;
-}
-
-.drop-loc {
-  height: 20px;
 }
 
 .add-task {
@@ -246,6 +224,11 @@ h2 {
 
 /* Task Card */
 
+.task-card .card {
+  background: #fffcf9;
+  border-color: #a18a75;
+}
+
 .task-card h6 {
   color: #2f2e41;
   font-weight: bold;
@@ -253,12 +236,24 @@ h2 {
 
 .task-card p {
   color: #2f2e41;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin: 0;
+}
+
+.task-card .task-card-item {
+  margin-left: 8px;
+}
+
+.task-card .dropdown-divider {
+  margin: 0.3rem;
 }
 
 .card-member-img {
   width: 25px;
+}
+
+.drop-loc {
+  height: 10px;
 }
 
 /* Modal Form */
