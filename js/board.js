@@ -10,7 +10,7 @@ const errorDate = document.querySelector("#error-date");
 const successNew = document.querySelector("#success-new");
 const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
-const taskCardCanvas = document.querySelector("#task-card-canvas");
+const taskCardCanvas = document.querySelector("#task-card-canvas-real");
 const taskCardTemplate = document.querySelector("#task-card-template");
 // Local Storage Keys
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
