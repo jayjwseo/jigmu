@@ -12,8 +12,10 @@ const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
 const taskCardCanvas = document.querySelector("#task-card-canvas");
 const taskCardTemplate = document.querySelector("#task-card-template");
+// Local Storage Keys
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
 const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
+// Task Card Set One Array & Render/Load
 let taskCardsSetOne = loadCanvas();
 taskCardsSetOne.forEach(renderTaskCard);
 
@@ -80,18 +82,18 @@ function yesterday() {
   return yesterday;
 }
 
-// Task card constructor
-class TaskCard {
-  constructor(title, desc, member, date, tag, status) {
-    this.title = title;
-    this.desc = desc;
-    this.member = member;
-    this.date = date;
-    this.tag = tag;
-    this.status = status;
-    this.id = new Date().valueOf().toString();
-  }
-}
+// // Task card constructor (***MOVED TO taskManager.js***)
+// class TaskCard {
+//   constructor(title, desc, member, date, tag, status) {
+//     this.title = title;
+//     this.desc = desc;
+//     this.member = member;
+//     this.date = date;
+//     this.tag = tag;
+//     this.status = status;
+//     this.id = new Date().valueOf().toString();
+//   }
+// }
 
 // Render task card
 function renderTaskCard(newTaskCard) {
