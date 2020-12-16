@@ -34,7 +34,7 @@ newTaskForm.addEventListener("submit", (e) => {
     // Check due date input is not in the past
     if (userDate > yesterday()) {
       // Add task card
-      const newTaskCard = new TaskCard(
+      const newTaskCard = new TaskManager(
         taskTitle,
         taskDesc,
         taskMember,
@@ -48,6 +48,7 @@ newTaskForm.addEventListener("submit", (e) => {
       successNew.classList.remove("d-none");
       errorDate.classList.add("d-none");
       newTaskForm.reset();
+      newTaskCard.askMagicEight();
     } else {
       errorDate.classList.remove("d-none");
       successNew.classList.add("d-none");
