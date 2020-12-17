@@ -10,7 +10,7 @@ const errorDate = document.querySelector("#error-date");
 const successNew = document.querySelector("#success-new");
 const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
-const taskCardCanvas = document.querySelector(".task-card-canvas");
+const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
 const taskCardTemplate = document.querySelector("#task-card-template");
 // Local Storage Keys
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
@@ -19,9 +19,18 @@ const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
 let taskCardsSetOne = loadCanvas();
 taskCardsSetOne.forEach(renderTaskCard);
 
-// taskCardCanvas.addEventListener('change', (e) => {
-//  if (!e.target === )
-// })
+taskCardCanvas.forEach((canvas) => {
+  canvas.addEventListener("click", (e) => {
+    if (!e.target.matches("[data-status-change]")) return;
+    const taskCard = e.target.closest(".task-card");
+    const taskId = taskCard.dataset.taskCardId;
+    const task = taskCardsSetOne.find((t) => t.id === taskId);
+    task.status = e.target.innerText;
+    taskCard.remove();
+    renderTaskCard(task);
+    saveCanvas();
+  });
+});
 
 newTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();

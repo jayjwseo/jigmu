@@ -307,7 +307,24 @@
                         <div class="dropdown-divider"></div>
                         <p><i class="fas fa-tag"></i><span class="task-card-item" data-task-card-tag></span></p>
                         <div class="dropdown-divider"></div>
-                        <p><i class="fas fa-th-list"></i><span class="task-card-item" data-task-card-status></span></p>
+                        <div class="container pl-0">
+                            <div class="d-inline">
+                                <p class="d-inline"><i class="fas fa-th-list"></i><span class="task-card-item"
+                                        data-task-card-status></span>
+                                </p>
+                            </div>
+                            <div class="dropdown d-inline">
+                                <span class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                </span>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-item" type="button" data-status-change>TO DO</button>
+                                    <button class="dropdown-item" type="button" data-status-change>IN PROGRESS</button>
+                                    <button class="dropdown-item" type="button" data-status-change>REVIEW</button>
+                                    <button class="dropdown-item" type="button" data-status-change>DONE</button>
+                                    <button class="dropdown-item" type="button" data-status-change>OBSOLETE</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="drop-loc"></div>
