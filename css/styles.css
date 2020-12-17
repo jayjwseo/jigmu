@@ -19,7 +19,7 @@ body {
   background: #fff6ed;
   display: flex;
   height: 100%;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 p {
@@ -31,6 +31,10 @@ h2 {
 }
 
 /* Navigation */
+.navigation {
+  width: 100vw;
+}
+
 .nav-bg {
   background: #a18a75;
 }
@@ -181,8 +185,8 @@ h2 {
   white-space: nowrap;
   margin: 0;
   padding: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  /* overflow-x: auto;
+  overflow-y: hidden; */
 }
 
 .board-canvas p {

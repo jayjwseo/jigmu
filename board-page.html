@@ -90,377 +90,76 @@
 
         <!-- Board -->
         <div id="board" class="board-canvas container-fluid">
-            <!-- list -->
+            <!-- List -->
             <div class="list-wrapper">
                 <div class="card list-canvas">
                     <div class="card-body p-2">
-                        <h5 class="card-title list-title">Status *TEST HERE -><a id="newTask"
-                                class="add-task float-right" data-toggle="modal" data-target="#new-task-modal"><i
-                                    class="fas fa-plus"></i></a>
-                        </h5>
-                        <!-- TASK-CARD ADDED BELOW -->
-                        <div id="task-card-canvas-real">
-                            <!-- END OF TASK-CARD CANVAS -->
-                        </div>
-                        <!-- Add New Task Button To Be Implemented -->
-                    </div>
-                </div>
-            </div>
-            <!-- Dummy list-->
-            <div class="list-wrapper">
-                <div class="card list-canvas">
-                    <div class="card-body p-2">
-                        <h5 class="card-title list-title">Dummy List 1<a id="newTask" class="add-task float-right"
+                        <h5 class="card-title list-title">TO DO<a id="newTask" class="add-task float-right"
                                 data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                         </h5>
-                        <div id="task-card-canvas">
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
+                        <div class="task-card-canvas" id="task-card-canvas-todo">
+                            <!-- TASK-CARD ADDED BELOW -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Dummy List End -->
-            <!-- Dummy list-->
+            <!-- End List -->
+            <!-- List -->
             <div class="list-wrapper">
                 <div class="card list-canvas">
                     <div class="card-body p-2">
-                        <h5 class="card-title list-title">Dummy List 2<a id="newTask" class="add-task float-right"
+                        <h5 class="card-title list-title">IN PROGRESS<a id="newTask" class="add-task float-right"
                                 data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                         </h5>
-                        <div id="task-card-canvas">
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
+                        <div class="task-card-canvas" id="task-card-canvas-inprogress">
+                            <!-- TASK-CARD ADDED BELOW -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Dummy List End -->
-            <!-- Dummy list-->
+            <!-- End List -->
+            <!-- List -->
             <div class="list-wrapper">
                 <div class="card list-canvas">
                     <div class="card-body p-2">
-                        <h5 class="card-title list-title">Dummy List 3<a id="newTask" class="add-task float-right"
+                        <h5 class="card-title list-title">REVIEW<a id="newTask" class="add-task float-right"
                                 data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                         </h5>
-                        <div id="task-card-canvas">
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
+                        <div class="task-card-canvas" id="task-card-canvas-review">
+                            <!-- TASK-CARD ADDED BELOW -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Dummy List End -->
-            <!-- Dummy list-->
+            <!-- End List -->
+            <!-- List -->
             <div class="list-wrapper">
                 <div class="card list-canvas">
                     <div class="card-body p-2">
-                        <h5 class="card-title list-title">Dummy List 4<a id="newTask" class="add-task float-right"
+                        <h5 class="card-title list-title">DONE<a id="newTask" class="add-task float-right"
                                 data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                         </h5>
-                        <div id="task-card-canvas">
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
+                        <div class="task-card-canvas" id="task-card-canvas-done">
+                            <!-- TASK-CARD ADDED BELOW -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Dummy List End -->
-            <!-- Dummy list-->
+            <!-- End List -->
+            <!-- List -->
             <div class="list-wrapper">
                 <div class="card list-canvas">
                     <div class="card-body p-2">
-                        <h5 class="card-title list-title">Dummy List 5<a id="newTask" class="add-task float-right"
+                        <h5 class="card-title list-title">OBSOLETE<a id="newTask" class="add-task float-right"
                                 data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                         </h5>
-                        <div id="task-card-canvas">
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
-                            <div class="task-card">
-                                <div class="card" id="" draggable="true" ondragstart="">
-                                    <div class="card-body p-2">
-                                        <div class="card-title task-card-title">
-                                            <img src="images/jk-favicon.png"
-                                                class="card-member-img rounded-circle float-right ">
-                                            <h6 data-task-card-title>Dummy Task</h6>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <p><span data-task-card-desc>Excerpt - Lorem ipsum dolor sit amet; donec
-                                                laoreet
-                                                tincidunt erat.</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-user"></i><span class="task-card-item"
-                                                data-task-card-member>Jay & Kim</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                                data-task-card-date>Wed Dec 16 2020</span>
-                                        </p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-tag"></i><span class="task-card-item"
-                                                data-task-card-tag>Development</span></p>
-                                        <div class="dropdown-divider"></div>
-                                        <p><i class="fas fa-th-list"></i><span class="task-card-item"
-                                                data-task-card-status>IN PROGRESS</span></p>
-                                    </div>
-                                </div>
-                                <div class="drop-loc"></div>
-                            </div>
+                        <div class="task-card-canvas" id="task-card-canvas-obsolete">
+                            <!-- TASK-CARD ADDED BELOW -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Dummy List End -->
+            <!-- End List -->
         </div>
 
         <!-- Modal Form -->
@@ -528,6 +227,7 @@
                                         <option value="IN PROGRESS">IN PROGRESS</option>
                                         <option value="REVIEW">REVIEW</option>
                                         <option value="DONE">DONE</option>
+                                        <option value="OBSOLETE">OBSOLETE</option>
                                     </select>
                                 </div>
                             </div>

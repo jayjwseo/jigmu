@@ -10,7 +10,7 @@ const errorDate = document.querySelector("#error-date");
 const successNew = document.querySelector("#success-new");
 const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
-const taskCardCanvas = document.querySelector("#task-card-canvas-real");
+const taskCardCanvas = document.querySelector(".task-card-canvas");
 const taskCardTemplate = document.querySelector("#task-card-template");
 // Local Storage Keys
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
@@ -18,6 +18,10 @@ const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
 // Task Card Set One Array & Render/Load
 let taskCardsSetOne = loadCanvas();
 taskCardsSetOne.forEach(renderTaskCard);
+
+// taskCardCanvas.addEventListener('change', (e) => {
+//  if (!e.target === )
+// })
 
 newTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -30,7 +34,14 @@ newTaskForm.addEventListener("submit", (e) => {
   const taskStatus = newStatusInput.value;
 
   // Check all fields have input
-  if (taskTitle && taskDesc && taskMember && taskDate && taskStatus) {
+  if (
+    taskTitle &&
+    taskDesc &&
+    taskMember &&
+    taskDate &&
+    taskTag &&
+    taskStatus
+  ) {
     // Check due date input is not in the past
     if (userDate > yesterday()) {
       // Add task card
@@ -98,34 +109,63 @@ function yesterday() {
 
 // Render task card
 function renderTaskCard(newTaskCard) {
-  const taskCardTemplateClone = taskCardTemplate.content.cloneNode(true);
-  const taskCard = taskCardTemplateClone.querySelector(".task-card");
-  const titleElement = taskCardTemplateClone.querySelector(
-    "[data-task-card-title]"
+  //Clone Template Content
+  const clone = taskCardTemplate.content.cloneNode(true);
+
+  //Select Canvases
+  const taskCardCanvasTodo = document.querySelector("#task-card-canvas-todo");
+  const taskCardCanvasInprogress = document.querySelector(
+    "#task-card-canvas-inprogress"
   );
-  const descElement = taskCardTemplateClone.querySelector(
-    "[data-task-card-desc]"
+  const taskCardCanvasReview = document.querySelector(
+    "#task-card-canvas-review"
   );
-  const memberElement = taskCardTemplateClone.querySelector(
-    "[data-task-card-member]"
+  const taskCardCanvasDone = document.querySelector("#task-card-canvas-done");
+  const taskCardCanvasObsolete = document.querySelector(
+    "#task-card-canvas-obsolete"
   );
-  const dateElement = taskCardTemplateClone.querySelector(
-    "[data-task-card-date]"
-  );
-  const tagElement = taskCardTemplateClone.querySelector(
-    "[data-task-card-tag]"
-  );
-  const statusElement = taskCardTemplateClone.querySelector(
-    "[data-task-card-status]"
-  );
-  taskCard.dataset.taskCardId = newTaskCard.id;
+
+  // Select Elements
+  const titleElement = clone.querySelector("[data-task-card-title]");
+  const descElement = clone.querySelector("[data-task-card-desc]");
+  const memberElement = clone.querySelector("[data-task-card-member]");
+  const dateElement = clone.querySelector("[data-task-card-date]");
+  const tagElement = clone.querySelector("[data-task-card-tag]");
+  const statusElement = clone.querySelector("[data-task-card-status]");
+
+  // Render Elements
   titleElement.innerText = newTaskCard.title;
   descElement.innerText = newTaskCard.desc.slice(0, 63);
   memberElement.innerText = newTaskCard.member;
   dateElement.innerText = friendlyDate(newTaskCard.date);
   tagElement.innerText = newTaskCard.tag;
   statusElement.innerText = newTaskCard.status;
-  taskCardCanvas.appendChild(taskCardTemplateClone);
+
+  // Render Dataset ID
+  const taskCard = clone.querySelector(".task-card");
+  taskCard.dataset.taskCardId = newTaskCard.id;
+
+  // Append Template Clone
+  let status = newTaskCard.status;
+  switch (status) {
+    case "TO DO":
+      taskCardCanvasTodo.appendChild(clone);
+      break;
+    case "IN PROGRESS":
+      taskCardCanvasInprogress.appendChild(clone);
+      break;
+    case "REVIEW":
+      taskCardCanvasReview.appendChild(clone);
+      break;
+    case "DONE":
+      taskCardCanvasDone.appendChild(clone);
+      break;
+    case "OBSOLETE":
+      taskCardCanvasObsolete.appendChild(clone);
+      break;
+    default:
+      console.log("Status Unknown");
+  }
 }
 
 // User friendly date format
