@@ -1,3 +1,8 @@
+//test
+// const body = document.querySelector("body");
+// const newTaskModal = document.querySelector("#new-task-modal");
+
+//Select modal form user input fields
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
 const newDescInput = document.querySelector("#new-task-desc");
@@ -5,12 +10,16 @@ const newMemberInput = document.querySelector("#new-task-member");
 const newDateInput = document.querySelector("#new-task-date");
 const newTagInput = document.querySelector("#new-task-tag");
 const newStatusInput = document.querySelector("#new-task-status");
+//Select modal form messages
 const errorFields = document.querySelector("#error-fields");
 const errorDate = document.querySelector("#error-date");
 const successNew = document.querySelector("#success-new");
+//Select elements for modal form reset
 const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
+//Select all task card canvas
 const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
+//Select Templates
 const taskCardTemplate = document.querySelector("#task-card-template");
 // Local Storage Keys
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
@@ -19,21 +28,32 @@ const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
 let taskCardsSetOne = loadCanvas();
 taskCardsSetOne.forEach(renderTaskCard);
 
+//Task card status update & re-locate
 taskCardCanvas.forEach((canvas) => {
   canvas.addEventListener("click", (e) => {
+    //Ignore if not status change button click
     if (!e.target.matches("[data-status-change]")) return;
+    //Select the parent task card
     const taskCard = e.target.closest(".task-card");
+    //Retrieve task id of the parent task card
     const taskId = taskCard.dataset.taskCardId;
+    //Look for the task in the array using the id
     const task = taskCardsSetOne.find((t) => t.id === taskId);
+    //Update the status of the referenced task
     task.status = e.target.innerText;
+    //Remove task card from the previous location(list)
     taskCard.remove();
+    //Render task card to the new location(list)
     renderTaskCard(task);
+    //Save to local storage
     saveCanvas();
   });
 });
 
 newTaskForm.addEventListener("submit", (e) => {
+  //Prevent default refresh
   e.preventDefault();
+  //User input values
   const userDate = new Date(newDateInput.value);
   const taskTitle = newTitleInput.value;
   const taskDesc = newDescInput.value;
@@ -53,7 +73,7 @@ newTaskForm.addEventListener("submit", (e) => {
   ) {
     // Check due date input is not in the past
     if (userDate > yesterday()) {
-      // Add task card
+      // Add task card (When all input fields are valid)
       const newTaskCard = new TaskManager(
         taskTitle,
         taskDesc,
@@ -62,12 +82,17 @@ newTaskForm.addEventListener("submit", (e) => {
         taskTag,
         taskStatus
       );
+      //Push new task card to array
       taskCardsSetOne.push(newTaskCard);
+      //Render new task card
       renderTaskCard(newTaskCard);
+      //Save to local storage
       saveCanvas();
       successNew.classList.remove("d-none");
       errorDate.classList.add("d-none");
+      //Form reset
       newTaskForm.reset();
+      //Easter egg
       newTaskCard.askMagicEight();
     } else {
       errorDate.classList.remove("d-none");
@@ -95,7 +120,7 @@ function clearMessages(messages) {
   });
 }
 
-// Date value generator for date input validation
+// Date value (yesterday) generator for date input validation
 function yesterday() {
   const today = new Date();
   const yesterday = new Date(today);
@@ -144,8 +169,10 @@ function renderTaskCard(newTaskCard) {
 
   // Render Elements
   titleElement.innerText = newTaskCard.title;
+  //Truncate task description length to 63 characters
   descElement.innerText = newTaskCard.desc.slice(0, 63);
   memberElement.innerText = newTaskCard.member;
+  //Use user friendly date format
   dateElement.innerText = friendlyDate(newTaskCard.date);
   tagElement.innerText = newTaskCard.tag;
   statusElement.innerText = newTaskCard.status;
@@ -187,6 +214,7 @@ function friendlyDate(date) {
 //Get saved data as an array
 function loadCanvas() {
   const taskCardsSetOneString = localStorage.getItem(TASK_STORAGE_KEY);
+  //Empty array if data not present
   return JSON.parse(taskCardsSetOneString) || [];
 }
 

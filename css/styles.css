@@ -19,7 +19,9 @@ body {
   background: #fff6ed;
   display: flex;
   height: 100%;
-  flex-wrap: wrap;
+  white-space: wrap;
+  flex-direction: column;
+  /* overflow-x: hidden; */
 }
 
 p {
@@ -31,9 +33,9 @@ h2 {
 }
 
 /* Navigation */
-.navigation {
+/* .navigation {
   width: 100vw;
-}
+} */
 
 .nav-bg {
   background: #a18a75;
@@ -81,7 +83,7 @@ h2 {
 
 .user-drop-item:hover {
   background: #a18a75;
-  color: #fff;
+  color: #fffcf9;
   font-weight: bold;
 }
 
@@ -185,8 +187,8 @@ h2 {
   white-space: nowrap;
   margin: 0;
   padding: 10px;
-  /* overflow-x: auto;
-  overflow-y: hidden; */
+  /* overflow-x: auto; */
+  /* overflow-y: hidden; */
 }
 
 .board-canvas p {
@@ -227,7 +229,6 @@ h2 {
 }
 
 /* Task Card */
-
 .task-card .card {
   background: #fffcf9;
   border-color: #a18a75;
@@ -261,6 +262,26 @@ h2 {
 }
 
 /* Modal Form */
+.modal-backdrop {
+  background-color: #a18a75;
+}
+
+.modal-style {
+  background: #fffcf9;
+  border-color: #a18a75;
+}
+
+.add-task-btn {
+  background: #5290a1;
+  color: white;
+  font-weight: bold;
+}
+
+.add-task-btn:hover {
+  background: hsl(193, 33%, 40%);
+  color: white;
+}
+
 .modal-body {
   padding-top: 0;
   padding-bottom: 0;
@@ -277,6 +298,37 @@ h2 {
 
 .modal-body .form-margin {
   margin: 1rem 0;
+}
+
+.task-card-drop {
+  background: #fffcf9;
+  border-color: #5290a1;
+  transform: none !important;
+  width: 254px;
+  margin-top: 29px;
+  margin-left: -230.5px;
+}
+
+.task-card-drop-item {
+  color: #2f2e41;
+}
+
+.task-card-drop-item:hover {
+  background: #a18a75;
+  color: #fffcf9;
+  font-weight: bold;
+}
+
+.task-card-dropdown-toggle:after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  margin-top: -20px;
+  margin-left: -230px;
+  width: 254px;
+  height: 35px;
+  background: transparent;
+  border-color: transparent;
 }
 
 /* Modal Form - Checklist */

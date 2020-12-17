@@ -45,7 +45,7 @@
         <!-- Navigation -->
         <section class="navigation">
             <nav class="navbar navbar-dark nav-bg navbar-expand py-2">
-                <a href="" class="board-logo navbar-brand"><i class="fas fa-border-style"></i> JK Board</a>
+                <a href="index.html" class="board-logo navbar-brand"><i class="fas fa-border-style"></i> JK Board</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -164,8 +164,8 @@
 
         <!-- Modal Form -->
         <div class="modal fade" tabindex="-1" role="dialog" id="new-task-modal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content modal-style">
                     <div class="modal-header">
                         <h5 class="modal-title align-self-center">Add New Task</h5>
                         <button type="button" class="close new-task-modal-close" data-dismiss="modal"
@@ -278,8 +278,9 @@
                         </form>
                     </div>
                     <div class="modal-footer justify-content-end">
-                        <button type="" form="" class="btn btn-sm btn-danger mr-auto">Delete</button>
-                        <button type="submit" form="new-task-form" class="btn btn-sm btn-success">Add
+                        <!-- DELETE BUTTON TO BE IMPLEMENTED -->
+                        <!-- <button type="" form="" class="btn btn-sm btn-danger mr-auto">Delete</button> -->
+                        <button type="submit" form="new-task-form" class="btn btn-sm add-task-btn">Add
                             Task</button>
                         <button class=" btn btn-sm btn-secondary new-task-modal-close"
                             data-dismiss="modal">Cancel</button>
@@ -307,21 +308,27 @@
                         <div class="dropdown-divider"></div>
                         <p><i class="fas fa-tag"></i><span class="task-card-item" data-task-card-tag></span></p>
                         <div class="dropdown-divider"></div>
-                        <div class="container pl-0">
+                        <div class="container pl-0 task-card-status-container">
                             <div class="d-inline">
                                 <p class="d-inline"><i class="fas fa-th-list"></i><span class="task-card-item"
                                         data-task-card-status></span>
                                 </p>
                             </div>
-                            <div class="dropdown d-inline">
-                                <span class="dropdown-toggle" type="button" data-toggle="dropdown">
+                            <div class="dropdown d-inline float-right">
+                                <span class="dropdown-toggle task-card-dropdown-toggle" type="button"
+                                    data-toggle="dropdown">
                                 </span>
-                                <div class="dropdown-menu">
-                                    <button class="dropdown-item" type="button" data-status-change>TO DO</button>
-                                    <button class="dropdown-item" type="button" data-status-change>IN PROGRESS</button>
-                                    <button class="dropdown-item" type="button" data-status-change>REVIEW</button>
-                                    <button class="dropdown-item" type="button" data-status-change>DONE</button>
-                                    <button class="dropdown-item" type="button" data-status-change>OBSOLETE</button>
+                                <div class="dropdown-menu task-card-drop">
+                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
+                                        DO</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN
+                                        PROGRESS</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button"
+                                        data-status-change>REVIEW</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button"
+                                        data-status-change>DONE</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button"
+                                        data-status-change>OBSOLETE</a>
                                 </div>
                             </div>
                         </div>
