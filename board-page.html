@@ -38,6 +38,7 @@
     <!-- Scripts -->
     <script defer src="js/board.js"></script>
     <script defer src="js/taskManager.js"></script>
+    <script defer src="js/checklist.js"></script>
 </head>
 
 <body>
@@ -233,47 +234,55 @@
                             </div>
                             <div class="dropdown-divider"></div>
                             <!-- Checklist-->
-                            <div class="form-group">
-                                <label for=" task-checklist" class="col-1 col-form-label mt-3 mt-sm-0"><i
-                                        class="far fa-check-square"></i></label>Checklist
-                                <div class="checklist">
-                                    <input type="text" class="form-control" name="" id="task-checklist"
-                                        placeholder="Add checklist">
+                        <div class="form-group">
+                            <!-- <label for=" task-checklist" class="col-1 col-form-label mt-3 mt-sm-0"><i
+                                        class="far fa-check-square"></i></label>Checklist -->
+                            <div class="inputField form-margin row justify-content-between">
+                                <div class="col-10 p-0">
+                                    <input type="text" class="form-control" placeholder="Add checklist"
+                                        id="new-task-checklist">
                                 </div>
+                                <button class="btn btn-outline-dark col-1"><i class="fas fa-plus"></i></button>
                             </div>
-                            <div class="checkbox-container">
-                                <div class="input-group mt-2">
-                                    <div class="input-group-text">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            aria-label="Checkbox for following text input">
-                                    </div>
-                                    <span class="input-group-text">Landing page with navigation bar</span>
+
+                            <div class="checkbox-container justify-content-between">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">Landing page with navigation
+                                        bar </label>
+                                    <span><i class="fas fa-trash"></i></span></li>
                                 </div>
 
-                                <div class="input-group ">
-                                    <div class="input-group-text">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            aria-label="Checkbox for following text input">
-                                    </div>
-                                    <span class="input-group-text">Select color pallette and illustrations</span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                        checked>
+                                    <label class="form-check-label" for="flexCheckChecked"> Select color pallette and
+                                        illustrations </label>
+                                    <span><i class="fas fa-trash"></i></span></li>
                                 </div>
 
-                                <div class="input-group ">
-                                    <div class="input-group-text">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            aria-label="Checkbox for following text input">
-                                    </div>
-                                    <span class="input-group-text">Create board page with board canvas</span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                        checked>
+                                    <label class="form-check-label" for="flexCheckChecked"> Create board page with board
+                                        canvas </label>
+                                    <span><i class="fas fa-trash"></i></span></li>
                                 </div>
 
-                                <div class="input-group mb-2">
-                                    <div class="input-group-text">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            aria-label="Checkbox for following text input">
-                                    </div>
-                                    <span class="input-group-text">Create modal form</span>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                        checked>
+                                    <label class="form-check-label" for="flexCheckChecked"> Create modal form </label>
+                                    <span><i class="fas fa-trash"></i></span></li>
                                 </div>
+                                <!-- <ul class="todoList">
+                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label> Landing page with navigation bar<span><i class="fas fa-trash"></i></span></li>
+                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label> Select color pallette and illustrations<span><i class="fas fa-trash"></i></span></li>
+                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label> Create board page with board canvas<span><i class="fas fa-trash"></i></span></li>
+                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label>Create modal form<span><i class="fas fa-trash"></i></span></li>
+                                </ul> -->
                             </div>
+                        </div>
                             <!-- End Checklist -->
                         </form>
                     </div>

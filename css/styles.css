@@ -333,15 +333,46 @@ h2 {
 }
 
 /* Modal Form - Checklist */
-.checklist {
-  margin-top: 0.5rem;
-}
-
-.input-group-text {
-  background-color: white;
-  border: none;
+#new-task-checklist{
+  width: 105%;
 }
 
 .checkbox-container {
-  margin: 0rem 3rem;
+  margin: 1rem 0rem;
+}
+
+.form-check {
+  list-style: none;
+  margin:1rem;
+  position: relative;
+}
+
+.checkbox-container span {
+  position: absolute;
+  right: -100rem;
+  cursor: pointer;
+  overflow: hidden;
+
+}
+
+.checkbox-container:hover span {
+  right:0.2rem;
+
+}
+
+
+.todoList li .i {
+  padding: 2rem;
+}
+
+.inputField button {
+  background: #fff;
+  opacity: 0.6;
+  pointer-events: none;
+  border-color: rgb(148, 147, 147);
+}
+
+.inputField button.active {
+  opacity: 1;
+  pointer-events: auto;
 }
