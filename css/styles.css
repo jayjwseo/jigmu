@@ -22,6 +22,7 @@ body {
   white-space: wrap;
   flex-direction: column;
   /* overflow-x: hidden; */
+  /* overflow-y: scroll; */
 }
 
 p {
@@ -183,13 +184,15 @@ h2 {
 
 /* Task Board */
 .board-canvas {
-  position: relative;
+  /* Ignore nav bar & stay under it */
+  position: absolute;
+  z-index: -1;
   flex-grow: 1;
   white-space: nowrap;
-  margin: 0;
-  padding: 10px;
-  /* overflow-x: auto; */
-  /* overflow-y: hidden; */
+  height: 100%;
+  padding: 50px 10px 10px 10px;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .board-canvas p {
@@ -198,6 +201,10 @@ h2 {
 }
 
 /* Task List */
+/* .task-card-canvas {
+  overflow-y: auto;
+  overflow-x: hidden;
+} */
 
 .list-title {
   font-weight: bold;
@@ -209,7 +216,7 @@ h2 {
 .list-wrapper {
   width: 240px;
   margin: 10px;
-  height: 100%;
+  height: 90%;
   display: inline-block;
   /* vertical-align: top; */
   white-space: nowrap;

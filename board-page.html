@@ -70,9 +70,9 @@
             </nav>
         </section>
     </header>
-    <main>
-        <!-- Board Menu -->
-        <!-- <div class="navbar navbar-dark menu-bg navbar-expand-sm py-2">
+
+    <!-- Board Menu -->
+    <!-- <div class="navbar navbar-dark menu-bg navbar-expand-sm py-2">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -89,80 +89,80 @@
             </div>
         </div> -->
 
-        <!-- Board -->
-        <div id="board" class="board-canvas container-fluid">
-            <!-- List -->
-            <div class="list-wrapper">
-                <div class="card list-canvas">
-                    <div class="card-body p-2">
-                        <h5 class="card-title list-title">TO DO<a id="newTask" class="add-task float-right"
-                                data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
-                        </h5>
-                        <div class="task-card-canvas" id="task-card-canvas-todo">
-                            <!-- TASK-CARD ADDED BELOW -->
-                        </div>
+    <!-- Board Canvas-->
+    <section id="board" class="board-canvas container-fluid">
+        <!-- List -->
+        <div class="list-wrapper">
+            <div class="card list-canvas">
+                <div class="card-body p-2">
+                    <h5 class="card-title list-title">TO DO<a id="newTask" class="add-task float-right"
+                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    </h5>
+                    <div class="task-card-canvas" id="task-card-canvas-todo">
+                        <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
             </div>
-            <!-- End List -->
-            <!-- List -->
-            <div class="list-wrapper">
-                <div class="card list-canvas">
-                    <div class="card-body p-2">
-                        <h5 class="card-title list-title">IN PROGRESS<a id="newTask" class="add-task float-right"
-                                data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
-                        </h5>
-                        <div class="task-card-canvas" id="task-card-canvas-inprogress">
-                            <!-- TASK-CARD ADDED BELOW -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End List -->
-            <!-- List -->
-            <div class="list-wrapper">
-                <div class="card list-canvas">
-                    <div class="card-body p-2">
-                        <h5 class="card-title list-title">REVIEW<a id="newTask" class="add-task float-right"
-                                data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
-                        </h5>
-                        <div class="task-card-canvas" id="task-card-canvas-review">
-                            <!-- TASK-CARD ADDED BELOW -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End List -->
-            <!-- List -->
-            <div class="list-wrapper">
-                <div class="card list-canvas">
-                    <div class="card-body p-2">
-                        <h5 class="card-title list-title">DONE<a id="newTask" class="add-task float-right"
-                                data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
-                        </h5>
-                        <div class="task-card-canvas" id="task-card-canvas-done">
-                            <!-- TASK-CARD ADDED BELOW -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End List -->
-            <!-- List -->
-            <div class="list-wrapper">
-                <div class="card list-canvas">
-                    <div class="card-body p-2">
-                        <h5 class="card-title list-title">OBSOLETE<a id="newTask" class="add-task float-right"
-                                data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
-                        </h5>
-                        <div class="task-card-canvas" id="task-card-canvas-obsolete">
-                            <!-- TASK-CARD ADDED BELOW -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End List -->
         </div>
-
+        <!-- End List -->
+        <!-- List -->
+        <div class="list-wrapper">
+            <div class="card list-canvas">
+                <div class="card-body p-2">
+                    <h5 class="card-title list-title">IN PROGRESS<a id="newTask" class="add-task float-right"
+                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    </h5>
+                    <div class="task-card-canvas" id="task-card-canvas-inprogress">
+                        <!-- TASK-CARD ADDED BELOW -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End List -->
+        <!-- List -->
+        <div class="list-wrapper">
+            <div class="card list-canvas">
+                <div class="card-body p-2">
+                    <h5 class="card-title list-title">REVIEW<a id="newTask" class="add-task float-right"
+                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    </h5>
+                    <div class="task-card-canvas" id="task-card-canvas-review">
+                        <!-- TASK-CARD ADDED BELOW -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End List -->
+        <!-- List -->
+        <div class="list-wrapper">
+            <div class="card list-canvas">
+                <div class="card-body p-2">
+                    <h5 class="card-title list-title">DONE<a id="newTask" class="add-task float-right"
+                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    </h5>
+                    <div class="task-card-canvas" id="task-card-canvas-done">
+                        <!-- TASK-CARD ADDED BELOW -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End List -->
+        <!-- List -->
+        <div class="list-wrapper">
+            <div class="card list-canvas">
+                <div class="card-body p-2">
+                    <h5 class="card-title list-title">OBSOLETE<a id="newTask" class="add-task float-right"
+                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    </h5>
+                    <div class="task-card-canvas" id="task-card-canvas-obsolete">
+                        <!-- TASK-CARD ADDED BELOW -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End List -->
+    </section>
+    <main>
         <!-- Modal Form -->
         <div class="modal fade" tabindex="-1" role="dialog" id="new-task-modal">
             <div class="modal-dialog modal-dialog-centered" role="document">
