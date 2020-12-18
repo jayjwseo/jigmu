@@ -89,6 +89,7 @@ h2 {
 
 .user-drop {
   background: #fffcf9;
+  border-color: #5290a1;
 }
 
 @media (min-width: 576px) {
@@ -200,12 +201,13 @@ h2 {
 
 .list-title {
   font-weight: bold;
+  font-size: 1rem;
   text-transform: uppercase;
   color: #a18a75;
 }
 
 .list-wrapper {
-  width: 272px;
+  width: 240px;
   margin: 10px;
   height: 100%;
   display: inline-block;
@@ -237,11 +239,12 @@ h2 {
 .task-card h6 {
   color: #2f2e41;
   font-weight: bold;
+  font-size: 1.05rem;
 }
 
 .task-card p {
   color: #2f2e41;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin: 0;
 }
 
@@ -259,6 +262,40 @@ h2 {
 
 .drop-loc {
   height: 10px;
+}
+
+/* Task Card Status Dropdown */
+.task-card-drop {
+  background: #fffcf9;
+  border-color: #5290a1;
+  transform: none !important;
+  width: 222px;
+  margin-top: 27px;
+  margin-left: -190px;
+}
+
+.task-card-drop-item {
+  color: #2f2e41;
+  font-size: 0.85rem;
+}
+
+.task-card-drop-item:hover {
+  background: #a18a75;
+  color: #fffcf9;
+  font-weight: bold;
+}
+
+.task-card-drop-toggle:after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  margin-top: -20px;
+  margin-left: -188px;
+  z-index: 1;
+  width: 220px;
+  height: 35px;
+  background: transparent;
+  border-color: transparent;
 }
 
 /* Modal Form */
@@ -300,40 +337,8 @@ h2 {
   margin: 1rem 0;
 }
 
-.task-card-drop {
-  background: #fffcf9;
-  border-color: #5290a1;
-  transform: none !important;
-  width: 254px;
-  margin-top: 29px;
-  margin-left: -220.5px;
-}
-
-.task-card-drop-item {
-  color: #2f2e41;
-}
-
-.task-card-drop-item:hover {
-  background: #a18a75;
-  color: #fffcf9;
-  font-weight: bold;
-}
-
-.task-card-dropdown-toggle:after {
-  position: absolute;
-  display: inline-block;
-  content: "";
-  margin-top: -20px;
-  margin-left: -220px;
-  z-index: 1;
-  width: 254px;
-  height: 35px;
-  background: transparent;
-  border-color: transparent;
-}
-
 /* Modal Form - Checklist */
-#new-task-checklist{
+#new-task-checklist {
   width: 105%;
 }
 
@@ -343,7 +348,7 @@ h2 {
 
 .form-check {
   list-style: none;
-  margin:1rem;
+  margin: 1rem;
   position: relative;
 }
 
@@ -352,14 +357,11 @@ h2 {
   right: -100rem;
   cursor: pointer;
   overflow: hidden;
-
 }
 
 .checkbox-container:hover span {
-  right:0.2rem;
-
+  right: 0.2rem;
 }
-
 
 .todoList li .i {
   padding: 2rem;
