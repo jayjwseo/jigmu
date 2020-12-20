@@ -1,5 +1,5 @@
 // Task card constructor
-class TaskManager {
+export default class TaskManager {
   constructor(title, desc, member, date, tag, status) {
     this.title = title;
     this.desc = desc;

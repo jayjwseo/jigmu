@@ -1,3 +1,6 @@
+// Modules
+import TaskManager from "./taskManager.js";
+
 //test
 // const body = document.querySelector("body");
 // const newTaskModal = document.querySelector("#new-task-modal");
@@ -167,6 +170,16 @@ function renderTaskCard(newTaskCard) {
   const tagElement = clone.querySelector("[data-task-card-tag]");
   const statusElement = clone.querySelector("[data-task-card-status]");
 
+  //Elements Array
+  const elements = [
+    titleElement,
+    descElement,
+    memberElement,
+    dateElement,
+    tagElement,
+    statusElement,
+  ];
+
   // Render Elements
   titleElement.innerText = newTaskCard.title;
   //Truncate task description length to 63 characters
@@ -176,6 +189,14 @@ function renderTaskCard(newTaskCard) {
   dateElement.innerText = friendlyDate(newTaskCard.date);
   tagElement.innerText = newTaskCard.tag;
   statusElement.innerText = newTaskCard.status;
+
+  //Hide when no value to display
+  elements.forEach((element) => {
+    const elementNoValue = element.closest(".task-card-element");
+    if (element.innerText === "") {
+      elementNoValue.classList.toggle("d-none");
+    }
+  });
 
   // Render Dataset ID
   const taskCard = clone.querySelector(".task-card");

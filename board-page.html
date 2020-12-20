@@ -17,7 +17,7 @@
         rel="stylesheet">
 
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/e3bd8cad6a.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0bb80a9d19.js" crossorigin="anonymous"></script>
 
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -36,8 +36,7 @@
         </script>
 
     <!-- Scripts -->
-    <script defer src="js/board.js"></script>
-    <script defer src="js/taskManager.js"></script>
+    <script type="module" src="js/board.js"></script>
     <script defer src="js/checklist.js"></script>
 </head>
 
@@ -244,48 +243,6 @@
                                     </div>
                                     <button class="btn btn-outline-dark col-1"><i class="fas fa-plus"></i></button>
                                 </div>
-
-                                <div class="checkbox-container justify-content-between">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">Landing page with
-                                            navigation
-                                            bar </label>
-                                        <span><i class="fas fa-trash"></i></span></li>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                            checked>
-                                        <label class="form-check-label" for="flexCheckChecked"> Select color pallette
-                                            and
-                                            illustrations </label>
-                                        <span><i class="fas fa-trash"></i></span></li>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                            checked>
-                                        <label class="form-check-label" for="flexCheckChecked"> Create board page with
-                                            board
-                                            canvas </label>
-                                        <span><i class="fas fa-trash"></i></span></li>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                            checked>
-                                        <label class="form-check-label" for="flexCheckChecked"> Create modal form
-                                        </label>
-                                        <span><i class="fas fa-trash"></i></span></li>
-                                    </div>
-                                    <!-- <ul class="todoList">
-                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label> Landing page with navigation bar<span><i class="fas fa-trash"></i></span></li>
-                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label> Select color pallette and illustrations<span><i class="fas fa-trash"></i></span></li>
-                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label> Create board page with board canvas<span><i class="fas fa-trash"></i></span></li>
-                                    <li><label for="tick-box" class="col-1 mt-3 mt-sm-0"><i class="far fa-square"></i></label>Create modal form<span><i class="fas fa-trash"></i></span></li>
-                                </ul> -->
-                                </div>
                             </div>
                             <!-- End Checklist -->
                         </form>
@@ -311,41 +268,53 @@
                             <img src="images/jk-favicon.png" class="card-member-img rounded-circle float-right ">
                             <h6 data-task-card-title></h6>
                         </div>
-                        <div class="dropdown-divider"></div>
-                        <p><span data-task-card-desc></span></p>
-                        <div class="dropdown-divider"></div>
-                        <p><i class="fas fa-user"></i><span class="task-card-item" data-task-card-member></span></p>
-                        <div class="dropdown-divider"></div>
-                        <p><i class="far fa-calendar-alt"></i><span class="task-card-item" data-task-card-date></span>
-                        </p>
-                        <div class="dropdown-divider"></div>
-                        <p><i class="fas fa-tag"></i><span class="task-card-item" data-task-card-tag></span></p>
-                        <div class="dropdown-divider"></div>
-                        <div class="container pl-0 task-card-status-container">
-                            <div class="d-inline">
-                                <p class="d-inline"><i class="fas fa-th-list"></i><span class="task-card-item"
-                                        data-task-card-status></span><span class="float-right"><i
-                                            class="fas fa-caret-down"></i></span>
-                                </p>
-                            </div>
-                            <div class="dropdown d-inline float-right">
-                                <span class="dropdown-toggle task-card-drop-toggle" type="button"
-                                    data-toggle="dropdown">
-                                </span>
-                                <div class="dropdown-menu task-card-drop">
-                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
-                                        DO</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN
-                                        PROGRESS</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button"
-                                        data-status-change>REVIEW</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button"
-                                        data-status-change>DONE</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button"
-                                        data-status-change>OBSOLETE</a>
+                        <div class="task-card-element task-card-desc">
+                            <div class="dropdown-divider"></div>
+                            <p><span data-task-card-desc></span></p>
+                        </div>
+                        <div class="task-card-element task-card-member">
+                            <div class="dropdown-divider"></div>
+                            <p><i class="fas fa-user"></i><span class="task-card-item" data-task-card-member></span></p>
+                        </div>
+                        <div class="task-card-element task-card-date">
+                            <div class="dropdown-divider"></div>
+                            <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
+                                    data-task-card-date></span>
+                            </p>
+                        </div>
+                        <div class="task-card-element task-card-tag">
+                            <div class="dropdown-divider"></div>
+                            <p><i class="fas fa-tag"></i><span class="task-card-item" data-task-card-tag></span></p>
+                        </div>
+                        <div class="task-card-element task-card-status">
+                            <div class="dropdown-divider"></div>
+                            <div class="container pl-0 task-card-status-container">
+                                <div class="d-inline">
+                                    <p class="d-inline"><i class="fas fa-th-list"></i><span class="task-card-item"
+                                            data-task-card-status></span><span class="float-right"><i
+                                                class="fas fa-caret-down"></i></span>
+                                    </p>
+                                </div>
+                                <div class="dropdown d-inline float-right">
+                                    <span class="dropdown-toggle task-card-drop-toggle" type="button"
+                                        data-toggle="dropdown">
+                                    </span>
+                                    <div class="dropdown-menu task-card-drop">
+                                        <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
+                                            DO</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN
+                                            PROGRESS</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button"
+                                            data-status-change>REVIEW</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button"
+                                            data-status-change>DONE</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button"
+                                            data-status-change>OBSOLETE</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="drop-loc"></div>
