@@ -5,7 +5,11 @@
 #A18A75
 #EBEDED
 #5290A1 
-#2f2e41*/
+#2f2e41
+
+#EBECF0
+
+#F4F5F7*/
 
 /* Global */
 * {
@@ -90,7 +94,10 @@ h2 {
 
 .user-drop {
   background: #fffcf9;
-  border-color: #5290a1;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
 @media (min-width: 576px) {
@@ -239,8 +246,10 @@ h2 {
 
 /* Task Card */
 .task-card .card {
-  background: #fffcf9;
-  border-color: #a18a75;
+  background: white;
+  border-radius: 4px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
 .task-card h6 {
@@ -272,18 +281,8 @@ h2 {
 }
 
 /* Task Card Status Dropdown */
-.task-card-drop {
-  background: #fffcf9;
-  border-color: #5290a1;
-  transform: none !important;
-  width: 222px;
-  margin-top: 27px;
-  margin-left: -190px;
-}
-
 .task-card-drop-item {
   color: #2f2e41;
-  font-size: 0.85rem;
 }
 
 .task-card-drop-item:hover {
@@ -292,37 +291,41 @@ h2 {
   font-weight: bold;
 }
 
-.task-card-drop-toggle:after {
-  position: absolute;
-  display: inline-block;
-  content: "";
-  margin-top: -20px;
-  margin-left: -188px;
-  z-index: 1;
-  width: 220px;
-  height: 35px;
-  background: transparent;
-  border-color: transparent;
+.task-card-drop {
+  background: #fffcf9;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
 /* Modal Form */
-.modal-backdrop {
-  background-color: #a18a75;
-}
-
 .modal-style {
-  background: #fffcf9;
-  border-color: #a18a75;
+  background: #f4f5f7;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
-.add-task-btn {
+.update-task-btn {
   background: #5290a1;
   color: white;
   font-weight: bold;
 }
 
-.add-task-btn:hover {
-  background: hsl(193, 33%, 40%);
+.update-task-btn:hover {
+  background: hsl(193, 33%, 42%);
+  color: white;
+}
+
+.delete-task-btn {
+  background: #bb4848;
+  border: none;
+}
+
+.delete-task-btn:hover {
+  background: hsl(0, 46%, 42%);
   color: white;
 }
 

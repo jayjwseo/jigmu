@@ -172,14 +172,14 @@
                             aria=label="close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <div id="error-fields" class="new-task-form-message pt-3 text-danger d-none">*Please enter all
-                            required fields.</div>
+                        <div id="error-fields" class="new-task-form-message pt-3 text-danger d-none">*Title cannot be
+                            empty.
+                        </div>
                         <div id="error-date" class="new-task-form-message pt-3 text-danger d-none">*Due date cannot be
                             in the
                             past.</div>
-                        <div id="success-new" class="new-task-form-message pt-3 text-success d-none">Successfully
-                            created a
-                            new task</div>
+                        <div id="success-update" class="new-task-form-message pt-3 text-success d-none">Task
+                            Updated.</div>
                         <form id="new-task-form">
                             <div class="form-group">
                                 <label for="new-task-title"></label>
@@ -201,8 +201,9 @@
                                 <label for="new-task-date" class="col-1 col-form-label mt-3 mt-sm-0"><i
                                         class="far fa-calendar-alt"></i></label>
                                 <div class="col-11 col-sm-5 p-0 mt-3 mt-sm-0">
-                                    <input type="text" class="form-control" placeholder="Due Date"
-                                        onfocus="(this.type='date')" id="new-task-date">
+                                    <input type="date" class="form-control" placeholder="Due Date" id="new-task-date">
+                                    <!-- <input type="text" class="form-control" placeholder="Due Date"
+                                        onfocus="(this.type='date')" id="new-task-date"> -->
                                 </div>
                             </div>
                             <div class="form-group form-margin row">
@@ -222,7 +223,7 @@
                                 </label>
                                 <div class="col-11 col-sm-5 p-0 mt-3 mt-sm-0">
                                     <select id="new-task-status" class="form-control">
-                                        <option value="">Status</option>
+                                        <!-- <option value="">Status</option> -->
                                         <option value="TO DO">TO DO</option>
                                         <option value="IN PROGRESS">IN PROGRESS</option>
                                         <option value="REVIEW">REVIEW</option>
@@ -249,9 +250,8 @@
                     </div>
                     <div class="modal-footer justify-content-end">
                         <!-- DELETE BUTTON TO BE IMPLEMENTED -->
-                        <!-- <button type="" form="" class="btn btn-sm btn-danger mr-auto">Delete</button> -->
-                        <button type="submit" form="new-task-form" class="btn btn-sm add-task-btn">Add
-                            Task</button>
+                        <button type="" form="" class="btn btn-sm btn-danger mr-auto delete-task-btn">Delete</button>
+                        <button type="submit" form="new-task-form" class="btn btn-sm update-task-btn">Update</button>
                         <button class=" btn btn-sm btn-secondary new-task-modal-close"
                             data-dismiss="modal">Cancel</button>
                     </div>
@@ -262,7 +262,7 @@
         <!-- Task-card Template -->
         <template id="task-card-template">
             <div class="task-card">
-                <div class="card" id="" draggable="true" ondragstart="">
+                <div class="card border-0" id="" draggable="true" ondragstart="">
                     <div class="card-body p-2">
                         <div class="card-title task-card-title">
                             <img src="images/jk-favicon.png" class="card-member-img rounded-circle float-right ">
@@ -288,33 +288,26 @@
                         </div>
                         <div class="task-card-element task-card-status">
                             <div class="dropdown-divider"></div>
-                            <div class="container pl-0 task-card-status-container">
-                                <div class="d-inline">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle task-card-drop-toggle" type="button" data-toggle="dropdown">
                                     <p class="d-inline"><i class="fas fa-th-list"></i><span class="task-card-item"
-                                            data-task-card-status></span><span class="float-right"><i
-                                                class="fas fa-caret-down"></i></span>
+                                            data-task-card-status></span>
                                     </p>
                                 </div>
-                                <div class="dropdown d-inline float-right">
-                                    <span class="dropdown-toggle task-card-drop-toggle" type="button"
-                                        data-toggle="dropdown">
-                                    </span>
-                                    <div class="dropdown-menu task-card-drop">
-                                        <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
-                                            DO</a>
-                                        <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN
-                                            PROGRESS</a>
-                                        <a class="dropdown-item task-card-drop-item" type="button"
-                                            data-status-change>REVIEW</a>
-                                        <a class="dropdown-item task-card-drop-item" type="button"
-                                            data-status-change>DONE</a>
-                                        <a class="dropdown-item task-card-drop-item" type="button"
-                                            data-status-change>OBSOLETE</a>
-                                    </div>
+                                <div class="dropdown-menu task-card-drop">
+                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
+                                        DO</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN
+                                        PROGRESS</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button"
+                                        data-status-change>REVIEW</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button"
+                                        data-status-change>DONE</a>
+                                    <a class="dropdown-item task-card-drop-item" type="button"
+                                        data-status-change>OBSOLETE</a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="drop-loc"></div>

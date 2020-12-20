@@ -1,10 +1,6 @@
 // Modules
 import TaskManager from "./taskManager.js";
 
-//test
-// const body = document.querySelector("body");
-// const newTaskModal = document.querySelector("#new-task-modal");
-
 //Select modal form user input fields
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
@@ -16,7 +12,7 @@ const newStatusInput = document.querySelector("#new-task-status");
 //Select modal form messages
 const errorFields = document.querySelector("#error-fields");
 const errorDate = document.querySelector("#error-date");
-const successNew = document.querySelector("#success-new");
+const successUpdate = document.querySelector("#success-update");
 //Select elements for modal form reset
 const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
@@ -34,11 +30,8 @@ taskCardsSetOne.forEach(renderTaskCard);
 //Task card status update & re-locate
 taskCardCanvas.forEach((canvas) => {
   canvas.addEventListener("click", (e) => {
-    //Ignore if not status change button click
     if (!e.target.matches("[data-status-change]")) return;
-    //Select the parent task card
     const taskCard = e.target.closest(".task-card");
-    //Retrieve task id of the parent task card
     const taskId = taskCard.dataset.taskCardId;
     //Look for the task in the array using the id
     const task = taskCardsSetOne.find((t) => t.id === taskId);
@@ -48,7 +41,6 @@ taskCardCanvas.forEach((canvas) => {
     taskCard.remove();
     //Render task card to the new location(list)
     renderTaskCard(task);
-    //Save to local storage
     saveCanvas();
   });
 });
@@ -56,55 +48,37 @@ taskCardCanvas.forEach((canvas) => {
 newTaskForm.addEventListener("submit", (e) => {
   //Prevent default refresh
   e.preventDefault();
+
   //User input values
-  const userDate = new Date(newDateInput.value);
   const taskTitle = newTitleInput.value;
   const taskDesc = newDescInput.value;
   const taskMember = newMemberInput.value;
-  const taskDate = newDateInput.value;
   const taskTag = newTagInput.value;
   const taskStatus = newStatusInput.value;
+  const taskDate = newDateInput.value;
+  const userDate = new Date(taskDate);
+  // Check due date input is not in the past
+  const dateValid = userDate > dateValidRef() ? true : false;
 
-  // Check all fields have input
-  if (
-    taskTitle &&
-    taskDesc &&
-    taskMember &&
-    taskDate &&
-    taskTag &&
-    taskStatus
-  ) {
-    // Check due date input is not in the past
-    if (userDate > yesterday()) {
-      // Add task card (When all input fields are valid)
-      const newTaskCard = new TaskManager(
-        taskTitle,
-        taskDesc,
-        taskMember,
-        taskDate,
-        taskTag,
-        taskStatus
-      );
-      //Push new task card to array
-      taskCardsSetOne.push(newTaskCard);
-      //Render new task card
-      renderTaskCard(newTaskCard);
-      //Save to local storage
-      saveCanvas();
-      successNew.classList.remove("d-none");
-      errorDate.classList.add("d-none");
-      //Form reset
-      newTaskForm.reset();
-      //Easter egg
-      newTaskCard.askMagicEight();
-    } else {
-      errorDate.classList.remove("d-none");
-      successNew.classList.add("d-none");
-    }
-    errorFields.classList.add("d-none");
-  } else {
+  // Let A = taskTitle, B = taskDate, C = DateValid
+  // y = AB' + AC
+  if ((taskTitle && !taskDate) || (taskTitle && dateValid)) {
+    updateTaskCard(
+      taskTitle,
+      taskDesc,
+      taskMember,
+      taskDate,
+      taskTag,
+      taskStatus
+    );
+  } else if (!taskTitle) {
+    successUpdate.classList.add("d-none");
+    errorDate.classList.add("d-none");
     errorFields.classList.remove("d-none");
-    successNew.classList.add("d-none");
+  } else {
+    successUpdate.classList.add("d-none");
+    errorDate.classList.remove("d-none");
+    errorFields.classList.add("d-none");
   }
 });
 
@@ -123,26 +97,18 @@ function clearMessages(messages) {
   });
 }
 
-// Date value (yesterday) generator for date input validation
-function yesterday() {
-  const today = new Date();
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
-  return yesterday;
+// Date validation reference generator
+function dateValidRef() {
+  //today w/o timestamp
+  const y = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  );
+  //today minus 1 millisecond
+  const ref = new Date(y.setMilliseconds(y.getMilliseconds() - 1));
+  return ref;
 }
-
-// // Task card constructor (***MOVED TO taskManager.js***)
-// class TaskCard {
-//   constructor(title, desc, member, date, tag, status) {
-//     this.title = title;
-//     this.desc = desc;
-//     this.member = member;
-//     this.date = date;
-//     this.tag = tag;
-//     this.status = status;
-//     this.id = new Date().valueOf().toString();
-//   }
-// }
 
 // Render task card
 function renderTaskCard(newTaskCard) {
@@ -186,7 +152,9 @@ function renderTaskCard(newTaskCard) {
   descElement.innerText = newTaskCard.desc.slice(0, 63);
   memberElement.innerText = newTaskCard.member;
   //Use user friendly date format
-  dateElement.innerText = friendlyDate(newTaskCard.date);
+  dateElement.innerText = newTaskCard.date
+    ? friendlyDate(newTaskCard.date)
+    : "";
   tagElement.innerText = newTaskCard.tag;
   statusElement.innerText = newTaskCard.status;
 
@@ -242,4 +210,22 @@ function loadCanvas() {
 //Save on local storage
 function saveCanvas() {
   localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(taskCardsSetOne));
+}
+
+//Update Task Card
+function updateTaskCard(title, desc, member, date, tag, status) {
+  const newTaskCard = new TaskManager(title, desc, member, date, tag, status);
+  //Push new task card to array
+  taskCardsSetOne.push(newTaskCard);
+  //Render new task card
+  renderTaskCard(newTaskCard);
+  //Save to local storage
+  saveCanvas();
+  successUpdate.classList.remove("d-none");
+  errorFields.classList.add("d-none");
+  errorDate.classList.add("d-none");
+  //Form reset
+  newTaskForm.reset();
+  //Easter egg
+  // newTaskCard.askMagicEight();
 }
