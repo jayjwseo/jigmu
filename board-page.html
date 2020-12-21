@@ -94,8 +94,8 @@
         <div class="list-wrapper">
             <div class="card list-canvas">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">TO DO<a id="newTask" class="add-task float-right"
-                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    <h5 class="card-title list-title">TO DO<a class="add-task float-right" data-toggle="modal"
+                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-todo">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -108,8 +108,8 @@
         <div class="list-wrapper">
             <div class="card list-canvas">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">IN PROGRESS<a id="newTask" class="add-task float-right"
-                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    <h5 class="card-title list-title">IN PROGRESS<a class="add-task float-right" data-toggle="modal"
+                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-inprogress">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -122,8 +122,8 @@
         <div class="list-wrapper">
             <div class="card list-canvas">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">REVIEW<a id="newTask" class="add-task float-right"
-                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    <h5 class="card-title list-title">REVIEW<a class="add-task float-right" data-toggle="modal"
+                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-review">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -136,8 +136,8 @@
         <div class="list-wrapper">
             <div class="card list-canvas">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">DONE<a id="newTask" class="add-task float-right"
-                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    <h5 class="card-title list-title">DONE<a class="add-task float-right" data-toggle="modal"
+                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-done">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -150,8 +150,8 @@
         <div class="list-wrapper">
             <div class="card list-canvas">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">OBSOLETE<a id="newTask" class="add-task float-right"
-                            data-toggle="modal" data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    <h5 class="card-title list-title">OBSOLETE<a class="add-task float-right" data-toggle="modal"
+                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-obsolete">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -166,50 +166,57 @@
         <div class="modal fade" tabindex="-1" role="dialog" id="new-task-modal">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content modal-style">
-                    <div class="modal-header">
-                        <h5 class="modal-title align-self-center">Add New Task</h5>
+                    <div class="modal-header py-2">
+                        <div class="modal-title align-self-center h5">Update Task</div>
                         <button type="button" class="close new-task-modal-close" data-dismiss="modal"
                             aria=label="close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <div id="error-fields" class="new-task-form-message pt-3 text-danger d-none">*Title cannot be
+                        <div id="error-fields" class="new-task-form-message text-danger d-none">*Title cannot be
                             empty.
                         </div>
-                        <div id="error-date" class="new-task-form-message pt-3 text-danger d-none">*Due date cannot be
+                        <div id="error-date" class="new-task-form-message text-danger d-none">*Due date cannot be
                             in the
                             past.</div>
-                        <div id="success-update" class="new-task-form-message pt-3 text-success d-none">Task
+                        <div id="success-update" class="new-task-form-message text-success d-none">Task
                             Updated.</div>
                         <form id="new-task-form">
-                            <div class="form-group">
-                                <label for="new-task-title"></label>
+                            <div class="form-group py-2">
+                                <label class="d-none" for="new-task-title">Task Title</label>
                                 <input type="text" class="form-control" name="" id="new-task-title"
                                     placeholder="Task Title">
                             </div>
-                            <div class="form-group pb-2">
-                                <label for="new-task-desc"></label>
+                            <div class="form-group py-2">
+                                <label class="d-none" for="new-task-desc">Task Description</label>
                                 <textarea name="" id="new-task-desc" class="form-control" rows="3"
                                     placeholder="Description..."></textarea>
                             </div>
-                            <div class="dropdown-divider"></div>
-                            <div class="form-group form-margin row">
-                                <label for="new-task-member" class="col-1 col-form-label"><i
-                                        class="fas fa-user"></i></label>
-                                <div class="col-11 col-sm-5 p-0">
+                            <div class="dropdown-divider m-2"></div>
+                            <div class="form-group row justify-content-between">
+                                <div class="input-group col-12 col-sm">
+                                    <label for="new-task-member" class="d-none">Members</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+                                    </div>
                                     <input type="text" class="form-control" placeholder="Members" id="new-task-member">
                                 </div>
-                                <label for="new-task-date" class="col-1 col-form-label mt-3 mt-sm-0"><i
-                                        class="far fa-calendar-alt"></i></label>
-                                <div class="col-11 col-sm-5 p-0 mt-3 mt-sm-0">
+                                <div class="input-group col-12 col-sm">
+                                    <label for="new-task-date" class="d-none">Due Date</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
+                                    </div>
                                     <input type="date" class="form-control" placeholder="Due Date" id="new-task-date">
                                     <!-- <input type="text" class="form-control" placeholder="Due Date"
                                         onfocus="(this.type='date')" id="new-task-date"> -->
                                 </div>
                             </div>
-                            <div class="form-group form-margin row">
-                                <label for="new-task-tag" class="col-1 col-form-label"><i class="fas fa-tag"></i>
-                                </label>
-                                <div class="col-11 col-sm-5 p-0">
+                            <div class="form-group row justify-content-between">
+                                <div class="input-group col-12 col-sm">
+                                    <label for="new-task-tag" class="d-none">Tag
+                                    </label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                    </div>
                                     <select id="new-task-tag" class="form-control">
                                         <option value="">Tag</option>
                                         <option value="Development">Development</option>
@@ -218,10 +225,12 @@
                                         <option value="Release">Release</option>
                                     </select>
                                 </div>
-                                <label for="new-task-status" class="col-1 col-form-label mt-3 mt-sm-0"><i
-                                        class="fas fa-th-list"></i>
-                                </label>
-                                <div class="col-11 col-sm-5 p-0 mt-3 mt-sm-0">
+                                <div class="input-group col-12 col-sm">
+                                    <label for="new-task-status" class="d-none">Status
+                                    </label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-th-list"></i></span>
+                                    </div>
                                     <select id="new-task-status" class="form-control">
                                         <!-- <option value="">Status</option> -->
                                         <option value="TO DO">TO DO</option>
@@ -232,12 +241,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-divider m-2"></div>
                             <!-- Checklist-->
-                            <div class="form-group">
-                                <!-- <label for=" task-checklist" class="col-1 col-form-label mt-3 mt-sm-0"><i
-                                        class="far fa-check-square"></i></label>Checklist -->
-                                <div class="inputField form-margin row justify-content-between">
+                            <div class="form-group p-2">
+                                <div class="inputField row justify-content-between">
                                     <div class="col-10 p-0">
                                         <input type="text" class="form-control" placeholder="Add checklist"
                                             id="new-task-checklist">
@@ -248,9 +255,10 @@
                             <!-- End Checklist -->
                         </form>
                     </div>
-                    <div class="modal-footer justify-content-end">
+                    <div class="modal-footer justify-content-end py-2">
                         <!-- DELETE BUTTON TO BE IMPLEMENTED -->
-                        <button type="" form="" class="btn btn-sm btn-danger mr-auto delete-task-btn">Delete</button>
+                        <button type="" form=""
+                            class="btn btn-sm btn-danger mr-auto delete-task-btn new-task-modal-close">Delete</button>
                         <button type="submit" form="new-task-form" class="btn btn-sm update-task-btn">Update</button>
                         <button class=" btn btn-sm btn-secondary new-task-modal-close"
                             data-dismiss="modal">Cancel</button>
@@ -288,7 +296,7 @@
                         </div>
                         <div class="task-card-element task-card-status">
                             <div class="dropdown-divider"></div>
-                            <div class="dropdown">
+                            <div class="dropdown task-card-status-click">
                                 <div class="dropdown-toggle task-card-drop-toggle" type="button" data-toggle="dropdown">
                                     <p class="d-inline"><i class="fas fa-th-list"></i><span class="task-card-item"
                                             data-task-card-status></span>

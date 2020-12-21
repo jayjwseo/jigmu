@@ -2,6 +2,7 @@
 import TaskManager from "./taskManager.js";
 
 //Select modal form user input fields
+// const newTaskModal = document.querySelector("#new-task-modal");
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
 const newDescInput = document.querySelector("#new-task-desc");
@@ -61,6 +62,14 @@ newTaskForm.addEventListener("submit", (e) => {
   const dateValid = userDate > dateValidRef() ? true : false;
 
   // Let A = taskTitle, B = taskDate, C = DateValid
+  // 0 0 0	0
+  // 0 0 1	0
+  // 0 1 0	0
+  // 0 1 1	0
+  // 1 0 0	1
+  // 1 0 1	1
+  // 1 1 0	0
+  // 1 1 1	1
   // y = AB' + AC
   if ((taskTitle && !taskDate) || (taskTitle && dateValid)) {
     updateTaskCard(
@@ -72,11 +81,11 @@ newTaskForm.addEventListener("submit", (e) => {
       taskStatus
     );
   } else if (!taskTitle) {
-    successUpdate.classList.add("d-none");
+    // successUpdate.classList.add("d-none");
     errorDate.classList.add("d-none");
     errorFields.classList.remove("d-none");
   } else {
-    successUpdate.classList.add("d-none");
+    // successUpdate.classList.add("d-none");
     errorDate.classList.remove("d-none");
     errorFields.classList.add("d-none");
   }
@@ -221,11 +230,13 @@ function updateTaskCard(title, desc, member, date, tag, status) {
   renderTaskCard(newTaskCard);
   //Save to local storage
   saveCanvas();
-  successUpdate.classList.remove("d-none");
+  // successUpdate.classList.remove("d-none");
   errorFields.classList.add("d-none");
   errorDate.classList.add("d-none");
-  //Form reset
+  //Modal reset & close
   newTaskForm.reset();
+  clearMessages(newTaskFormMessages);
+  $("#new-task-modal").modal("hide");
   //Easter egg
   // newTaskCard.askMagicEight();
 }
