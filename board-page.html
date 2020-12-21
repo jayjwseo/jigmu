@@ -72,12 +72,12 @@
 
     <!-- Board Canvas-->
     <section id="board" class="board-canvas container-fluid">
-        <!-- List -->
-        <div class="list-wrapper">
-            <div class="card list-canvas">
+        <!-- List 1-->
+        <div class="list-wrapper list-canvas">
+            <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">TO DO<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                    <h5 class="card-title list-title">TO DO<a class="add-task float-right"><i
+                                class="fas fa-plus fa-plus-custom"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-todo">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -87,11 +87,11 @@
         </div>
         <!-- End List -->
         <!-- List -->
-        <div class="list-wrapper">
-            <div class="card list-canvas">
+        <div class="list-wrapper list-canvas">
+            <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">IN PROGRESS<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-inprogress">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -101,11 +101,11 @@
         </div>
         <!-- End List -->
         <!-- List -->
-        <div class="list-wrapper">
-            <div class="card list-canvas">
+        <div class="list-wrapper list-canvas">
+            <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">REVIEW<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-review">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -115,11 +115,11 @@
         </div>
         <!-- End List -->
         <!-- List -->
-        <div class="list-wrapper">
-            <div class="card list-canvas">
+        <div class="list-wrapper list-canvas">
+            <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">DONE<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-done">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -129,11 +129,11 @@
         </div>
         <!-- End List -->
         <!-- List -->
-        <div class="list-wrapper">
-            <div class="card list-canvas">
+        <div class="list-wrapper list-canvas">
+            <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">OBSOLETE<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus"></i></a>
+                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-obsolete">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -223,13 +223,13 @@
                             </div>
                             <div class="dropdown-divider m-2"></div>
                             <!-- Checklist-->
-                            <div class="form-group p-2">
-                                <div class="inputField row justify-content-between">
-                                    <div class="col-10 p-0">
-                                        <input type="text" class="form-control" placeholder="Add checklist"
-                                            id="new-task-checklist">
+                            <div class="form-group row">
+                                <div class="input-group col px-0">
+                                    <input type="text" class="form-control" placeholder="Add Checklist item"
+                                        id="add-checklist-item" aria-label="Checklist">
+                                    <div class="input-group-append">
+                                        <button class="input-group-text"><i class="fas fa-plus"></i></button>
                                     </div>
-                                    <button class="btn btn-outline-dark col-1"><i class="fas fa-plus"></i></button>
                                 </div>
                             </div>
                             <!-- End Checklist -->
@@ -296,6 +296,28 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="drop-loc"></div>
+            </div>
+        </template>
+        <!-- Add Task Card Template -->
+        <template id="add-task-card-template">
+            <div class="add-task-card">
+                <div class="card border-0" id="" draggable="true" ondragstart="">
+                    <div class="card-body p-2">
+                        <form id="add-task-card-form">
+                            <div class="form-group">
+                                <label class="d-none" for="add-task-card-title">Task Card Title</label>
+                                <textarea name="" id="add-task-card-title" class="form-control" rows="2"
+                                    placeholder="Enter a title for this card..."></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" form="add-task-card-form" class="btn btn-sm update-task-btn">Add
+                                    Card</button>
+                                <button class=" btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="drop-loc"></div>

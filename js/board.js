@@ -1,5 +1,5 @@
 // Modules
-import renderTaskCard from "./boardRender.js";
+import { renderTaskCard, renderAddNewTaskCard } from "./boardRender.js";
 import TaskManager from "./taskManager.js";
 //Select modal form user input fields
 // const newTaskModal = document.querySelector("#new-task-modal");
@@ -17,6 +17,10 @@ const errorDate = document.querySelector("#error-date");
 //Select elements for modal form reset
 const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
+//Select all list canvas
+const listCanvas = document.querySelectorAll(".list-canvas");
+//Select all add task button
+const addTask = document.querySelector(".add-task");
 //Select all task card canvas
 const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
 // Local Storage Keys
@@ -42,6 +46,10 @@ taskCardCanvas.forEach((canvas) => {
     renderTaskCard(task);
     saveCanvas();
   });
+});
+
+addTask.addEventListener("click", () => {
+  renderAddNewTaskCard();
 });
 
 newTaskForm.addEventListener("submit", (e) => {
