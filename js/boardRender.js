@@ -92,11 +92,10 @@ function renderTaskCard(newTaskCard) {
 }
 
 //Render add task card
-function renderAddNewTaskCard() {
+function renderAddNewTaskCard(canvas) {
   const addTaskCardTemplate = document.querySelector("#add-task-card-template");
   const clone = addTaskCardTemplate.content.cloneNode(true);
-  const taskCardCanvasTodo = document.querySelector("#task-card-canvas-todo");
-  taskCardCanvasTodo.insertBefore(clone, taskCardCanvasTodo.firstChild);
+  canvas.insertBefore(clone, canvas.firstChild);
 }
 
 export { renderTaskCard, renderAddNewTaskCard };

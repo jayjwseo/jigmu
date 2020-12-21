@@ -7,6 +7,7 @@
 #5290A1 
 #2f2e41
 
+#EBECF0
 #F4F5F7*/
 
 /* Global */
@@ -199,7 +200,7 @@ h2 {
   font-weight: bold;
   font-size: 1rem;
   text-transform: uppercase;
-  color: #a18a75;
+  color: hsl(29, 19%, 40%);
 }
 
 .fa-plus-custom {
@@ -216,10 +217,10 @@ h2 {
 }
 
 .list-canvas-style {
-  background: #edd8c4;
+  background: #a18a753b;
   white-space: normal;
   border: none;
-  border-radius: 4px;
+  border-radius: 0;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
@@ -234,7 +235,7 @@ h2 {
 }
 
 /* Task Card */
-.task-card .card {
+.task-card-style .card {
   background: white;
   border-radius: 4px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
@@ -262,11 +263,19 @@ h2 {
 }
 
 .card-member-img {
-  width: 25px;
+  width: 22px;
 }
 
 .drop-loc {
   height: 10px;
+}
+
+#add-task-card-title:focus,
+input:focus,
+.uneditable-input:focus {
+  border-color: #5290a1 !important;
+  box-shadow: 0 1px 1px transparent inset, 0 0 8px transparent !important;
+  outline: 0 none !important;
 }
 
 /* Task Card Status Dropdown */
@@ -302,13 +311,13 @@ h2 {
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
-.update-task-btn {
+.update-task-btn-style {
   background: #5290a1;
   color: white;
   font-weight: bold;
 }
 
-.update-task-btn:hover {
+.update-task-btn-style:hover {
   background: hsl(193, 33%, 42%);
   color: white;
 }
@@ -329,7 +338,7 @@ h2 {
   font-size: 1rem;
 }
 
-.modal-body textarea {
+.text-area {
   resize: none;
 }
 

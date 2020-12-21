@@ -77,9 +77,9 @@
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">TO DO<a class="add-task float-right"><i
-                                class="fas fa-plus fa-plus-custom"></i></a>
+                                class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-todo">
+                    <div class="task-card-canvas" id="task-card-canvas-todo" data-task-card-canvas="TO DO">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
@@ -90,10 +90,10 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">IN PROGRESS<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
+                    <h5 class="card-title list-title">IN PROGRESS<a class="add-task float-right"><i
+                                class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-inprogress">
+                    <div class="task-card-canvas" id="task-card-canvas-inprogress" data-task-card-canvas="IN PROGRESS">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
@@ -104,10 +104,10 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">REVIEW<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
+                    <h5 class="card-title list-title">REVIEW<a class="add-task float-right"><i
+                                class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-review">
+                    <div class="task-card-canvas" id="task-card-canvas-review" data-task-card-canvas="REVIEW">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
@@ -118,10 +118,10 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">DONE<a class="add-task float-right" data-toggle="modal"
+                    <h5 class="card-title list-title">DONE (Modal)<a class="add-task float-right" data-toggle="modal"
                             data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-done">
+                    <div class="task-card-canvas" id="task-card-canvas-done" data-task-card-canvas="DONE">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
@@ -132,10 +132,10 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">OBSOLETE<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
+                    <h5 class="card-title list-title">OBSOLETE<a class="add-task float-right"><i
+                                class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-obsolete">
+                    <div class="task-card-canvas" id="task-card-canvas-obsolete" data-task-card-canvas="OBSOLETE">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                             </div>
                             <div class="form-group py-2">
                                 <label class="d-none" for="new-task-desc">Task Description</label>
-                                <textarea name="" id="new-task-desc" class="form-control" rows="3"
+                                <textarea name="" id="new-task-desc" class="form-control text-area" rows="3"
                                     placeholder="Description..."></textarea>
                             </div>
                             <div class="dropdown-divider m-2"></div>
@@ -239,8 +239,9 @@
                         <!-- DELETE BUTTON TO BE IMPLEMENTED -->
                         <button type="" form=""
                             class="btn btn-sm btn-danger mr-auto delete-task-btn new-task-modal-close">Delete</button>
-                        <button type="submit" form="new-task-form" class="btn btn-sm update-task-btn">Update</button>
-                        <button class=" btn btn-sm btn-secondary new-task-modal-close"
+                        <button type="submit" form="new-task-form"
+                            class="btn btn-sm update-task-btn update-task-btn-style">Update</button>
+                        <button class="btn btn-sm btn-secondary new-task-modal-close"
                             data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -249,7 +250,7 @@
 
         <!-- Task-card Template -->
         <template id="task-card-template">
-            <div class="task-card">
+            <div class="task-card task-card-style">
                 <div class="card border-0" id="" draggable="true" ondragstart="">
                     <div class="card-body p-2">
                         <div class="card-title task-card-title">
@@ -301,21 +302,23 @@
                 <div class="drop-loc"></div>
             </div>
         </template>
+
         <!-- Add Task Card Template -->
         <template id="add-task-card-template">
-            <div class="add-task-card">
-                <div class="card border-0" id="" draggable="true" ondragstart="">
+            <div class="add-task-card task-card-style">
+                <div class="card border-0" id="" draggable="false" ondragstart="">
                     <div class="card-body p-2">
                         <form id="add-task-card-form">
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label class="d-none" for="add-task-card-title">Task Card Title</label>
-                                <textarea name="" id="add-task-card-title" class="form-control" rows="2"
-                                    placeholder="Enter a title for this card..."></textarea>
+                                <textarea name="" id="add-task-card-title" class="form-control text-area" rows="2"
+                                    placeholder="Enter task title..." autofocus></textarea>
                             </div>
                             <div>
-                                <button type="submit" form="add-task-card-form" class="btn btn-sm update-task-btn">Add
+                                <button type="submit" form="add-task-card-form"
+                                    class="btn btn-sm update-task-btn-style add-task-card-btn">Add
                                     Card</button>
-                                <button class=" btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-sm btn-secondary cancel-add-task-card-btn">Cancel</button>
                             </div>
                         </form>
                     </div>
