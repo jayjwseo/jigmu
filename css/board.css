@@ -1,4 +1,5 @@
-/* Color Palette
+/* 
+//Landing Page Color Palette ----->
 #fffcf9
 #FFF6ED
 #EDD8C4
@@ -7,8 +8,21 @@
 #5290A1 
 #2f2e41
 
-#EBECF0
-#F4F5F7*/
+//Board Page Color Palette ----->
+Nav: #02549a
+Board: #02539ad0
+List Canvas: #EBECF0
+Modal: #F4F5F7
+
+PANTONE Color of the Year 2021 
+AVIARY PALETTE:
+#A4A4A7 - Ultimate Gray
+#F7E562 - Illuminating
+
+#D35C78 - Fruit Dove 
+#059EB2 - Peacock Blue
+#02549A - Skydiver
+*/
 
 /* Global */
 * {
@@ -19,13 +33,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans";
-  background: #fff6ed;
+  background: #02539ad0;
   display: flex;
   height: 100%;
   white-space: wrap;
   flex-direction: column;
-  /* overflow-x: hidden; */
-  /* overflow-y: scroll; */
 }
 
 p {
@@ -36,45 +48,12 @@ h2 {
   font-weight: bold;
 }
 
-/* Navigation */
-/* .navigation {
-  width: 100vw;
-} */
-
 .nav-bg {
-  background: #a18a75;
-}
-
-.landing-logo {
-  font-size: 2rem;
-  font-family: Pacifico;
+  background: #02549a;
 }
 
 .board-logo {
   font-family: Pacifico;
-}
-
-.btn-login,
-.btn-signup {
-  font-weight: bold;
-}
-
-.btn-login {
-  background: #a18a75;
-}
-
-.btn-login:hover {
-  background: white;
-  color: #a18a75;
-}
-
-.btn-login:focus {
-  background: white;
-  color: #a18a75;
-}
-
-.btn-signup:hover {
-  color: #a18a75;
 }
 
 .user-name {
@@ -86,13 +65,13 @@ h2 {
 }
 
 .user-drop-item:hover {
-  background: #a18a75;
-  color: #fffcf9;
+  background: #a4a4a7;
+  color: white;
   font-weight: bold;
 }
 
 .user-drop {
-  background: #fffcf9;
+  background: white;
   border: none;
   border-radius: 4px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
@@ -105,79 +84,6 @@ h2 {
   }
 }
 
-/* Banner */
-
-.jumbotron {
-  background: #fff6ed;
-  color: #2f2e41;
-}
-
-.banner-img {
-  background: url(/images/banner-img.svg);
-}
-
-.banner p {
-  margin: 1rem 0 2.5rem;
-}
-
-.banner h2 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-/* CTA Bar */
-.ctaBar {
-  background: #fff6ed;
-}
-
-.cta-button {
-  background: rgb(82, 145, 163);
-  font-weight: bold;
-  color: white;
-}
-
-.cta-button:hover {
-  background: #2f2e41;
-  color: white;
-}
-
-.cta-button:active,
-.cta-button:focus {
-  box-shadow: 0 3px 0 0 #2f2e41;
-}
-
-.cta-form {
-  border-color: #5290a1;
-}
-
-.cta-form:focus {
-  box-shadow: 0 3px 0 0 #5290a1;
-  border-color: #5290a1;
-}
-
-/* Features */
-.features {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  color: #2f2e41;
-}
-
-.features p {
-  margin-top: 1rem;
-}
-
-.feature1 {
-  background: #edd8c4;
-}
-
-.feature2 {
-  background: #fffcf9;
-}
-
-.feature3 {
-  background: #fff6ed;
-}
-
 /* Task Board */
 .board-canvas {
   /* Ignore nav bar & stay under it */
@@ -186,7 +92,7 @@ h2 {
   flex-grow: 1;
   white-space: nowrap;
   height: 100%;
-  padding: 53px 5px 10px 5px;
+  padding: 55px 7px 10px 7px;
   overflow-x: auto;
   overflow-y: auto;
 }
@@ -200,7 +106,7 @@ h2 {
   font-weight: bold;
   font-size: 1rem;
   text-transform: uppercase;
-  color: hsl(29, 19%, 40%);
+  color: #2f2e41;
 }
 
 .fa-plus-custom {
@@ -209,29 +115,29 @@ h2 {
 }
 
 .list-wrapper {
-  width: 250px;
-  margin: 5px;
+  width: 260px;
+  margin: 3px;
   height: 90%;
   display: inline-block;
   white-space: nowrap;
 }
 
 .list-canvas-style {
-  background: #a18a753b;
+  background: #ebecf0;
   white-space: normal;
   border: none;
-  border-radius: 0;
+  border-radius: 4px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
 .add-task {
-  color: #a18a75;
+  color: #02539ad0;
   cursor: pointer;
 }
 
 .add-task:hover {
-  color: #5290a1;
+  color: #02549a;
 }
 
 /* Task Card */
@@ -245,7 +151,7 @@ h2 {
 .task-card h6 {
   color: #2f2e41;
   font-weight: bold;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .task-card p {
@@ -267,13 +173,14 @@ h2 {
 }
 
 .drop-loc {
-  height: 10px;
+  height: 8px;
 }
 
-#add-task-card-title:focus,
+textarea:focus,
 input:focus,
+select:focus,
 .uneditable-input:focus {
-  border-color: #5290a1 !important;
+  border-color: #059eb2 !important;
   box-shadow: 0 1px 1px transparent inset, 0 0 8px transparent !important;
   outline: 0 none !important;
 }
@@ -289,13 +196,13 @@ input:focus,
 }
 
 .task-card-drop-item:hover {
-  background: #a18a75;
-  color: #fffcf9;
+  background: #a4a4a7;
+  color: white;
   font-weight: bold;
 }
 
 .task-card-drop {
-  background: #fffcf9;
+  background: #f4f5f7;
   border: none;
   border-radius: 4px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
@@ -312,23 +219,34 @@ input:focus,
 }
 
 .update-task-btn-style {
-  background: #5290a1;
+  background: #059eb2;
   color: white;
   font-weight: bold;
 }
 
 .update-task-btn-style:hover {
-  background: hsl(193, 33%, 42%);
+  background: hsl(187, 95%, 31%);
+  color: white;
+}
+
+.cancel-task-btn-style {
+  background: #a4a4a7;
+  color: white;
+  font-weight: bold;
+}
+
+.cancel-task-btn-style:hover {
+  background: hsl(240, 2%, 60%);
   color: white;
 }
 
 .delete-task-btn {
-  background: #bb4848;
+  background: #f74f57;
   border: none;
 }
 
 .delete-task-btn:hover {
-  background: hsl(0, 46%, 42%);
+  background: hsl(357, 91%, 59%);
   color: white;
 }
 
