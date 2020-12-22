@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/board.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="/images/jk-favicon.png">
+    <link rel="icon" href="/images/favicon.ico">
 
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script defer src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -198,11 +198,12 @@
                                         <span class="input-group-text"><i class="fas fa-tag"></i></span>
                                     </div>
                                     <select id="new-task-tag" class="form-control">
-                                        <option value="">Tag</option>
-                                        <option value="Development">Development</option>
-                                        <option value="Bug Fix">Bug Fix</option>
-                                        <option value="Test">Test</option>
-                                        <option value="Release">Release</option>
+                                        <option value="">Color Code</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Yellow">Yellow</option>
+                                        <option value="Green">Green</option>
+                                        <option value="Gray">Gray</option>
                                     </select>
                                 </div>
                                 <div class="input-group col-12 col-sm">
@@ -257,6 +258,8 @@
                             <!-- <img src="images/jk-favicon.png" class="card-member-img rounded-circle float-right "> -->
                             <h6 data-task-card-title></h6>
                         </div>
+                        <div class="task-card-element task-card-tag" id="task-card-tag-color">
+                        </div>
                         <div class="task-card-element task-card-desc">
                             <div class="dropdown-divider"></div>
                             <p><span data-task-card-desc></span></p>
@@ -270,10 +273,6 @@
                             <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
                                     data-task-card-date></span>
                             </p>
-                        </div>
-                        <div class="task-card-element task-card-tag">
-                            <div class="dropdown-divider"></div>
-                            <p><i class="fas fa-tag"></i><span class="task-card-item" data-task-card-tag></span></p>
                         </div>
                         <div class="task-card-element task-card-status">
                             <div class="dropdown-divider"></div>

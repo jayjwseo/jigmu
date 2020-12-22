@@ -31,8 +31,9 @@ function renderTaskCard(newTaskCard) {
   const descElement = clone.querySelector("[data-task-card-desc]");
   const memberElement = clone.querySelector("[data-task-card-member]");
   const dateElement = clone.querySelector("[data-task-card-date]");
-  const tagElement = clone.querySelector("[data-task-card-tag]");
   const statusElement = clone.querySelector("[data-task-card-status]");
+  const tagElement = clone.querySelector("#task-card-tag-color");
+  const taskCard = clone.querySelector(".task-card");
 
   //Elements Array
   const elements = [
@@ -40,7 +41,6 @@ function renderTaskCard(newTaskCard) {
     descElement,
     memberElement,
     dateElement,
-    tagElement,
     statusElement,
   ];
 
@@ -49,12 +49,35 @@ function renderTaskCard(newTaskCard) {
   //Truncate task description length to 63 characters
   descElement.innerText = newTaskCard.desc.slice(0, 63);
   memberElement.innerText = newTaskCard.member;
-  //Use user friendly date format
   dateElement.innerText = newTaskCard.date
     ? friendlyDate(newTaskCard.date)
     : "";
-  tagElement.innerText = newTaskCard.tag;
   statusElement.innerText = newTaskCard.status;
+
+  // Render Dataset ID
+  taskCard.dataset.taskCardId = newTaskCard.id;
+
+  //Render Tag Color
+  let tagColor = newTaskCard.tag;
+  switch (tagColor) {
+    case "Blue":
+      tagElement.style.borderColor = "#02549A";
+      break;
+    case "Red":
+      tagElement.style.borderColor = "#D35C78";
+      break;
+    case "Yellow":
+      tagElement.style.borderColor = "#F7E562";
+      break;
+    case "Green":
+      tagElement.style.borderColor = "#04AB83";
+      break;
+    case "Gray":
+      tagElement.style.borderColor = "#A4A4A7";
+      break;
+    default:
+      tagElement.classList.toggle("d-none");
+  }
 
   //Hide when no value to display
   elements.forEach((element) => {
@@ -63,10 +86,6 @@ function renderTaskCard(newTaskCard) {
       elementNoValue.classList.toggle("d-none");
     }
   });
-
-  // Render Dataset ID
-  const taskCard = clone.querySelector(".task-card");
-  taskCard.dataset.taskCardId = newTaskCard.id;
 
   // Append Template Clone
   let status = newTaskCard.status;
