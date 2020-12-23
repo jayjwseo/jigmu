@@ -196,17 +196,26 @@ h2 {
 
 textarea:focus,
 input:focus,
-select:focus,
-.uneditable-input:focus {
+select:focus {
   border-color: #059eb2 !important;
   box-shadow: 0 1px 1px transparent inset, 0 0 8px transparent !important;
   outline: 0 none !important;
 }
 
-/* Task Card Status Dropdown */
+/* Remove pointer events for child elements */
+.card-body-pointer-e {
+  pointer-events: none;
+}
+
 .task-card-edit-toggle:hover {
   background: #f4f5f7;
   border-radius: 4px;
+}
+
+/* Task Card Status Dropdown */
+/* Enable pointer event for on-card status change */
+.task-card-status-click {
+  pointer-events: auto;
 }
 
 .task-card-status-click:hover {

@@ -72,7 +72,21 @@
 
     <!-- Board Canvas-->
     <section id="board" class="board-canvas container-fluid">
-        <!-- List 1-->
+        <!-- List -->
+        <div class="list-wrapper list-canvas">
+            <div class="card list-canvas-style">
+                <div class="card-body p-2">
+                    <h5 class="card-title list-title">BACKLOG<a class="add-task float-right"><i
+                                class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
+                    </h5>
+                    <div class="task-card-canvas" id="task-card-canvas-backlog" data-task-card-canvas="BACKLOG">
+                        <!-- TASK-CARD ADDED BELOW -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End List -->
+        <!-- List -->
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
@@ -118,8 +132,8 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">DONE (Modal)<a class="add-task float-right" data-toggle="modal"
-                            data-target="#new-task-modal"><i class="fas fa-plus fa-plus-custom"></i></a>
+                    <h5 class="card-title list-title">DONE<a class="add-task float-right"><i
+                                class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-done" data-task-card-canvas="DONE">
                         <!-- TASK-CARD ADDED BELOW -->
@@ -216,6 +230,7 @@
                                     </div>
                                     <select id="new-task-status" class="form-control">
                                         <!-- <option value="">Status</option> -->
+                                        <option value="BACKLOG">BACKLOG</option>
                                         <option value="TO DO">TO DO</option>
                                         <option value="IN PROGRESS">IN PROGRESS</option>
                                         <option value="REVIEW">REVIEW</option>
@@ -240,12 +255,11 @@
                         </form>
                     </div>
                     <div class="modal-footer justify-content-end py-2">
-                        <!-- DELETE BUTTON TO BE IMPLEMENTED -->
-                        <button type="" form=""
-                            class="btn btn-sm btn-danger mr-auto delete-task-btn new-task-modal-close">Delete</button>
+                        <button type="button" class="btn btn-sm btn-danger mr-auto delete-task-btn"
+                            id="delete-task-button">Delete</button>
                         <button type="submit" form="new-task-form"
                             class="btn btn-sm update-task-btn update-task-btn-style">Update</button>
-                        <button class="btn btn-sm new-task-modal-close cancel-task-btn-style"
+                        <button type="button" class="btn btn-sm new-task-modal-close cancel-task-btn-style"
                             data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -256,8 +270,8 @@
         <template id="task-card-template">
             <div class="task-card task-card-style">
                 <div class="card border-0" id="" draggable="true" ondragstart="">
-                    <div class="task-card-edit-toggle" type="button" data-toggle="modal" data-target="#new-task-modal">
-                        <div class="card-body p-2">
+                    <div class="task-card-edit-toggle" type="button">
+                        <div class="card-body p-2 card-body-pointer-e">
                             <div class="card-title task-card-title">
                                 <!-- <img src="images/jk-favicon.png" class="card-member-img rounded-circle float-right "> -->
                                 <h6 data-task-card-title></h6>
@@ -289,6 +303,8 @@
                                         </p>
                                     </div>
                                     <div class="dropdown-menu task-card-drop">
+                                        <a class="dropdown-item task-card-drop-item" type="button"
+                                            data-status-change>BACKLOG</a>
                                         <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
                                             DO</a>
                                         <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN

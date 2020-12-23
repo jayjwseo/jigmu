@@ -1,7 +1,11 @@
 // Modules
-import { renderTaskCard, renderAddNewTaskCard } from "./boardRender.js";
+import {
+  renderTaskCard,
+  renderUpdateTaskCard,
+  renderAddNewTaskCardForm,
+} from "./boardRender.js";
 import TaskManager from "./taskManager.js";
-//Select modal form user input fields
+// Select modal form user input fields
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
 const newDescInput = document.querySelector("#new-task-desc");
@@ -9,16 +13,17 @@ const newMemberInput = document.querySelector("#new-task-member");
 const newDateInput = document.querySelector("#new-task-date");
 const newTagInput = document.querySelector("#new-task-tag");
 const newStatusInput = document.querySelector("#new-task-status");
-//Select modal form messages
+// Select modal form messages
 const errorFields = document.querySelector("#error-fields");
 const errorDate = document.querySelector("#error-date");
-// const successUpdate = document.querySelector("#success-update");
-//Select elements for modal form reset
+// Select delete task button
+const deleteTaskBtn = document.querySelector("#delete-task-button");
+// Select elements for modal form reset
 const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
-//Select all list canvas
+// Select all list canvas
 const listCanvas = document.querySelectorAll(".list-canvas");
-//Select all task card canvas
+// Select all task card canvas
 const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
 // Local Storage Keys
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
@@ -26,6 +31,29 @@ const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
 // Task Card Set One Array & Render/Load
 let taskCardsSetOne = loadCanvas();
 taskCardsSetOne.forEach(renderTaskCard);
+// SELECTED task card & element
+let selectedTaskCard;
+let selectedTaskCardElement;
+
+//Task card update modal toggle
+taskCardCanvas.forEach((card) => {
+  card.addEventListener("click", (e) => {
+    if (!e.target.matches(".task-card-edit-toggle")) return;
+    const taskCard = e.target.closest(".task-card");
+    const taskId = taskCard.dataset.taskCardId;
+    const task = taskCardsSetOne.find((t) => t.id === taskId);
+    //Set to global variables
+    selectedTaskCardElement = taskCard;
+    selectedTaskCard = task;
+    newTitleInput.value = task.title;
+    newDescInput.value = task.desc;
+    newMemberInput.value = task.member;
+    newDateInput.value = task.date;
+    newTagInput.value = task.tag;
+    newStatusInput.value = task.status;
+    $("#new-task-modal").modal("show");
+  });
+});
 
 //Task card status update & re-locate
 taskCardCanvas.forEach((canvas) => {
@@ -59,7 +87,7 @@ listCanvas.forEach((btn) => {
     ) {
       return;
     } else {
-      renderAddNewTaskCard(taskCanvas);
+      renderAddNewTaskCardForm(taskCanvas);
     }
   });
 });
@@ -92,9 +120,8 @@ listCanvas.forEach((btn) => {
   });
 });
 
-//Update Task Modal
+//Task card update - Modal
 newTaskForm.addEventListener("submit", (e) => {
-  //Prevent default refresh
   e.preventDefault();
   //User input values
   const taskTitle = newTitleInput.value;
@@ -103,8 +130,8 @@ newTaskForm.addEventListener("submit", (e) => {
   const taskTag = newTagInput.value;
   const taskStatus = newStatusInput.value;
   const taskDate = newDateInput.value;
-  const userDate = new Date(taskDate);
   // Check due date input is not in the past
+  const userDate = new Date(taskDate);
   const dateValid = userDate > dateValidRef() ? true : false;
   // Let A = taskTitle, B = taskDate, C = DateValid
   // 0 0 0	0
@@ -126,14 +153,16 @@ newTaskForm.addEventListener("submit", (e) => {
       taskStatus
     );
   } else if (!taskTitle) {
-    // successUpdate.classList.add("d-none");
     errorDate.classList.add("d-none");
     errorFields.classList.remove("d-none");
   } else {
-    // successUpdate.classList.add("d-none");
     errorDate.classList.remove("d-none");
     errorFields.classList.add("d-none");
   }
+});
+
+deleteTaskBtn.addEventListener("click", () => {
+  deleteTaskCard();
 });
 
 // Reset form on close
@@ -166,16 +195,38 @@ function dateValidRef() {
 
 //Update Task Card
 function updateTaskCard(title, desc, member, date, tag, status) {
-  const newTaskCard = new TaskManager(title, desc, member, date, tag, status);
-  //Push new task card to array
-  taskCardsSetOne.push(newTaskCard);
+  //Check if there is a status change
+  const statusChange = selectedTaskCard.status === status ? false : true;
+  //Update selected task card with new user inputs
+  selectedTaskCard.title = title;
+  selectedTaskCard.desc = desc;
+  selectedTaskCard.member = member;
+  selectedTaskCard.date = date;
+  selectedTaskCard.tag = tag;
+  selectedTaskCard.status = status;
   //Render new task card
-  renderTaskCard(newTaskCard);
+  if (statusChange) {
+    selectedTaskCardElement.remove();
+    renderTaskCard(selectedTaskCard);
+  } else {
+    renderUpdateTaskCard(selectedTaskCard, selectedTaskCardElement);
+  }
   //Save to local storage
   saveCanvas();
-  // successUpdate.classList.remove("d-none");
-  errorFields.classList.add("d-none");
-  errorDate.classList.add("d-none");
+  //Modal reset & close
+  newTaskForm.reset();
+  clearMessages(newTaskFormMessages);
+  $("#new-task-modal").modal("hide");
+}
+
+//Delete Task Card
+function deleteTaskCard() {
+  //Delete selected task from array
+  taskCardsSetOne = taskCardsSetOne.filter(
+    (task) => task.id !== selectedTaskCard.id
+  );
+  selectedTaskCardElement.remove();
+  saveCanvas();
   //Modal reset & close
   newTaskForm.reset();
   clearMessages(newTaskFormMessages);
