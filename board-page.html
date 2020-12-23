@@ -166,12 +166,12 @@
                             <div class="form-group py-2">
                                 <label class="d-none" for="new-task-title">Task Title</label>
                                 <input type="text" class="form-control" name="" id="new-task-title"
-                                    placeholder="Task Title">
+                                    placeholder="Task Title" value="">
                             </div>
                             <div class="form-group py-2">
                                 <label class="d-none" for="new-task-desc">Task Description</label>
                                 <textarea name="" id="new-task-desc" class="form-control text-area" rows="3"
-                                    placeholder="Description..."></textarea>
+                                    placeholder="Description..." value=""></textarea>
                             </div>
                             <div class="dropdown-divider m-2"></div>
                             <div class="form-group row justify-content-between">
@@ -180,14 +180,16 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Members" id="new-task-member">
+                                    <input type="text" class="form-control" placeholder="Members" id="new-task-member"
+                                        value="">
                                 </div>
                                 <div class="input-group col-12 col-sm">
                                     <label for="new-task-date" class="d-none">Due Date</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
                                     </div>
-                                    <input type="date" class="form-control" placeholder="Due Date" id="new-task-date">
+                                    <input type="date" class="form-control" placeholder="Due Date" id="new-task-date"
+                                        value="">
                                 </div>
                             </div>
                             <div class="form-group row justify-content-between">
@@ -229,7 +231,8 @@
                                     <input type="text" class="form-control" placeholder="Add Checklist item"
                                         id="add-checklist-item" aria-label="Checklist">
                                     <div class="input-group-append">
-                                        <button class="input-group-text"><i class="fas fa-plus"></i></button>
+                                        <button type="button" class="input-group-text"><i
+                                                class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -253,46 +256,50 @@
         <template id="task-card-template">
             <div class="task-card task-card-style">
                 <div class="card border-0" id="" draggable="true" ondragstart="">
-                    <div class="card-body p-2">
-                        <div class="card-title task-card-title">
-                            <!-- <img src="images/jk-favicon.png" class="card-member-img rounded-circle float-right "> -->
-                            <h6 data-task-card-title></h6>
-                        </div>
-                        <div class="task-card-element task-card-tag" id="task-card-tag-color">
-                        </div>
-                        <div class="task-card-element task-card-desc">
-                            <div class="dropdown-divider"></div>
-                            <p><span data-task-card-desc></span></p>
-                        </div>
-                        <div class="task-card-element task-card-member">
-                            <div class="dropdown-divider"></div>
-                            <p><i class="fas fa-user"></i><span class="task-card-item" data-task-card-member></span></p>
-                        </div>
-                        <div class="task-card-element task-card-date">
-                            <div class="dropdown-divider"></div>
-                            <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
-                                    data-task-card-date></span>
-                            </p>
-                        </div>
-                        <div class="task-card-element task-card-status">
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown task-card-status-click">
-                                <div class="dropdown-toggle task-card-drop-toggle" type="button" data-toggle="dropdown">
-                                    <p class="d-inline"><i class="fas fa-stream"></i><span class="task-card-item"
-                                            data-task-card-status></span>
-                                    </p>
-                                </div>
-                                <div class="dropdown-menu task-card-drop">
-                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
-                                        DO</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN
-                                        PROGRESS</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button"
-                                        data-status-change>REVIEW</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button"
-                                        data-status-change>DONE</a>
-                                    <a class="dropdown-item task-card-drop-item" type="button"
-                                        data-status-change>OBSOLETE</a>
+                    <div class="task-card-edit-toggle" type="button">
+                        <div class="card-body p-2">
+                            <div class="card-title task-card-title">
+                                <!-- <img src="images/jk-favicon.png" class="card-member-img rounded-circle float-right "> -->
+                                <h6 data-task-card-title></h6>
+                            </div>
+                            <div class="task-card-element task-card-tag" id="task-card-tag-color">
+                            </div>
+                            <div class="task-card-element task-card-desc">
+                                <div class="dropdown-divider"></div>
+                                <p><span data-task-card-desc></span></p>
+                            </div>
+                            <div class="task-card-element task-card-member">
+                                <div class="dropdown-divider"></div>
+                                <p><i class="fas fa-user"></i><span class="task-card-item" data-task-card-member></span>
+                                </p>
+                            </div>
+                            <div class="task-card-element task-card-date">
+                                <div class="dropdown-divider"></div>
+                                <p><i class="far fa-calendar-alt"></i><span class="task-card-item"
+                                        data-task-card-date></span>
+                                </p>
+                            </div>
+                            <div class="task-card-element task-card-status">
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown task-card-status-click">
+                                    <div class="dropdown-toggle task-card-drop-toggle" type="button"
+                                        data-toggle="dropdown">
+                                        <p class="d-inline"><i class="fas fa-stream"></i><span class="task-card-item"
+                                                data-task-card-status></span>
+                                        </p>
+                                    </div>
+                                    <div class="dropdown-menu task-card-drop">
+                                        <a class="dropdown-item task-card-drop-item" type="button" data-status-change>TO
+                                            DO</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button" data-status-change>IN
+                                            PROGRESS</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button"
+                                            data-status-change>REVIEW</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button"
+                                            data-status-change>DONE</a>
+                                        <a class="dropdown-item task-card-drop-item" type="button"
+                                            data-status-change>OBSOLETE</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -142,6 +142,11 @@ h2 {
   color: #02549a;
 }
 
+.task-card-canvas {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Task Card */
 .task-card-style .card {
   background: white;
@@ -199,9 +204,15 @@ select:focus,
 }
 
 /* Task Card Status Dropdown */
-.task-card-status-click:hover {
+.task-card-edit-toggle:hover {
   background: #f4f5f7;
   border-radius: 4px;
+}
+
+.task-card-status-click:hover {
+  background: hsl(220, 16%, 91%);
+  border-radius: 4px;
+  font-weight: bold;
 }
 
 .task-card-drop-item {

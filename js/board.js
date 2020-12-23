@@ -49,6 +49,8 @@ taskCardCanvas.forEach((canvas) => {
 listCanvas.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     if (!e.target.matches(".add-task-btn")) return;
+    //To be removed after testing button click from the parent element
+    e.cancelBubble();
     const list = e.target.closest(".list-canvas");
     const taskCanvas = list.querySelector(".task-card-canvas");
     //Render add task card if not already exist
