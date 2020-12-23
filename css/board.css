@@ -251,6 +251,29 @@ select:focus {
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
+.current-task-title {
+  height: 38px;
+  padding: 8px;
+}
+
+.current-task-title h5 {
+  font-size: 1.4rem;
+  padding: 0;
+  margin: 0;
+}
+
+.current-task-desc {
+  height: 134px;
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.current-task-desc p {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
 .update-task-btn-style {
   background: #059eb2;
   color: white;

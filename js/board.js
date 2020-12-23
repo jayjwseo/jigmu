@@ -16,10 +16,12 @@ const newStatusInput = document.querySelector("#new-task-status");
 // Select modal form messages
 const errorFields = document.querySelector("#error-fields");
 const errorDate = document.querySelector("#error-date");
-// Select delete task button
+// Select modal delete task button
 const deleteTaskBtn = document.querySelector("#delete-task-button");
-// Select elements for modal form reset
-const newTaskModalClose = document.querySelectorAll(".new-task-modal-close");
+// Select modal current title & desc element
+const currentTitle = document.querySelector("#current-task-title-hide");
+const currentDesc = document.querySelector("#current-task-desc-hide");
+// Select error messages for modal form reset
 const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
 // Select all list canvas
 const listCanvas = document.querySelectorAll(".list-canvas");
@@ -35,7 +37,7 @@ taskCardsSetOne.forEach(renderTaskCard);
 let selectedTaskCard;
 let selectedTaskCardElement;
 
-//Task card update modal toggle
+//Set selected task card & toggle update modal
 taskCardCanvas.forEach((card) => {
   card.addEventListener("click", (e) => {
     if (!e.target.matches(".task-card-edit-toggle")) return;
@@ -45,6 +47,20 @@ taskCardCanvas.forEach((card) => {
     //Set to global variables
     selectedTaskCardElement = taskCard;
     selectedTaskCard = task;
+    //Pass current title & desc to modal elements
+    const currentTitleElement = document.querySelector(
+      "[data-current-task-title]"
+    );
+    const currentDescElement = document.querySelector(
+      "[data-current-task-desc]"
+    );
+    currentTitleElement.innerText = task.title;
+    if (task.desc) {
+      currentDescElement.innerText = task.desc;
+    } else {
+      currentDescElement.innerText = "Click to add description...";
+    }
+    //Pass current values to fields
     newTitleInput.value = task.title;
     newDescInput.value = task.desc;
     newMemberInput.value = task.member;
@@ -95,6 +111,7 @@ listCanvas.forEach((btn) => {
 //Add task card
 listCanvas.forEach((btn) => {
   btn.addEventListener("click", (e) => {
+    //When add task button is clicked
     if (e.target.matches(".add-task-card-btn")) {
       e.preventDefault();
       //Get task title
@@ -104,17 +121,21 @@ listCanvas.forEach((btn) => {
       //Get list status
       const taskCardCanvas = e.target.closest(".task-card-canvas");
       const taskStatus = taskCardCanvas.dataset.taskCardCanvas;
-      //Add task
+      //Add task only if task title is entered
       if (taskTitle) {
         addTaskCard(taskTitle, taskStatus, addNewTaskCard);
       } else {
         return;
       }
-    } else if (e.target.matches(".cancel-add-task-card-btn")) {
+    }
+    //When cancel add task button is clicked
+    else if (e.target.matches(".cancel-add-task-card-btn")) {
       e.preventDefault();
       const addNewTaskCard = e.target.closest(".add-task-card");
       addNewTaskCard.remove();
-    } else {
+    }
+    //When neither button is clicked
+    else {
       return;
     }
   });
@@ -161,17 +182,34 @@ newTaskForm.addEventListener("submit", (e) => {
   }
 });
 
+// Delete Task
 deleteTaskBtn.addEventListener("click", () => {
   deleteTaskCard();
 });
 
-// Reset form on close
-newTaskModalClose.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    newTaskForm.reset();
-    clearMessages(newTaskFormMessages);
-  });
+//Show title input when current title is clicked
+currentTitle.addEventListener("click", () => {
+  currentTitle.classList.add("d-none");
+  newTitleInput.classList.remove("d-none");
 });
+
+//Show desc input when current title is clicked
+currentDesc.addEventListener("click", () => {
+  currentDesc.classList.add("d-none");
+  newDescInput.classList.remove("d-none");
+});
+
+// Reset modal on close
+$("#new-task-modal").on("hide.bs.modal", () => {
+  newTaskForm.reset();
+  clearMessages(newTaskFormMessages);
+  currentTitle.classList.remove("d-none");
+  newTitleInput.classList.add("d-none");
+  currentDesc.classList.remove("d-none");
+  newDescInput.classList.add("d-none");
+});
+
+//FUNCTIONS--------------------------------------------------------->
 
 // Clear form messages
 function clearMessages(messages) {
@@ -211,11 +249,7 @@ function updateTaskCard(title, desc, member, date, tag, status) {
   } else {
     renderUpdateTaskCard(selectedTaskCard, selectedTaskCardElement);
   }
-  //Save to local storage
   saveCanvas();
-  //Modal reset & close
-  newTaskForm.reset();
-  clearMessages(newTaskFormMessages);
   $("#new-task-modal").modal("hide");
 }
 
@@ -227,9 +261,6 @@ function deleteTaskCard() {
   );
   selectedTaskCardElement.remove();
   saveCanvas();
-  //Modal reset & close
-  newTaskForm.reset();
-  clearMessages(newTaskFormMessages);
   $("#new-task-modal").modal("hide");
 }
 

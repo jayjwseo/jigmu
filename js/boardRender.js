@@ -46,8 +46,8 @@ function renderTaskCardClone(newTaskCard) {
 
   // Render Elements
   titleElement.innerText = newTaskCard.title;
-  //Truncate task description length to 75 characters
-  descElement.innerText = newTaskCard.desc.slice(0, 75);
+  //Truncate task description length to 60 characters
+  descElement.innerText = newTaskCard.desc.slice(0, 60);
   memberElement.innerText = newTaskCard.member;
   dateElement.innerText = newTaskCard.date
     ? friendlyDate(newTaskCard.date)
