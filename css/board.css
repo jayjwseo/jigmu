@@ -97,6 +97,8 @@ h2 {
   padding: 55px 7px 10px 7px;
   overflow-x: auto;
   overflow-y: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 50%;
 }
 
 .board-canvas p {
@@ -122,6 +124,13 @@ h2 {
   height: 90%;
   display: inline-block;
   white-space: nowrap;
+  scroll-snap-align: center;
+}
+
+@media only screen and (max-width: 576px) {
+  .list-wrapper {
+    width: 360px;
+  }
 }
 
 .list-canvas-style {

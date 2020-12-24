@@ -90,7 +90,7 @@ taskCardCanvas.forEach((canvas) => {
   });
 });
 
-//Add task card trigger
+//Add task card form trigger
 listCanvas.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     if (!e.target.matches(".add-task-btn")) return;
