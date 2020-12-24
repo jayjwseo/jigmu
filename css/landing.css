@@ -1,11 +1,5 @@
 /* 
-//Landing Page Color Palette ----->
-#fffcf9
-#FFF6ED
-#EDD8C4
-#A18A75
-#EBEDED
-#5290A1 
+//Text
 #2f2e41
 
 //Board Page Color Palette ----->
@@ -32,7 +26,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans";
-  background: #fff6ed;
+  background: #02549a;
   display: flex;
   height: 100%;
   white-space: wrap;
@@ -43,12 +37,13 @@ p {
   font-size: 1.2rem;
 }
 
-h2 {
+h1 {
+  font-size: 2.9rem;
   font-weight: bold;
 }
 
 .nav-bg {
-  background: #a18a75;
+  background: #02549a;
 }
 
 .landing-logo {
@@ -66,43 +61,45 @@ h2 {
 }
 
 .btn-login {
-  background: #a18a75;
+  background: #02549a;
+  color: white;
 }
 
 .btn-login:hover {
   background: white;
-  color: #a18a75;
+  color: #02549a;
+  outline: 0 !important;
+  box-shadow: none;
 }
 
-.btn-login:focus {
+.btn-login:focus,
+.btn-login:active {
   background: white;
-  color: #a18a75;
+  color: #02549a;
+  outline: 0 !important;
+  box-shadow: none;
+}
+
+.btn-signup {
+  background: #02549a;
+  color: white;
+  border: 2px solid;
+  border-color: #ffffff;
 }
 
 .btn-signup:hover {
-  color: #a18a75;
+  background: white;
+  color: #02549a;
+  outline: 0 !important;
+  box-shadow: none;
 }
 
-.user-name {
-  font-weight: bold;
-}
-
-.user-drop-item {
-  color: #2f2e41;
-}
-
-.user-drop-item:hover {
-  background: #a18a75;
-  color: #fffcf9;
-  font-weight: bold;
-}
-
-.user-drop {
-  background: #fffcf9;
-  border: none;
-  border-radius: 4px;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
-    rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
+.btn-signup:focus,
+.btn-signup:active {
+  background: white;
+  color: #02549a;
+  outline: 0 !important;
+  box-shadow: none;
 }
 
 @media (min-width: 576px) {
@@ -114,8 +111,8 @@ h2 {
 /* Banner */
 
 .jumbotron {
-  background: #fff6ed;
-  color: #2f2e41;
+  background: #02549a;
+  color: white;
 }
 
 .banner-img {
@@ -133,11 +130,11 @@ h2 {
 
 /* CTA Bar */
 .ctaBar {
-  background: #fff6ed;
+  background: #02549a;
 }
 
 .cta-button {
-  background: rgb(82, 145, 163);
+  background: #059eb2;
   font-weight: bold;
   color: white;
 }
@@ -153,15 +150,19 @@ h2 {
 }
 
 .cta-form {
-  border-color: #5290a1;
+  border-color: white;
 }
 
 .cta-form:focus {
-  box-shadow: 0 3px 0 0 #5290a1;
-  border-color: #5290a1;
+  box-shadow: 0 3px 0 0 #059eb2;
+  border-color: #059eb2;
 }
 
 /* Features */
+
+.container-features {
+  height: 350px;
+}
 .features {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -173,13 +174,13 @@ h2 {
 }
 
 .feature1 {
-  background: #edd8c4;
+  background: white;
 }
 
 .feature2 {
-  background: #fffcf9;
+  background: #ebecf0;
 }
 
 .feature3 {
-  background: #fff6ed;
+  background: white;
 }

@@ -1,11 +1,5 @@
 /* 
-//Landing Page Color Palette ----->
-#fffcf9
-#FFF6ED
-#EDD8C4
-#A18A75
-#EBEDED
-#5290A1 
+//Text
 #2f2e41
 
 //Board Page Color Palette ----->
@@ -97,8 +91,6 @@ h2 {
   padding: 55px 7px 10px 7px;
   overflow-x: auto;
   overflow-y: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 50%;
 }
 
 .board-canvas p {
@@ -124,12 +116,17 @@ h2 {
   height: 90%;
   display: inline-block;
   white-space: nowrap;
-  scroll-snap-align: center;
 }
 
 @media only screen and (max-width: 576px) {
+  .board-canvas {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 50%;
+  }
+
   .list-wrapper {
     width: 360px;
+    scroll-snap-align: center;
   }
 }
 
