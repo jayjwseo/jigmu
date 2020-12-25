@@ -121,7 +121,6 @@ h2 {
 @media only screen and (max-width: 576px) {
   .board-canvas {
     scroll-snap-type: x mandatory;
-    scroll-padding: 50%;
   }
 
   .list-wrapper {
