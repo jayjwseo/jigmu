@@ -29,7 +29,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans";
-  background: #02539ad0;
+  background: rgb(45, 112, 191);
   display: flex;
   height: 100%;
   white-space: wrap;

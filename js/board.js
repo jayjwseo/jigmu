@@ -4,7 +4,7 @@ import {
   renderUpdateTaskCard,
   renderAddNewTaskCardForm,
 } from "./boardRender.js";
-import TaskManager from "./taskManager.js";
+import TaskManager from "./constructors.js";
 // Select modal form user input fields
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
@@ -30,8 +30,9 @@ const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
 // Local Storage Keys
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
 const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
-// Task Card Set One Array & Render/Load
+// Task card set one array
 let taskCardsSetOne = loadCanvas();
+// Task card set one array render/load
 taskCardsSetOne.forEach(renderTaskCard);
 // SELECTED task card & element
 let selectedTaskCard;
