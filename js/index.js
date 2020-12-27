@@ -9,10 +9,14 @@ console.log(ctaNewTaskButton);
 ctaNewTaskButton.addEventListener("click", () => {
   console.log("hi");
   const ctaNewTaskTitle = document.querySelector("#cta-new-task-input").value;
-  const ctaNewTask = new TaskCard(ctaNewTaskTitle, "", "", "", "", "BACKLOG");
-  jData.taskCardsSet.push(ctaNewTask);
-  saveCanvas();
-  location.href = "board-page.html";
+  if (ctaNewTaskTitle) {
+    const ctaNewTask = new TaskCard(ctaNewTaskTitle, "", "", "", "", "BACKLOG");
+    jData.taskCardsSet.push(ctaNewTask);
+    saveCanvas();
+    location.href = "board-page.html";
+  } else {
+    location.href = "board-page.html";
+  }
 });
 
 // CTA bar is top sticky detector
