@@ -19,6 +19,14 @@ function friendlyDate(date) {
   return frdlyDate;
 }
 
+// Truncate desc length on task card
+function truncateString(str, num) {
+  if (str.length <= num) {
+    return str;
+  }
+  return str.slice(0, num) + "...";
+}
+
 function renderTaskCardClone(newTaskCard) {
   // Task Card Template
   const taskCardTemplate = document.querySelector("#task-card-template");
@@ -46,8 +54,8 @@ function renderTaskCardClone(newTaskCard) {
 
   // Render Elements
   titleElement.innerText = newTaskCard.title;
-  //Truncate task description length to 60 characters
-  descElement.innerText = newTaskCard.desc.slice(0, 60);
+  //Truncate task description length to 65 characters
+  descElement.innerText = truncateString(newTaskCard.desc, 65);
   memberElement.innerText = newTaskCard.member;
   dateElement.innerText = newTaskCard.date
     ? friendlyDate(newTaskCard.date)

@@ -160,8 +160,12 @@ h2 {
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
+.task-card .card-body {
+  padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
 .task-card-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .task-card h6 {
@@ -177,18 +181,29 @@ h2 {
   margin: 0;
 }
 
+.task-card i {
+  padding: 0;
+}
+
 .task-card .task-card-item {
   margin-left: 8px;
 }
 
 .task-card .dropdown-divider {
-  margin: 0.3rem;
+  margin: 0 0 0.1rem 0;
+  border-color: rgb(235, 236, 240, 0.5);
+}
+
+#divider-status {
+  margin: 0;
+  border-color: #ebecf0;
 }
 
 .task-card-tag {
   width: 140px;
   border: 4px solid;
   border-radius: 4px;
+  margin-bottom: 0.3rem;
 }
 
 .card-member-img {
@@ -254,6 +269,10 @@ select:focus {
   border-radius: 4px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
+}
+
+.modal-icons {
+  background: #f4f5f7;
 }
 
 .current-task-title {
