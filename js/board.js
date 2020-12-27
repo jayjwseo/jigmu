@@ -1,10 +1,11 @@
 // Modules
+import { jData, saveCanvas } from "./dataManager.js";
 import {
   renderTaskCard,
   renderUpdateTaskCard,
   renderAddNewTaskCardForm,
 } from "./boardRender.js";
-import TaskManager from "./constructors.js";
+import TaskCard from "./constructors.js";
 // Select modal form user input fields
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
@@ -27,13 +28,8 @@ const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
 const listCanvas = document.querySelectorAll(".list-canvas");
 // Select all task card canvas
 const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
-// Local Storage Keys
-const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
-const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
-// Task card set one array
-let taskCardsSetOne = loadCanvas();
-// Task card set one array render/load
-taskCardsSetOne.forEach(renderTaskCard);
+// Data render/load
+jData.taskCardsSet.forEach(renderTaskCard);
 // SELECTED task card & element
 let selectedTaskCard;
 let selectedTaskCardElement;
@@ -44,7 +40,7 @@ taskCardCanvas.forEach((card) => {
     if (!e.target.matches(".task-card-edit-toggle")) return;
     const taskCard = e.target.closest(".task-card");
     const taskId = taskCard.dataset.taskCardId;
-    const task = taskCardsSetOne.find((t) => t.id === taskId);
+    const task = jData.taskCardsSet.find((t) => t.id === taskId);
     //Set to global variables
     selectedTaskCardElement = taskCard;
     selectedTaskCard = task;
@@ -80,7 +76,7 @@ taskCardCanvas.forEach((canvas) => {
     const taskCard = e.target.closest(".task-card");
     const taskId = taskCard.dataset.taskCardId;
     //Look for the task in the array using the id
-    const task = taskCardsSetOne.find((t) => t.id === taskId);
+    const task = jData.taskCardsSet.find((t) => t.id === taskId);
     //Update the status of the referenced task
     task.status = e.target.innerText;
     //Remove task card from the previous location(list)
@@ -257,7 +253,7 @@ function updateTaskCard(title, desc, member, date, tag, status) {
 //Delete Task Card
 function deleteTaskCard() {
   //Delete selected task from array
-  taskCardsSetOne = taskCardsSetOne.filter(
+  jData.taskCardsSet = jData.taskCardsSet.filter(
     (task) => task.id !== selectedTaskCard.id
   );
   selectedTaskCardElement.remove();
@@ -266,22 +262,10 @@ function deleteTaskCard() {
 }
 
 //Add Task Card
-function addTaskCard(title, status, removeAdd) {
-  const newTaskCard = new TaskManager(title, "", "", "", "", status);
-  taskCardsSetOne.push(newTaskCard);
+function addTaskCard(title, status, removeAddForm) {
+  const newTaskCard = new TaskCard(title, "", "", "", "", status);
+  jData.taskCardsSet.push(newTaskCard);
   renderTaskCard(newTaskCard);
   saveCanvas();
-  removeAdd.remove();
-}
-
-//Get saved data as an array
-function loadCanvas() {
-  const taskCardsSetOneString = localStorage.getItem(TASK_STORAGE_KEY);
-  //Empty array if data not present
-  return JSON.parse(taskCardsSetOneString) || [];
-}
-
-//Save on local storage
-function saveCanvas() {
-  localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(taskCardsSetOne));
+  removeAddForm.remove();
 }
