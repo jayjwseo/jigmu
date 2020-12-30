@@ -13,7 +13,7 @@ function loadCanvas() {
       board: [
         {
           title: "TO DO",
-          id: "1",
+          id: uuidV4(),
           taskCardSet: [
             {
               title: "Example Task",
@@ -22,16 +22,17 @@ function loadCanvas() {
               date: "2030-01-01",
               tag: "Blue",
               status: "TO DO",
-              id: "1234567890",
+              id: uuidV4(),
             },
           ],
         },
         {
           title: "IN PROGRESS",
-          id: "2",
+          id: uuidV4(),
           taskCardSet: [],
         },
-        { title: "DONE", id: "3", taskCardSet: [] },
+        { title: "REVIEW", id: uuidV4(), taskCardSet: [] },
+        { title: "DONE", id: uuidV4(), taskCardSet: [] },
       ],
     }
   );

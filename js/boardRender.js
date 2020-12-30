@@ -146,7 +146,6 @@ function renderNewTaskCard(newTaskCard, listEle, jData) {
   const taskCard = document.querySelector(
     `[data-task-card-id="${newTaskCard.id}"]`
   );
-  console.log(taskCard);
   renderStatusDropOption(jData, taskCard);
 }
 // Render update task card

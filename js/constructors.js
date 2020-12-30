@@ -1,8 +1,9 @@
+import { v4 as uuidV4 } from "../node_modules/uuid/dist/esm-browser/index.js";
 // Task List constructor
 class TaskList {
   constructor(title) {
     this.title = title;
-    this.id = new Date().valueOf().toString();
+    this.id = uuidV4();
     this.taskCardSet = [];
   }
 }
@@ -15,7 +16,7 @@ class TaskCard {
     this.date = date;
     this.tag = tag;
     this.status = status;
-    this.id = new Date().valueOf().toString();
+    this.id = uuidV4();
   }
 }
 // Export
