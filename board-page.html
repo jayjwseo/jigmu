@@ -76,10 +76,10 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">BACKLOG<a class="add-task float-right"><i
+                    <h5 class="card-title list-title" data-list-title>BACKLOG<a class="add-task float-right"><i
                                 class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-backlog" data-task-card-canvas="BACKLOG">
+                    <div class="task-card-canvas" id="task-card-canvas-backlog" data-list-id="1">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
@@ -90,10 +90,10 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">TO DO<a class="add-task float-right"><i
+                    <h5 class="card-title list-title" data-list-title>TO DO<a class="add-task float-right"><i
                                 class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-todo" data-task-card-canvas="TO DO">
+                    <div class="task-card-canvas" id="task-card-canvas-todo" data-list-id="2">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
@@ -104,58 +104,55 @@
         <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
-                    <h5 class="card-title list-title">IN PROGRESS<a class="add-task float-right"><i
+                    <h5 class="card-title list-title" data-list-title>IN PROGRESS<a class="add-task float-right"><i
                                 class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
-                    <div class="task-card-canvas" id="task-card-canvas-inprogress" data-task-card-canvas="IN PROGRESS">
+                    <div class="task-card-canvas" id="task-card-canvas-inprogress" data-list-id="3">
                         <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
             </div>
         </div>
         <!-- End List -->
-        <!-- List -->
-        <div class="list-wrapper list-canvas">
+        <!-- ******************************************************List -->
+        <!-- <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">REVIEW<a class="add-task float-right"><i
                                 class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-review" data-task-card-canvas="REVIEW">
-                        <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- End List -->
         <!-- List -->
-        <div class="list-wrapper list-canvas">
+        <!-- <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">DONE<a class="add-task float-right"><i
                                 class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-done" data-task-card-canvas="DONE">
-                        <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- End List -->
         <!-- List -->
-        <div class="list-wrapper list-canvas">
+        <!-- <div class="list-wrapper list-canvas">
             <div class="card list-canvas-style">
                 <div class="card-body p-2">
                     <h5 class="card-title list-title">OBSOLETE<a class="add-task float-right"><i
                                 class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                     </h5>
                     <div class="task-card-canvas" id="task-card-canvas-obsolete" data-task-card-canvas="OBSOLETE">
-                        <!-- TASK-CARD ADDED BELOW -->
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End List -->
+        </div> -->
+        <!-- ***************************************************End List -->
     </section>
     <main>
         <!-- Modal Form -->
@@ -232,8 +229,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text modal-icons"><i class="fas fa-stream"></i></span>
                                     </div>
-                                    <select id="new-task-status" class="form-control">
-                                        <!-- <option value="">Status</option> -->
+                                    <select id="new-task-status" class="form-control" data-list-option>
                                         <option value="BACKLOG">BACKLOG</option>
                                         <option value="TO DO">TO DO</option>
                                         <option value="IN PROGRESS">IN PROGRESS</option>
@@ -283,7 +279,6 @@
                             <div class="task-card-element task-card-tag" id="task-card-tag-color">
                             </div>
                             <div class="task-card-element task-card-desc">
-                                <!-- <div class="dropdown-divider"></div> -->
                                 <p><span data-task-card-desc></span></p>
                             </div>
                             <div class="task-card-element task-card-member">
@@ -298,26 +293,15 @@
                                         data-task-card-date></span>
                                 </p>
                             </div>
+                            <div class="dropdown-divider" id="divider-status"></div>
                             <div class="task-card-element task-card-status">
-                                <div class="dropdown-divider" id="divider-status"></div>
                                 <div class="dropdown task-card-status-click">
                                     <div class="dropdown-toggle task-card-drop-toggle" type="" data-toggle="dropdown">
                                         <p class="d-inline"><i class="fas fa-stream"></i><span class="task-card-item"
                                                 data-task-card-status></span>
                                         </p>
                                     </div>
-                                    <div class="dropdown-menu task-card-drop">
-                                        <a class="dropdown-item task-card-drop-item" type=""
-                                            data-status-change>BACKLOG</a>
-                                        <a class="dropdown-item task-card-drop-item" type="" data-status-change>TO
-                                            DO</a>
-                                        <a class="dropdown-item task-card-drop-item" type="" data-status-change>IN
-                                            PROGRESS</a>
-                                        <a class="dropdown-item task-card-drop-item" type=""
-                                            data-status-change>REVIEW</a>
-                                        <a class="dropdown-item task-card-drop-item" type="" data-status-change>DONE</a>
-                                        <a class="dropdown-item task-card-drop-item" type=""
-                                            data-status-change>OBSOLETE</a>
+                                    <div class="dropdown-menu task-card-drop" data-status-drop-option>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +335,6 @@
                 </div>
                 <div class="drop-loc"></div>
             </div>
-        </template>
     </main>
     <footer>
         <!-- Footer -->

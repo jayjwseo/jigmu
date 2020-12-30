@@ -1,40 +1,35 @@
-//Select List Canvas
-const taskCardCanvasBacklog = document.querySelector(
-  "#task-card-canvas-backlog"
-);
-const taskCardCanvasTodo = document.querySelector("#task-card-canvas-todo");
-const taskCardCanvasInprogress = document.querySelector(
-  "#task-card-canvas-inprogress"
-);
-const taskCardCanvasReview = document.querySelector("#task-card-canvas-review");
-const taskCardCanvasDone = document.querySelector("#task-card-canvas-done");
-const taskCardCanvasObsolete = document.querySelector(
-  "#task-card-canvas-obsolete"
-);
-
-// User friendly date format
+// Convert to user friendly date format
 function friendlyDate(date) {
   let dateInput = new Date(date);
   let frdlyDate = dateInput.toDateString();
   return frdlyDate;
 }
-
-// Truncate desc length on task card
+// Truncate description length on task card
 function truncateString(str, num) {
   if (str.length <= num) {
     return str;
   }
   return str.slice(0, num) + "...";
 }
-
-function renderTaskCardClone(newTaskCard) {
-  // Task Card Template
+// Create status dropdown option element
+function createDropOption(list) {
+  const listTitle = list.title;
+  const listId = list.id;
+  const element = document.createElement("a");
+  element.innerText = listTitle;
+  element.dataset.taskListId = listId;
+  element.classList.add(
+    "dropdown-item",
+    "task-card-drop-item",
+    "data-status-change"
+  );
+  return element;
+}
+// Create task card fragment
+function createTaskCardClone(newTaskCard) {
   const taskCardTemplate = document.querySelector("#task-card-template");
-
-  //Clone Template Content
   const clone = taskCardTemplate.content.cloneNode(true);
-
-  // Select Elements
+  // Clone selectors
   const titleElement = clone.querySelector("[data-task-card-title]");
   const descElement = clone.querySelector("[data-task-card-desc]");
   const memberElement = clone.querySelector("[data-task-card-member]");
@@ -42,8 +37,7 @@ function renderTaskCardClone(newTaskCard) {
   const statusElement = clone.querySelector("[data-task-card-status]");
   const tagElement = clone.querySelector("#task-card-tag-color");
   const taskCard = clone.querySelector(".task-card");
-
-  //Elements Array
+  // Elements Array
   const elements = [
     titleElement,
     descElement,
@@ -51,21 +45,16 @@ function renderTaskCardClone(newTaskCard) {
     dateElement,
     statusElement,
   ];
-
-  // Render Elements
+  // Inject values
   titleElement.innerText = newTaskCard.title;
-  //Truncate task description length to 65 characters
   descElement.innerText = truncateString(newTaskCard.desc, 65);
   memberElement.innerText = newTaskCard.member;
   dateElement.innerText = newTaskCard.date
     ? friendlyDate(newTaskCard.date)
     : "";
   statusElement.innerText = newTaskCard.status;
-
-  // Render Dataset ID
   taskCard.dataset.taskCardId = newTaskCard.id;
-
-  //Render Tag Color
+  // Color tag style
   let tagColor = newTaskCard.tag;
   switch (tagColor) {
     case "Blue":
@@ -86,60 +75,66 @@ function renderTaskCardClone(newTaskCard) {
     default:
       tagElement.classList.toggle("d-none");
   }
-
-  //Hide when no value to display
+  // Hide if no value
   elements.forEach((element) => {
     const elementNoValue = element.closest(".task-card-element");
     if (element.innerText === "") {
       elementNoValue.classList.toggle("d-none");
     }
   });
-
-  //Return rendered clone
+  // Return fragment
   return clone;
 }
-
-// Render task card
-function renderTaskCard(taskCard) {
-  const taskCardClone = renderTaskCardClone(taskCard);
-  // Append Template Clone
-  let status = taskCard.status;
-  switch (status) {
-    case "BACKLOG":
-      taskCardCanvasBacklog.appendChild(taskCardClone);
-      break;
-    case "TO DO":
-      taskCardCanvasTodo.appendChild(taskCardClone);
-      break;
-    case "IN PROGRESS":
-      taskCardCanvasInprogress.appendChild(taskCardClone);
-      break;
-    case "REVIEW":
-      taskCardCanvasReview.appendChild(taskCardClone);
-      break;
-    case "DONE":
-      taskCardCanvasDone.appendChild(taskCardClone);
-      break;
-    case "OBSOLETE":
-      taskCardCanvasObsolete.appendChild(taskCardClone);
-      break;
-    default:
-      console.log("Status Unknown");
-  }
+// Render status drop option
+function renderStatusDropOption(jData) {
+  const dropMenu = document.querySelectorAll("[data-status-drop-option]");
+  dropMenu.forEach((item) => {
+    jData.board.forEach((list) => {
+      item.appendChild(createDropOption(list));
+    });
+  });
 }
-
-// Render update task card
-function renderUpdateTaskCard(taskCard, taskCardElement) {
-  const taskCardClone = renderTaskCardClone(taskCard);
-  // Update target task card element
-  taskCardElement.parentNode.replaceChild(taskCardClone, taskCardElement);
+// <-EXPORT->
+// Render Data
+function renderData(jData) {
+  jData.board.forEach((list) => {
+    const listId = list.id;
+    const cardList = document.querySelector(`[data-list-id="${listId}"]`);
+    const taskCards = list.taskCardSet;
+    taskCards.forEach((taskCard) => {
+      const taskCardElement = createTaskCardClone(taskCard);
+      cardList.append(taskCardElement);
+    });
+  });
+  renderStatusDropOption(jData);
 }
-
-//Render add task card form
+// Render new task card form
 function renderAddNewTaskCardForm(canvas) {
   const addTaskCardTemplate = document.querySelector("#add-task-card-template");
   const clone = addTaskCardTemplate.content.cloneNode(true);
   canvas.insertBefore(clone, canvas.firstChild);
 }
-
-export { renderTaskCard, renderUpdateTaskCard, renderAddNewTaskCardForm };
+// Render new task card
+function renderNewTaskCard(newTaskCard, listEle, jData) {
+  const taskCardElement = createTaskCardClone(newTaskCard);
+  listEle.append(taskCardElement);
+  const taskCard = document.querySelector(
+    `[data-task-card-id="${newTaskCard.id}"]`
+  );
+  const dropMenu = taskCard.querySelector("[data-status-drop-option]");
+  jData.board.forEach((list) => {
+    dropMenu.appendChild(createDropOption(list));
+  });
+}
+// Render update task card
+function renderUpdateTaskCard(taskCard, taskCardElement) {
+  const taskCardClone = createTaskCardClone(taskCard);
+  taskCardElement.parentNode.replaceChild(taskCardClone, taskCardElement);
+}
+// Export
+export {
+  renderData,
+  renderAddNewTaskCardForm,
+  renderNewTaskCard,
+  renderUpdateTaskCard,
+};

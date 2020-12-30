@@ -1,30 +1,33 @@
-// Modules
 import { jData, saveCanvas } from "./dataManager.js";
-import TaskCard from "./constructors.js";
-//Selectors
+import { TaskCard } from "./constructors.js";
+// Selectors
 const ctaNewTaskButton = document.querySelector("#cta-new-task-btn");
-console.log(ctaNewTaskButton);
-
-// CTA add new task & redirect to board page
+// CTA add new task & redirect
 ctaNewTaskButton.addEventListener("click", () => {
-  console.log("hi");
   const ctaNewTaskTitle = document.querySelector("#cta-new-task-input").value;
   if (ctaNewTaskTitle) {
-    const ctaNewTask = new TaskCard(ctaNewTaskTitle, "", "", "", "", "BACKLOG");
-    jData.taskCardsSet.push(ctaNewTask);
+    const firstList = jData.board[0];
+    const ctaNewTask = new TaskCard(
+      ctaNewTaskTitle,
+      "",
+      "",
+      "",
+      "",
+      `${firstList.title}`
+    );
+    firstList.taskCardSet.push(ctaNewTask);
     saveCanvas();
     location.href = "board-page.html";
   } else {
     location.href = "board-page.html";
   }
 });
-
-// CTA bar is top sticky detector
+// CTA bar observer
 const ctaBar = document.querySelector(".ctaBar");
 const observer = new IntersectionObserver(
-  //As long as the target element is not in full view, add .isSticky
+  //Add .isSticky if not 100% visible
   ([e]) => e.target.classList.toggle("isSticky", e.intersectionRatio < 1),
-  //As soon as even 1px is not visible, run callback
+  //Run call back if not 100% visible
   { threshold: [1] }
 );
 //Observe CTA bar

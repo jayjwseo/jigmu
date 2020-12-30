@@ -1,21 +1,33 @@
-// Local Storage Keys
+// KEYS
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
-const TASK_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-TASK`;
-// Data Object
-let jData = {
-  taskCardsSet: loadCanvas(),
-};
-
-//Get saved data as an array
+const DATA_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-DATA`;
+// Data
+let jData = loadCanvas();
+// Load Data
 function loadCanvas() {
-  const dataString = localStorage.getItem(TASK_STORAGE_KEY);
-  //Empty array if data not present
-  return JSON.parse(dataString) || [];
+  const dataString = localStorage.getItem(DATA_STORAGE_KEY);
+  return (
+    JSON.parse(dataString) || {
+      //DEFAULT_TEMPLATE
+      board: [
+        {
+          title: "list1",
+          id: "1",
+          taskCardSet: [],
+        },
+        {
+          title: "list2",
+          id: "2",
+          taskCardSet: [],
+        },
+        { title: "list3", id: "3", taskCardSet: [] },
+      ],
+    }
+  );
 }
-
-//Save on local storage
+// Save data
 function saveCanvas() {
-  localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(jData.taskCardsSet));
+  localStorage.setItem(DATA_STORAGE_KEY, JSON.stringify(jData));
 }
-
+// Export
 export { jData, loadCanvas, saveCanvas };

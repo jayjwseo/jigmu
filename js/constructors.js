@@ -1,5 +1,13 @@
+// Task List constructor
+class TaskList {
+  constructor(title) {
+    this.title = title;
+    this.id = new Date().valueOf().toString();
+    this.taskCardSet = [];
+  }
+}
 // Task card constructor
-export default class TaskCard {
+class TaskCard {
   constructor(title, desc, member, date, tag, status) {
     this.title = title;
     this.desc = desc;
@@ -10,3 +18,5 @@ export default class TaskCard {
     this.id = new Date().valueOf().toString();
   }
 }
+// Export
+export { TaskList, TaskCard };

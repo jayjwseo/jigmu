@@ -1,12 +1,12 @@
-// Modules
 import { jData, saveCanvas } from "./dataManager.js";
 import {
-  renderTaskCard,
+  renderData,
   renderUpdateTaskCard,
+  renderNewTaskCard,
   renderAddNewTaskCardForm,
 } from "./boardRender.js";
-import TaskCard from "./constructors.js";
-// Select modal form user input fields
+import { TaskList, TaskCard } from "./constructors.js";
+// Modal - form
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
 const newDescInput = document.querySelector("#new-task-desc");
@@ -14,33 +14,103 @@ const newMemberInput = document.querySelector("#new-task-member");
 const newDateInput = document.querySelector("#new-task-date");
 const newTagInput = document.querySelector("#new-task-tag");
 const newStatusInput = document.querySelector("#new-task-status");
-// Select modal form messages
-const errorFields = document.querySelector("#error-fields");
-const errorDate = document.querySelector("#error-date");
-// Select modal delete task button
+// Modal - delete task button
 const deleteTaskBtn = document.querySelector("#delete-task-button");
-// Select modal current title & desc element
+// Modal - current title & description
 const currentTitle = document.querySelector("#current-task-title-hide");
 const currentDesc = document.querySelector("#current-task-desc-hide");
-// Select error messages for modal form reset
-const newTaskFormMessages = document.querySelectorAll(".new-task-form-message");
-// Select all list canvas
+// All list canvas & task card canvas
 const listCanvas = document.querySelectorAll(".list-canvas");
-// Select all task card canvas
 const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
-// Data render/load
-jData.taskCardsSet.forEach(renderTaskCard);
-// SELECTED task card & element
+// SELECTED task card object & element
 let selectedTaskCard;
 let selectedTaskCardElement;
-
-//Set selected task card & toggle update modal
+// Render data
+renderData(jData);
+//Temp
+let cardSet = jData.board[0].taskCardSet;
+// Add new task card form
+listCanvas.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (!e.target.matches(".add-task-btn")) return;
+    const list = e.target.closest(".list-canvas");
+    const taskCanvas = list.querySelector(".task-card-canvas");
+    if (
+      taskCanvas.firstElementChild &&
+      taskCanvas.firstElementChild.classList.contains("add-task-card")
+    ) {
+      return;
+    } else {
+      renderAddNewTaskCardForm(taskCanvas);
+    }
+  });
+});
+// Add new task card
+listCanvas.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (e.target.matches(".add-task-card-btn")) {
+      e.preventDefault();
+      const addNewTaskCardForm = e.target.closest(".add-task-card");
+      const taskTitle = addNewTaskCardForm.querySelector("#add-task-card-title")
+        .value;
+      const listEle = e.target.closest(".task-card-canvas");
+      const listId = listEle.dataset.listId;
+      const listObj = jData.board.find((list) => list.id === listId);
+      const taskStatus = listObj.title;
+      if (taskTitle) {
+        addTaskCard(
+          taskTitle,
+          taskStatus,
+          listEle,
+          listObj,
+          addNewTaskCardForm
+        );
+      } else {
+        return;
+      }
+    } else if (e.target.matches(".cancel-add-task-card-btn")) {
+      e.preventDefault();
+      const addNewTaskCard = e.target.closest(".add-task-card");
+      addNewTaskCard.remove();
+    } else {
+      return;
+    }
+  });
+});
+// Update task card status
+taskCardCanvas.forEach((canvas) => {
+  canvas.addEventListener("click", (e) => {
+    if (!e.target.matches(".data-status-change")) return;
+    e.stopImmediatePropagation();
+    const currentListEle = e.target.closest(".task-card-canvas");
+    const currentListId = currentListEle.dataset.listId;
+    const currentListObj = jData.board.find(
+      (list) => list.id === currentListId
+    );
+    const taskCard = e.target.closest(".task-card");
+    const listId = e.target.dataset.taskListId;
+    const listEle = document.querySelector(`[data-list-id="${listId}"]`);
+    const listObj = jData.board.find((list) => list.id === listId);
+    const taskId = taskCard.dataset.taskCardId;
+    const task = currentListObj.taskCardSet.find((t) => t.id === taskId);
+    task.status = listObj.title;
+    currentListObj.taskCardSet.splice(
+      currentListObj.taskCardSet.indexOf(task),
+      1
+    );
+    listObj.taskCardSet.splice(listObj.taskCardSet.length, 0, task);
+    taskCard.remove();
+    renderNewTaskCard(task, listEle, jData);
+    saveCanvas();
+  });
+});
+// Set selected task card & toggle modal
 taskCardCanvas.forEach((card) => {
   card.addEventListener("click", (e) => {
     if (!e.target.matches(".task-card-edit-toggle")) return;
     const taskCard = e.target.closest(".task-card");
     const taskId = taskCard.dataset.taskCardId;
-    const task = jData.taskCardsSet.find((t) => t.id === taskId);
+    const task = cardSet.find((t) => t.id === taskId);
     //Set to global variables
     selectedTaskCardElement = taskCard;
     selectedTaskCard = task;
@@ -67,87 +137,19 @@ taskCardCanvas.forEach((card) => {
     $("#new-task-modal").modal("show");
   });
 });
-
-//Task card status update & re-locate
-taskCardCanvas.forEach((canvas) => {
-  canvas.addEventListener("click", (e) => {
-    if (!e.target.matches("[data-status-change]")) return;
-    e.stopImmediatePropagation();
-    const taskCard = e.target.closest(".task-card");
-    const taskId = taskCard.dataset.taskCardId;
-    //Look for the task in the array using the id
-    const task = jData.taskCardsSet.find((t) => t.id === taskId);
-    //Update the status of the referenced task
-    task.status = e.target.innerText;
-    //Remove task card from the previous location(list)
-    taskCard.remove();
-    //Render task card to the new location(list)
-    renderTaskCard(task);
-    saveCanvas();
-  });
-});
-
-//Add task card form trigger
-listCanvas.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    if (!e.target.matches(".add-task-btn")) return;
-    const list = e.target.closest(".list-canvas");
-    const taskCanvas = list.querySelector(".task-card-canvas");
-    //Render add task card if not already exist
-    if (
-      taskCanvas.firstElementChild &&
-      taskCanvas.firstElementChild.classList.contains("add-task-card")
-    ) {
-      return;
-    } else {
-      renderAddNewTaskCardForm(taskCanvas);
-    }
-  });
-});
-
-//Add task card
-listCanvas.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    //When add task button is clicked
-    if (e.target.matches(".add-task-card-btn")) {
-      e.preventDefault();
-      //Get task title
-      const addNewTaskCard = e.target.closest(".add-task-card");
-      const taskTitle = addNewTaskCard.querySelector("#add-task-card-title")
-        .value;
-      //Get list status
-      const taskCardCanvas = e.target.closest(".task-card-canvas");
-      const taskStatus = taskCardCanvas.dataset.taskCardCanvas;
-      //Add task only if task title is entered
-      if (taskTitle) {
-        addTaskCard(taskTitle, taskStatus, addNewTaskCard);
-      } else {
-        return;
-      }
-    }
-    //When cancel add task button is clicked
-    else if (e.target.matches(".cancel-add-task-card-btn")) {
-      e.preventDefault();
-      const addNewTaskCard = e.target.closest(".add-task-card");
-      addNewTaskCard.remove();
-    }
-    //When neither button is clicked
-    else {
-      return;
-    }
-  });
-});
-
-//Task card update - Modal
+// Modal - task card update
 newTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  //User input values
+  // User input values
   const taskTitle = newTitleInput.value;
   const taskDesc = newDescInput.value;
   const taskMember = newMemberInput.value;
   const taskTag = newTagInput.value;
   const taskStatus = newStatusInput.value;
   const taskDate = newDateInput.value;
+  // Select modal form messages
+  const errorFields = document.querySelector("#error-fields");
+  const errorDate = document.querySelector("#error-date");
   // Check due date input is not in the past
   const userDate = new Date(taskDate);
   const dateValid = userDate > dateValidRef() ? true : false;
@@ -178,26 +180,25 @@ newTaskForm.addEventListener("submit", (e) => {
     errorFields.classList.add("d-none");
   }
 });
-
-// Delete Task
-deleteTaskBtn.addEventListener("click", () => {
-  deleteTaskCard();
-});
-
-//Show title input when current title is clicked
+// Modal - show title input
 currentTitle.addEventListener("click", () => {
   currentTitle.classList.add("d-none");
   newTitleInput.classList.remove("d-none");
 });
-
-//Show desc input when current title is clicked
+// Modal - show desc input
 currentDesc.addEventListener("click", () => {
   currentDesc.classList.add("d-none");
   newDescInput.classList.remove("d-none");
 });
-
-// Reset modal on close
+// Modal - delete Task
+deleteTaskBtn.addEventListener("click", () => {
+  deleteTaskCard();
+});
+// Modal - reset on close
 $("#new-task-modal").on("hide.bs.modal", () => {
+  const newTaskFormMessages = document.querySelectorAll(
+    ".new-task-form-message"
+  );
   newTaskForm.reset();
   clearMessages(newTaskFormMessages);
   currentTitle.classList.remove("d-none");
@@ -206,29 +207,36 @@ $("#new-task-modal").on("hide.bs.modal", () => {
   newDescInput.classList.add("d-none");
 });
 
-//FUNCTIONS--------------------------------------------------------->
-
+// <-FUNCTIONS->
 // Clear form messages
 function clearMessages(messages) {
   messages.forEach((msg) => {
     msg.classList.add("d-none");
   });
 }
-
-// Date validation reference generator
+// Generate date validation reference
 function dateValidRef() {
-  //today w/o timestamp
+  // Today w/o timestamp
   const y = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
     new Date().getDate()
   );
-  //today minus 1 millisecond
+  // Today minus 1ms
   const ref = new Date(y.setMilliseconds(y.getMilliseconds() - 1));
   return ref;
 }
-
-//Update Task Card
+// Add task card
+function addTaskCard(title, status, listEle, listObj, removeAddForm) {
+  const newTaskCard = new TaskCard(title, "", "", "", "", status);
+  listObj.taskCardSet.push(newTaskCard);
+  console.log(newTaskCard);
+  console.log(listEle);
+  renderNewTaskCard(newTaskCard, listEle, jData);
+  saveCanvas();
+  removeAddForm.remove();
+}
+// Update task Card
 function updateTaskCard(title, desc, member, date, tag, status) {
   //Check if there is a status change
   const statusChange = selectedTaskCard.status === status ? false : true;
@@ -242,30 +250,19 @@ function updateTaskCard(title, desc, member, date, tag, status) {
   //Render new task card
   if (statusChange) {
     selectedTaskCardElement.remove();
-    renderTaskCard(selectedTaskCard);
+    renderNewTaskCard(selectedTaskCard, "", jData);
   } else {
     renderUpdateTaskCard(selectedTaskCard, selectedTaskCardElement);
   }
   saveCanvas();
   $("#new-task-modal").modal("hide");
 }
-
-//Delete Task Card
+// Delete task card
 function deleteTaskCard() {
-  //Delete selected task from array
-  jData.taskCardsSet = jData.taskCardsSet.filter(
+  jData.board[0].taskCardSet = cardSet.filter(
     (task) => task.id !== selectedTaskCard.id
   );
   selectedTaskCardElement.remove();
   saveCanvas();
   $("#new-task-modal").modal("hide");
-}
-
-//Add Task Card
-function addTaskCard(title, status, removeAddForm) {
-  const newTaskCard = new TaskCard(title, "", "", "", "", status);
-  jData.taskCardsSet.push(newTaskCard);
-  renderTaskCard(newTaskCard);
-  saveCanvas();
-  removeAddForm.remove();
 }
