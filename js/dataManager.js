@@ -11,16 +11,26 @@ function loadCanvas() {
       //DEFAULT_TEMPLATE
       board: [
         {
-          title: "list1",
+          title: "TO DO",
           id: "1",
-          taskCardSet: [],
+          taskCardSet: [
+            {
+              title: "Example Task",
+              desc: "Click this task card to edit",
+              member: "JK Board",
+              date: "2030-01-01",
+              tag: "Blue",
+              status: "TO DO",
+              id: "1234567890",
+            },
+          ],
         },
         {
-          title: "list2",
+          title: "IN PROGRESS",
           id: "2",
           taskCardSet: [],
         },
-        { title: "list3", id: "3", taskCardSet: [] },
+        { title: "DONE", id: "3", taskCardSet: [] },
       ],
     }
   );

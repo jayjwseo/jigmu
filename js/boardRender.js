@@ -11,6 +11,14 @@ function truncateString(str, num) {
   }
   return str.slice(0, num) + "...";
 }
+//Create status select option element
+function createSelectOption(list) {
+  const listTitle = list.title;
+  const element = document.createElement("option");
+  element.innerText = listTitle;
+  element.value = listTitle;
+  return element;
+}
 // Create status dropdown option element
 function createDropOption(list) {
   const listTitle = list.title;
@@ -121,16 +129,21 @@ function renderNewTaskCard(newTaskCard, listEle, jData) {
   const taskCard = document.querySelector(
     `[data-task-card-id="${newTaskCard.id}"]`
   );
+  console.log(taskCard);
   renderStatusDropOption(jData, taskCard);
-  // const dropMenu = taskCard.querySelector("[data-status-drop-option]");
-  // jData.board.forEach((list) => {
-  //   dropMenu.appendChild(createDropOption(list));
-  // });
 }
 // Render update task card
-function renderUpdateTaskCard(taskCard, taskCardElement) {
+function renderUpdateTaskCard(taskCard, taskCardElement, jData) {
   const taskCardClone = createTaskCardClone(taskCard);
+  renderStatusDropOption(jData, taskCardClone);
   taskCardElement.parentNode.replaceChild(taskCardClone, taskCardElement);
+}
+// Render modal status select option
+function renderModalStatusOption(jData) {
+  const selectMenu = document.querySelector("[data-modal-list-option]");
+  jData.board.forEach((list) => {
+    selectMenu.appendChild(createSelectOption(list));
+  });
 }
 // Export
 export {
@@ -138,4 +151,5 @@ export {
   renderAddNewTaskCardForm,
   renderNewTaskCard,
   renderUpdateTaskCard,
+  renderModalStatusOption,
 };

@@ -4,6 +4,7 @@ import {
   renderUpdateTaskCard,
   renderNewTaskCard,
   renderAddNewTaskCardForm,
+  renderModalStatusOption,
 } from "./boardRender.js";
 import { TaskList, TaskCard } from "./constructors.js";
 // Modal - form
@@ -23,8 +24,9 @@ const currentDesc = document.querySelector("#current-task-desc-hide");
 const listCanvas = document.querySelectorAll(".list-canvas");
 const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
 // SELECTED task card object & element
-let selectedTaskCard;
 let selectedTaskCardElement;
+let selectedTaskCardObj;
+let selectedTaskCardListObj;
 // Render data
 renderData(jData);
 //Temp
@@ -105,16 +107,22 @@ taskCardCanvas.forEach((canvas) => {
   });
 });
 // Set selected task card & toggle modal
-taskCardCanvas.forEach((card) => {
-  card.addEventListener("click", (e) => {
+taskCardCanvas.forEach((taskCard) => {
+  taskCard.addEventListener("click", (e) => {
     if (!e.target.matches(".task-card-edit-toggle")) return;
+    const currentListEle = e.target.closest(".task-card-canvas");
+    const currentListId = currentListEle.dataset.listId;
+    const currentListObj = jData.board.find(
+      (list) => list.id === currentListId
+    );
     const taskCard = e.target.closest(".task-card");
     const taskId = taskCard.dataset.taskCardId;
-    const task = cardSet.find((t) => t.id === taskId);
-    //Set to global variables
+    const task = currentListObj.taskCardSet.find((t) => t.id === taskId);
+    // Set to global variables
     selectedTaskCardElement = taskCard;
-    selectedTaskCard = task;
-    //Pass current title & desc to modal elements
+    selectedTaskCardObj = task;
+    selectedTaskCardListObj = currentListObj;
+    // Pass current title & desc to modal elements
     const currentTitleElement = document.querySelector(
       "[data-current-task-title]"
     );
@@ -133,6 +141,7 @@ taskCardCanvas.forEach((card) => {
     newMemberInput.value = task.member;
     newDateInput.value = task.date;
     newTagInput.value = task.tag;
+    renderModalStatusOption(jData);
     newStatusInput.value = task.status;
     $("#new-task-modal").modal("show");
   });
@@ -205,6 +214,8 @@ $("#new-task-modal").on("hide.bs.modal", () => {
   newTitleInput.classList.add("d-none");
   currentDesc.classList.remove("d-none");
   newDescInput.classList.add("d-none");
+  const statusOption = document.querySelector("[data-modal-list-option]");
+  statusOption.querySelectorAll("*").forEach((option) => option.remove());
 });
 
 // <-FUNCTIONS->
@@ -237,28 +248,40 @@ function addTaskCard(title, status, listEle, listObj, removeAddForm) {
 // Update task Card
 function updateTaskCard(title, desc, member, date, tag, status) {
   //Check if there is a status change
-  const statusChange = selectedTaskCard.status === status ? false : true;
+  const statusChange = selectedTaskCardObj.status === status ? false : true;
   //Update selected task card with new user inputs
-  selectedTaskCard.title = title;
-  selectedTaskCard.desc = desc;
-  selectedTaskCard.member = member;
-  selectedTaskCard.date = date;
-  selectedTaskCard.tag = tag;
-  selectedTaskCard.status = status;
+  selectedTaskCardObj.title = title;
+  selectedTaskCardObj.desc = desc;
+  selectedTaskCardObj.member = member;
+  selectedTaskCardObj.date = date;
+  selectedTaskCardObj.tag = tag;
+  selectedTaskCardObj.status = status;
   //Render new task card
   if (statusChange) {
+    const listObj = jData.board.find((list) => list.title === status);
+    const listId = listObj.id;
+    const listEle = document.querySelector(`[data-list-id="${listId}"]`);
+    selectedTaskCardListObj.taskCardSet.splice(
+      selectedTaskCardListObj.taskCardSet.indexOf(selectedTaskCardObj),
+      1
+    );
+    listObj.taskCardSet.splice(
+      listObj.taskCardSet.length,
+      0,
+      selectedTaskCardObj
+    );
     selectedTaskCardElement.remove();
-    renderNewTaskCard(selectedTaskCard, "", jData);
+    renderNewTaskCard(selectedTaskCardObj, listEle, jData);
   } else {
-    renderUpdateTaskCard(selectedTaskCard, selectedTaskCardElement);
+    renderUpdateTaskCard(selectedTaskCardObj, selectedTaskCardElement, jData);
   }
   saveCanvas();
   $("#new-task-modal").modal("hide");
 }
 // Delete task card
 function deleteTaskCard() {
-  jData.board[0].taskCardSet = cardSet.filter(
-    (task) => task.id !== selectedTaskCard.id
+  selectedTaskCardListObj.taskCardSet = selectedTaskCardListObj.taskCardSet.filter(
+    (task) => task.id !== selectedTaskCardObj.id
   );
   selectedTaskCardElement.remove();
   saveCanvas();
