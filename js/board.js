@@ -230,8 +230,6 @@ function dateValidRef() {
 function addTaskCard(title, status, listEle, listObj, removeAddForm) {
   const newTaskCard = new TaskCard(title, "", "", "", "", status);
   listObj.taskCardSet.push(newTaskCard);
-  console.log(newTaskCard);
-  console.log(listEle);
   renderNewTaskCard(newTaskCard, listEle, jData);
   saveCanvas();
   removeAddForm.remove();

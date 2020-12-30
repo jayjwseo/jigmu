@@ -86,8 +86,8 @@ function createTaskCardClone(newTaskCard) {
   return clone;
 }
 // Render status drop option
-function renderStatusDropOption(jData) {
-  const dropMenu = document.querySelectorAll("[data-status-drop-option]");
+function renderStatusDropOption(jData, scope) {
+  const dropMenu = scope.querySelectorAll("[data-status-drop-option]");
   dropMenu.forEach((item) => {
     jData.board.forEach((list) => {
       item.appendChild(createDropOption(list));
@@ -106,7 +106,7 @@ function renderData(jData) {
       cardList.append(taskCardElement);
     });
   });
-  renderStatusDropOption(jData);
+  renderStatusDropOption(jData, document);
 }
 // Render new task card form
 function renderAddNewTaskCardForm(canvas) {
@@ -121,10 +121,11 @@ function renderNewTaskCard(newTaskCard, listEle, jData) {
   const taskCard = document.querySelector(
     `[data-task-card-id="${newTaskCard.id}"]`
   );
-  const dropMenu = taskCard.querySelector("[data-status-drop-option]");
-  jData.board.forEach((list) => {
-    dropMenu.appendChild(createDropOption(list));
-  });
+  renderStatusDropOption(jData, taskCard);
+  // const dropMenu = taskCard.querySelector("[data-status-drop-option]");
+  // jData.board.forEach((list) => {
+  //   dropMenu.appendChild(createDropOption(list));
+  // });
 }
 // Render update task card
 function renderUpdateTaskCard(taskCard, taskCardElement) {
