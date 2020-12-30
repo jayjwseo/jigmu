@@ -1,3 +1,4 @@
+import { v4 as uuidV4 } from "../node_modules/uuid/dist/esm-browser/index.js";
 // KEYS
 const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
 const DATA_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-DATA`;
@@ -8,7 +9,7 @@ function loadCanvas() {
   const dataString = localStorage.getItem(DATA_STORAGE_KEY);
   return (
     JSON.parse(dataString) || {
-      //DEFAULT_TEMPLATE
+      // DEFAULT_TEMPLATE
       board: [
         {
           title: "TO DO",

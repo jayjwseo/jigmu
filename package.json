@@ -1,0 +1,24 @@
+{
+  "name": "jkboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html board-page.html",
+    "build": "parcel build index.html board-page.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayjwseo/jkboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayjwseo/jkboard/issues"
+  },
+  "homepage": "https://github.com/jayjwseo/jkboard#readme",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}

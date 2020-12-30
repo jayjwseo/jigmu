@@ -7,6 +7,8 @@ import {
   renderModalStatusOption,
 } from "./boardRender.js";
 import { TaskList, TaskCard } from "./constructors.js";
+// Render data
+renderData(jData);
 // Modal - form
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
@@ -23,14 +25,10 @@ const currentDesc = document.querySelector("#current-task-desc-hide");
 // All list canvas & task card canvas
 const listCanvas = document.querySelectorAll(".list-canvas");
 const taskCardCanvas = document.querySelectorAll(".task-card-canvas");
-// SELECTED task card object & element
+// Selected task card object & element
 let selectedTaskCardElement;
 let selectedTaskCardObj;
 let selectedTaskCardListObj;
-// Render data
-renderData(jData);
-//Temp
-let cardSet = jData.board[0].taskCardSet;
 // Add new task card form
 listCanvas.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -122,7 +120,7 @@ taskCardCanvas.forEach((taskCard) => {
     selectedTaskCardElement = taskCard;
     selectedTaskCardObj = task;
     selectedTaskCardListObj = currentListObj;
-    // Pass current title & desc to modal elements
+    // Pass current values
     const currentTitleElement = document.querySelector(
       "[data-current-task-title]"
     );
@@ -135,7 +133,6 @@ taskCardCanvas.forEach((taskCard) => {
     } else {
       currentDescElement.innerText = "Click to add description...";
     }
-    //Pass current values to fields
     newTitleInput.value = task.title;
     newDescInput.value = task.desc;
     newMemberInput.value = task.member;
@@ -146,20 +143,17 @@ taskCardCanvas.forEach((taskCard) => {
     $("#new-task-modal").modal("show");
   });
 });
-// Modal - task card update
+// Modal - update task card
 newTaskForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  // User input values
   const taskTitle = newTitleInput.value;
   const taskDesc = newDescInput.value;
   const taskMember = newMemberInput.value;
   const taskTag = newTagInput.value;
   const taskStatus = newStatusInput.value;
   const taskDate = newDateInput.value;
-  // Select modal form messages
   const errorFields = document.querySelector("#error-fields");
   const errorDate = document.querySelector("#error-date");
-  // Check due date input is not in the past
   const userDate = new Date(taskDate);
   const dateValid = userDate > dateValidRef() ? true : false;
   // Let A = taskTitle, B = taskDate, C = DateValid
@@ -247,16 +241,14 @@ function addTaskCard(title, status, listEle, listObj, removeAddForm) {
 }
 // Update task Card
 function updateTaskCard(title, desc, member, date, tag, status) {
-  //Check if there is a status change
+  // Status change?
   const statusChange = selectedTaskCardObj.status === status ? false : true;
-  //Update selected task card with new user inputs
   selectedTaskCardObj.title = title;
   selectedTaskCardObj.desc = desc;
   selectedTaskCardObj.member = member;
   selectedTaskCardObj.date = date;
   selectedTaskCardObj.tag = tag;
   selectedTaskCardObj.status = status;
-  //Render new task card
   if (statusChange) {
     const listObj = jData.board.find((list) => list.title === status);
     const listId = listObj.id;

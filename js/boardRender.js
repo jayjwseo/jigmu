@@ -11,7 +11,7 @@ function truncateString(str, num) {
   }
   return str.slice(0, num) + "...";
 }
-//Create status select option element
+// Create status select option element
 function createSelectOption(list) {
   const listTitle = list.title;
   const element = document.createElement("option");
@@ -32,6 +32,18 @@ function createDropOption(list) {
     "data-status-change"
   );
   return element;
+}
+// Create list fragment
+function createListClone(newList) {
+  const listTemplate = document.querySelector("#list-template");
+  const clone = listTemplate.content.cloneNode(true);
+  // Clone selectors
+  const titleElement = clone.querySelector("[data-list-title]");
+  const canvasElement = clone.querySelector(".task-card-canvas");
+  titleElement.innerText = newList.title;
+  canvasElement.dataset.listId = newList.id;
+  // Return fragment
+  return clone;
 }
 // Create task card fragment
 function createTaskCardClone(newTaskCard) {
@@ -106,6 +118,11 @@ function renderStatusDropOption(jData, scope) {
 // Render Data
 function renderData(jData) {
   jData.board.forEach((list) => {
+    // Render list
+    const board = document.querySelector("#board");
+    const listElement = createListClone(list);
+    board.append(listElement);
+    // Render Tasks
     const listId = list.id;
     const cardList = document.querySelector(`[data-list-id="${listId}"]`);
     const taskCards = list.taskCardSet;
