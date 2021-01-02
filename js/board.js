@@ -1,5 +1,6 @@
 import { jData, saveCanvas } from "./dataManager.js";
 import {
+  clearBoard,
   renderData,
   renderNewList,
   renderAddListForm,
@@ -101,6 +102,32 @@ document.addEventListener("click", (e) => {
   } else {
     return;
   }
+});
+// Change list order
+document.addEventListener("click", (e) => {
+  if (!e.target.matches(".list-order-change")) return;
+  const currentList = e.target.closest(".list-canvas");
+  const currentListTaskCanvas = currentList.querySelector(".task-card-canvas");
+  const currentListId = currentListTaskCanvas.dataset.listId;
+  const currentListObj = jData.board.find((list) => list.id === currentListId);
+  const toOrder = e.target.dataset.listOrder;
+  jData.board.splice(jData.board.indexOf(currentListObj), 1);
+  jData.board.splice(toOrder, 0, currentListObj);
+  clearBoard();
+  renderData(jData);
+  saveCanvas();
+});
+// Delete list
+document.addEventListener("click", (e) => {
+  if (!e.target.matches(".list-delete")) return;
+  const currentList = e.target.closest(".list-canvas");
+  const currentListTaskCanvas = currentList.querySelector(".task-card-canvas");
+  const currentListId = currentListTaskCanvas.dataset.listId;
+  const currentListObj = jData.board.find((list) => list.id === currentListId);
+  jData.board.splice(jData.board.indexOf(currentListObj), 1);
+  clearBoard();
+  renderData(jData);
+  saveCanvas();
 });
 // Update task card status
 document.addEventListener("click", (e) => {

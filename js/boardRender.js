@@ -11,6 +11,43 @@ function truncateString(str, num) {
   }
   return str.slice(0, num) + "...";
 }
+// Create list menu order option element
+function createListOrderOption(jData, list) {
+  const orderNumber = jData.board.indexOf(list);
+  const element = document.createElement("a");
+  element.innerText = orderNumber + 1;
+  element.dataset.listOrder = orderNumber;
+  element.classList.add(
+    "dropdown-item",
+    "list-menu-drop-item",
+    "list-order-change"
+  );
+  return element;
+}
+// Create list order label element
+function createListOrderLabel() {
+  const element = document.createElement("a");
+  element.innerText = "Order:";
+  element.classList.add(
+    "dropdown-item",
+    "list-menu-drop-item",
+    "list-order-label"
+  );
+  return element;
+}
+// Create list menu delete option element
+function createListDeleteOption() {
+  const element = document.createElement("a");
+  element.innerText = "Delete";
+  element.classList.add("dropdown-item", "list-menu-drop-item", "list-delete");
+  return element;
+}
+// Create dropdown divider element
+function createDropdownDivider() {
+  const element = document.createElement("div");
+  element.classList.add("dropdown-divider");
+  return element;
+}
 // Create status select option element
 function createSelectOption(list) {
   const listTitle = list.title;
@@ -105,6 +142,15 @@ function createTaskCardClone(newTaskCard) {
   // Return fragment
   return clone;
 }
+// Render add list section
+function renderAddListSection() {
+  const board = document.querySelector("#board");
+  const addListSectionTemplate = document.querySelector(
+    "#add-list-section-template"
+  );
+  const clone = addListSectionTemplate.content.cloneNode(true);
+  board.append(clone);
+}
 // Render status drop option
 function renderStatusDropOption(jData, scope) {
   const dropMenu = scope.querySelectorAll("[data-status-drop-option]");
@@ -114,7 +160,24 @@ function renderStatusDropOption(jData, scope) {
     });
   });
 }
+// Render list menu option
+function renderListMenuOption(jData, scope) {
+  const listMenu = scope.querySelectorAll("[list-menu-drop-option]");
+  listMenu.forEach((item) => {
+    item.appendChild(createListOrderLabel());
+    jData.board.forEach((list) => {
+      item.appendChild(createListOrderOption(jData, list));
+    });
+    item.appendChild(createDropdownDivider());
+    item.appendChild(createListDeleteOption());
+  });
+}
 // <-EXPORT->
+// Clear Board
+function clearBoard() {
+  const board = document.querySelector("#board");
+  board.innerHTML = "";
+}
 // Render Data
 function renderData(jData) {
   const board = document.querySelector("#board");
@@ -133,15 +196,7 @@ function renderData(jData) {
   });
   renderAddListSection();
   renderStatusDropOption(jData, document);
-}
-// Render add list section
-function renderAddListSection() {
-  const board = document.querySelector("#board");
-  const addListSectionTemplate = document.querySelector(
-    "#add-list-section-template"
-  );
-  const clone = addListSectionTemplate.content.cloneNode(true);
-  board.append(clone);
+  renderListMenuOption(jData, document);
 }
 // Render add list form
 function renderAddListForm(addListCanvas) {
@@ -155,9 +210,12 @@ function renderNewList(newList, jData) {
   const listElement = createListClone(newList);
   board.append(listElement);
   renderAddListSection();
-  const dropMenu = document.querySelectorAll("[data-status-drop-option]");
-  dropMenu.forEach((node) => (node.innerHTML = ""));
+  const statusDropMenu = document.querySelectorAll("[data-status-drop-option]");
+  statusDropMenu.forEach((node) => (node.innerHTML = ""));
   renderStatusDropOption(jData, document);
+  const listDropMenu = document.querySelectorAll("[list-menu-drop-option]");
+  listDropMenu.forEach((node) => (node.innerHTML = ""));
+  renderListMenuOption(jData, document);
 }
 // Render new task card form
 function renderAddNewTaskCardForm(canvas) {
@@ -189,6 +247,7 @@ function renderModalStatusOption(jData) {
 }
 // Export
 export {
+  clearBoard,
   renderData,
   renderNewList,
   renderAddListForm,
