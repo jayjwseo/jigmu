@@ -4,7 +4,7 @@
 
 //Board Page Color Palette ----->
 Nav: #02549a
-Board: #02539ad0
+Board: #2d70bf
 List Canvas: #EBECF0
 Modal: #F4F5F7
 
@@ -29,7 +29,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans";
-  background: rgb(45, 112, 191);
+  background: #2d70bf;
   display: flex;
   height: 100%;
   white-space: wrap;
@@ -135,6 +135,39 @@ h2 {
   border-radius: 4px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
+}
+
+.add-list-title {
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-list-section-style {
+  background: rgb(17, 93, 165);
+  white-space: normal;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
+}
+
+.add-list-btn-style {
+  background: rgb(17, 93, 165);
+  color: white;
+  font-weight: bold;
+}
+
+.add-list-btn-style:hover {
+  background: hsl(209, 81%, 31%);
+  color: white;
+}
+
+.add-list textarea:focus {
+  border-color: rgb(17, 93, 165) !important;
+  box-shadow: 0 1px 1px transparent inset, 0 0 8px transparent !important;
+  outline: 0 none !important;
 }
 
 .add-task {

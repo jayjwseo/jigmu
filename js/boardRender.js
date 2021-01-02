@@ -117,9 +117,9 @@ function renderStatusDropOption(jData, scope) {
 // <-EXPORT->
 // Render Data
 function renderData(jData) {
+  const board = document.querySelector("#board");
   jData.board.forEach((list) => {
     // Render list
-    const board = document.querySelector("#board");
     const listElement = createListClone(list);
     board.append(listElement);
     // Render Tasks
@@ -131,6 +131,32 @@ function renderData(jData) {
       cardList.append(taskCardElement);
     });
   });
+  renderAddListSection();
+  renderStatusDropOption(jData, document);
+}
+// Render add list section
+function renderAddListSection() {
+  const board = document.querySelector("#board");
+  const addListSectionTemplate = document.querySelector(
+    "#add-list-section-template"
+  );
+  const clone = addListSectionTemplate.content.cloneNode(true);
+  board.append(clone);
+}
+// Render add list form
+function renderAddListForm(addListCanvas) {
+  const addListFormTemplate = document.querySelector("#add-list-form-template");
+  const clone = addListFormTemplate.content.cloneNode(true);
+  addListCanvas.append(clone);
+}
+// Render new list
+function renderNewList(newList, jData) {
+  const board = document.querySelector("#board");
+  const listElement = createListClone(newList);
+  board.append(listElement);
+  renderAddListSection();
+  const dropMenu = document.querySelectorAll("[data-status-drop-option]");
+  dropMenu.forEach((node) => (node.innerHTML = ""));
   renderStatusDropOption(jData, document);
 }
 // Render new task card form
@@ -164,6 +190,8 @@ function renderModalStatusOption(jData) {
 // Export
 export {
   renderData,
+  renderNewList,
+  renderAddListForm,
   renderAddNewTaskCardForm,
   renderNewTaskCard,
   renderUpdateTaskCard,

@@ -142,7 +142,6 @@
                                         <span class="input-group-text modal-icons"><i class="fas fa-stream"></i></span>
                                     </div>
                                     <select id="new-task-status" class="form-control" data-modal-list-option>
-                                        <!-- Modal status options -->
                                     </select>
                                 </div>
                             </div>
@@ -181,8 +180,43 @@
                                 class="add-task float-right"><i class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                         </h5>
                         <div class="task-card-canvas" data-list-id="">
-                            <!-- Task cards -->
                         </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Add list section template -->
+        <template id="add-list-section-template">
+            <div class="add-list-section list-wrapper">
+                <div class="card add-list-section-style">
+                    <div class="card-body p-2">
+                        <h5 class="card-title add-list-title"><i class="far fa-plus-square"></i> Add
+                            another list
+                        </h5>
+                        <div class="add-list-canvas">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Add list form template -->
+        <template id="add-list-form-template">
+            <div class="add-list task-card-style">
+                <div class="card border-0">
+                    <div class="card-body p-2">
+                        <form id="add-list-form">
+                            <div class="form-group mb-2">
+                                <label class="d-none" for="add-list-title">List Title</label>
+                                <textarea name="" id="add-list-title" class="form-control text-area" rows="1"
+                                    placeholder="Enter list title..." maxlength="24" autofocus></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" form="add-list-form"
+                                    class="btn btn-sm add-list-btn-style add-list-btn">Add
+                                    List</button>
+                                <button class="btn btn-sm cancel-add-list-btn cancel-task-btn-style">Cancel</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -222,7 +256,6 @@
                                         </p>
                                     </div>
                                     <div class="dropdown-menu task-card-drop" data-status-drop-option>
-                                        <!-- Task card status options -->
                                     </div>
                                 </div>
                             </div>
@@ -241,7 +274,7 @@
                             <div class="form-group mb-2">
                                 <label class="d-none" for="add-task-card-title">Task Card Title</label>
                                 <textarea name="" id="add-task-card-title" class="form-control text-area" rows="2"
-                                    placeholder="Enter task title..." maxlength="45" autofocus></textarea>
+                                    placeholder="Enter task title..." maxlength="40" autofocus></textarea>
                             </div>
                             <div>
                                 <button type="submit" form="add-task-card-form"
@@ -255,6 +288,7 @@
                 </div>
                 <div class="drop-loc"></div>
             </div>
+        </template>
     </main>
 </body>
 
