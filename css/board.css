@@ -1,6 +1,7 @@
 /* 
 //Text
 #2f2e41
+#192B4D
 
 //Board Page Color Palette ----->
 Nav: #02549a
@@ -29,7 +30,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans";
-  background: #2d70bf;
+  background: #192b4d;
   display: flex;
   height: 100%;
   white-space: wrap;
@@ -45,7 +46,7 @@ h2 {
 }
 
 .nav-bg {
-  background: #02549a;
+  background: rgba(0, 0, 0, 0.32);
 }
 
 .board-logo {
@@ -57,7 +58,7 @@ h2 {
 }
 
 .user-drop-item {
-  color: #2f2e41;
+  color: #192b4d;
 }
 
 .user-drop-item:hover {
@@ -69,9 +70,10 @@ h2 {
 .user-drop {
   background: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
+  min-width: 8px;
 }
 
 @media (min-width: 576px) {
@@ -91,6 +93,10 @@ h2 {
   padding: 55px 7px 10px 7px;
   overflow-x: auto;
   overflow-y: auto;
+  /* background: linear-gradient(to bottom, #2d70bf, #02549a); */
+  background-image: url("../images/boardbg.jpg");
+  background-position: 50%;
+  background-size: cover;
 }
 
 .board-canvas p {
@@ -101,7 +107,7 @@ h2 {
 .list-title {
   font-weight: bold;
   font-size: 1rem;
-  color: #2f2e41;
+  color: #192b4d;
 }
 
 .list-title-pointer {
@@ -114,7 +120,7 @@ h2 {
 }
 
 .list-wrapper {
-  width: 260px;
+  width: 272px;
   margin: 3px;
   height: 90%;
   display: inline-block;
@@ -127,7 +133,7 @@ h2 {
   }
 
   .list-wrapper {
-    width: 360px;
+    width: 340px;
     scroll-snap-align: center;
   }
 }
@@ -136,7 +142,7 @@ h2 {
   background: #ebecf0;
   white-space: normal;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
@@ -148,28 +154,32 @@ h2 {
   cursor: pointer;
 }
 
+.add-list-title:hover {
+  font-weight: 600;
+}
+
 .add-list-section-style {
-  background: rgb(17, 93, 165);
+  background: rgba(0, 0, 0, 0.32);
   white-space: normal;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
 
 .add-list-btn-style {
-  background: rgb(17, 93, 165);
+  background: #02549a;
   color: white;
   font-weight: bold;
 }
 
 .add-list-btn-style:hover {
-  background: hsl(209, 81%, 31%);
+  background: hsl(208, 97%, 36%);
   color: white;
 }
 
 .add-list textarea:focus {
-  border-color: rgb(17, 93, 165) !important;
+  border-color: #02549a !important;
   box-shadow: 0 1px 1px transparent inset, 0 0 8px transparent !important;
   outline: 0 none !important;
 }
@@ -179,12 +189,12 @@ h2 {
 }
 
 .add-task {
-  color: rgb(45, 112, 191);
+  color: #192b4d;
   cursor: pointer;
 }
 
 .add-task:hover {
-  color: #02549a;
+  color: #059eb2;
 }
 
 .task-card-canvas {
@@ -198,12 +208,12 @@ h2 {
 
 .list-menu-click:hover {
   background: hsl(220, 16%, 91%);
-  border-radius: 4px;
+  border-radius: 3px;
   font-weight: bold;
 }
 
 .list-menu-drop-item {
-  color: #2f2e41;
+  color: #192b4d;
   cursor: default;
 }
 
@@ -214,7 +224,7 @@ h2 {
 }
 
 .list-menu-drop-item.list-order-label {
-  color: #2f2e41;
+  color: #192b4d;
   font-weight: bold;
 }
 
@@ -237,7 +247,7 @@ h2 {
   font-size: 0.85rem;
   background: #f4f5f7;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
@@ -249,7 +259,7 @@ h2 {
 /* Task Card */
 .task-card-style .card {
   background: white;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
@@ -263,14 +273,14 @@ h2 {
 }
 
 .task-card h6 {
-  color: #2f2e41;
+  color: #192b4d;
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 0;
 }
 
 .task-card p {
-  color: #2f2e41;
+  color: #192b4d;
   font-size: 0.85rem;
   margin: 0;
 }
@@ -300,7 +310,7 @@ h2 {
 .task-card-tag {
   width: 140px;
   border: 4px solid;
-  border-radius: 4px;
+  border-radius: 3px;
   margin-bottom: 0.3rem;
 }
 
@@ -331,7 +341,7 @@ select:focus {
 
 .task-card-edit-toggle:hover {
   background: #f4f5f7;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 /* Task Card Status Dropdown */
@@ -346,12 +356,12 @@ select:focus {
 
 .task-card-status-click:hover {
   background: hsl(220, 16%, 91%);
-  border-radius: 4px;
+  border-radius: 3px;
   font-weight: bold;
 }
 
 .task-card-drop-item {
-  color: #2f2e41;
+  color: #192b4d;
   cursor: default;
 }
 
@@ -365,7 +375,7 @@ select:focus {
   font-size: 0.85rem;
   background: #f4f5f7;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
@@ -378,7 +388,7 @@ select:focus {
 .modal-style {
   background: #f4f5f7;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
 }
@@ -417,7 +427,7 @@ select:focus {
 }
 
 .update-task-btn-style:hover {
-  background: hsl(187, 95%, 31%);
+  background: hsl(187, 95%, 41%);
   color: white;
 }
 

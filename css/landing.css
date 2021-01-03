@@ -1,6 +1,7 @@
 /* 
 //Text
 #2f2e41
+#192B4D
 
 //Board Page Color Palette ----->
 List Canvas: #EBECF0
@@ -133,13 +134,13 @@ p {
 }
 
 .cta-button:hover {
-  background: #2f2e41;
+  background: #192b4d;
   color: white;
 }
 
 .cta-button:active,
 .cta-button:focus {
-  box-shadow: 0 3px 0 0 #2f2e41;
+  box-shadow: 0 3px 0 0 #192b4d;
 }
 
 .cta-form {
@@ -155,7 +156,7 @@ p {
 .features {
   padding-top: 3.7rem;
   padding-bottom: 2.2rem;
-  color: #2f2e41;
+  color: #192b4d;
 }
 
 .features h2 {
