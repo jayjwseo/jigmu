@@ -22,7 +22,6 @@ const defaultTemplate = {
       id: uuidV4(),
       taskCardSet: [],
     },
-    { title: "REVIEW", id: uuidV4(), taskCardSet: [] },
     { title: "DONE", id: uuidV4(), taskCardSet: [] },
   ],
 };

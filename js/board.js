@@ -9,9 +9,12 @@ import {
   renderAddNewTaskCardForm,
   renderModalStatusOption,
 } from "./boardRender.js";
+import { dragDrop } from "./dragDrop.js";
 import { TaskList, TaskCard } from "./constructors.js";
 // Render data
 renderData(jData);
+// Drag and drop
+dragDrop();
 // Modal - form
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");

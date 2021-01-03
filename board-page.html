@@ -86,7 +86,7 @@
                                 <div class="current-task-title" id="current-task-title-hide">
                                     <h5 data-current-task-title></h5>
                                 </div>
-                                <input type="text" class="form-control d-none" name="" id="new-task-title"
+                                <input type="text" class="form-control d-none" id="new-task-title"
                                     placeholder="Task Title" maxlength="40">
                             </div>
                             <div class="dropdown-divider m-0"></div>
@@ -95,8 +95,8 @@
                                 <div class="current-task-desc" id="current-task-desc-hide">
                                     <p data-current-task-desc></p>
                                 </div>
-                                <textarea name="" id="new-task-desc" class="form-control text-area d-none" rows="5"
-                                    placeholder="Description..." value=""></textarea>
+                                <textarea id="new-task-desc" class="form-control text-area d-none" rows="5"
+                                    placeholder="Description..."></textarea>
                             </div>
                             <div class="dropdown-divider m-2"></div>
                             <div class="form-group row justify-content-between">
@@ -106,8 +106,7 @@
                                         <span class="input-group-text modal-icons"><i
                                                 class="fas fa-user-circle"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Members" id="new-task-member"
-                                        value="">
+                                    <input type="text" class="form-control" placeholder="Members" id="new-task-member">
                                 </div>
                                 <div class="input-group col-12 col-sm">
                                     <label for="new-task-date" class="d-none">Due Date</label>
@@ -115,8 +114,7 @@
                                         <span class="input-group-text modal-icons"><i
                                                 class="far fa-calendar-check"></i></span>
                                     </div>
-                                    <input type="date" class="form-control" placeholder="Due Date" id="new-task-date"
-                                        value="">
+                                    <input type="date" class="form-control" placeholder="Due Date" id="new-task-date">
                                 </div>
                             </div>
                             <div class="form-group row justify-content-between">
@@ -185,7 +183,7 @@
                             </span><a class="add-task float-right"><i
                                     class="fas fa-plus fa-plus-custom add-task-btn"></i></a>
                         </h5>
-                        <div class="task-card-canvas" data-list-id="">
+                        <div class="task-card-canvas">
                         </div>
                     </div>
                 </div>
@@ -213,7 +211,7 @@
                         <form id="add-list-form">
                             <div class="form-group mb-2">
                                 <label class="d-none" for="add-list-title">List Title</label>
-                                <textarea name="" id="add-list-title" class="form-control text-area" rows="1"
+                                <textarea id="add-list-title" class="form-control text-area" rows="1"
                                     placeholder="Enter list title..." maxlength="24" autofocus></textarea>
                             </div>
                             <div>
@@ -230,8 +228,8 @@
         <!-- Task card template -->
         <template id="task-card-template">
             <div class="task-card task-card-style">
-                <div class="card border-0" id="" draggable="true" ondragstart="">
-                    <div class="task-card-edit-toggle" type="">
+                <div class="card border-0">
+                    <div class="task-card-edit-toggle task-card-draggable" data-draggable>
                         <div class="card-body card-body-pointer-e">
                             <div class="card-title task-card-title">
                                 <h6 data-task-card-title></h6>
@@ -256,7 +254,7 @@
                             <div class="dropdown-divider" id="divider-status"></div>
                             <div class="task-card-element task-card-status">
                                 <div class="dropdown task-card-status-click">
-                                    <div class="dropdown-toggle task-card-drop-toggle" type="" data-toggle="dropdown">
+                                    <div class="dropdown-toggle task-card-drop-toggle" data-toggle="dropdown">
                                         <p class="d-inline"><i class="fas fa-stream"></i><span class="task-card-item"
                                                 data-task-card-status></span>
                                         </p>
@@ -274,12 +272,12 @@
         <!-- Add Task Card Template -->
         <template id="add-task-card-template">
             <div class="add-task-card task-card-style">
-                <div class="card border-0" id="" draggable="false" ondragstart="">
+                <div class="card border-0">
                     <div class="card-body p-2">
                         <form id="add-task-card-form">
                             <div class="form-group mb-2">
                                 <label class="d-none" for="add-task-card-title">Task Card Title</label>
-                                <textarea name="" id="add-task-card-title" class="form-control text-area" rows="2"
+                                <textarea id="add-task-card-title" class="form-control text-area" rows="2"
                                     placeholder="Enter task title..." maxlength="40" autofocus></textarea>
                             </div>
                             <div>
