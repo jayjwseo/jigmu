@@ -14,7 +14,7 @@ import { TaskList, TaskCard } from "./constructors.js";
 // Render data
 renderData(jData);
 // Drag and drop
-dragDrop();
+dragDrop(dragComplete);
 // Modal - form
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
@@ -258,6 +258,27 @@ $("#new-task-modal").on("hide.bs.modal", () => {
 });
 
 // <-FUNCTIONS->
+// Drag and drop callback
+function dragComplete(e) {
+  const fromListId = e.startDropZone.dataset.listId;
+  const fromListObj = jData.board.find((list) => list.id === fromListId);
+  const toListId = e.endDropZone.dataset.listId;
+  const toListObj = jData.board.find((list) => list.id === toListId);
+  const taskCardId = e.taskCard.dataset.taskCardId;
+  const taskCardObj = fromListObj.taskCardSet.find(
+    (task) => task.id === taskCardId
+  );
+  const taskCardIndex = e.index;
+  taskCardObj.status = toListObj.title;
+  fromListObj.taskCardSet.splice(
+    fromListObj.taskCardSet.indexOf(taskCardObj),
+    1
+  );
+  toListObj.taskCardSet.splice(taskCardIndex, 0, taskCardObj);
+  saveCanvas();
+  clearBoard();
+  renderData(jData);
+}
 // Clear form messages
 function clearMessages(messages) {
   messages.forEach((msg) => {

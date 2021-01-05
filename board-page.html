@@ -171,13 +171,14 @@
         </div>
         <!-- List template -->
         <template id="list-template">
-            <div class="list-wrapper list-canvas">
+            <div class="list-wrapper list-canvas" data-drop-zone-list-canvas>
                 <div class="card list-canvas-style">
                     <div class="card-body p-2">
                         <h5 class="card-title list-title">
                             <span class="dropdown list-menu-click">
                                 <span class="dropdown-toggle list-menu-drop-toggle" data-toggle="dropdown"><span
-                                        class="list-title-pointer" data-list-title></span></span>
+                                        class="list-title-pointer" data-list-title></span><i
+                                        class="fas fa-angle-down list-title-icon"></i></span>
                                 <span class="dropdown-menu list-menu-drop" list-menu-drop-option>
                                 </span>
                             </span><a class="add-task float-right"><i
@@ -266,7 +267,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="drop-loc"></div>
             </div>
         </template>
         <!-- Add Task Card Template -->
@@ -290,7 +290,6 @@
                         </form>
                     </div>
                 </div>
-                <div class="drop-loc"></div>
             </div>
         </template>
     </main>
