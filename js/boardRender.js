@@ -1,16 +1,4 @@
-// Convert to user friendly date format
-function friendlyDate(date) {
-  let dateInput = new Date(date);
-  let frdlyDate = dateInput.toDateString();
-  return frdlyDate;
-}
-// Truncate description length on task card
-function truncateString(str, num) {
-  if (str.length <= num) {
-    return str;
-  }
-  return str.slice(0, num) + "...";
-}
+import { friendlyDate, truncateString } from "./utils.js";
 // Create list menu order option element
 function createListOrderOption(jData, list) {
   const orderNumber = jData.board.indexOf(list);

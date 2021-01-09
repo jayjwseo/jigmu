@@ -2,20 +2,21 @@ import { jData, saveCanvas } from "./dataManager.js";
 import {
   clearBoard,
   renderData,
-  renderNewList,
   renderAddListForm,
-  renderUpdateTaskCard,
-  renderNewTaskCard,
   renderAddNewTaskCardForm,
   renderModalStatusOption,
 } from "./boardRender.js";
 import { dragDrop } from "./dragDrop.js";
-import { TaskList, TaskCard } from "./constructors.js";
+import { ListModel } from "./listModel.js";
+import { TaskModel } from "./taskModel.js";
+import { clearMessages, dateValidRef } from "./utils.js";
 // Render data
 renderData(jData);
-// Drag and drop
-dragDrop(dragComplete);
-// Modal - form
+// Selected task global variables
+let selectedTaskCardElement;
+let selectedTaskCardObj;
+let selectedTaskCardListObj;
+// Selectors - Modal
 const newTaskForm = document.querySelector("#new-task-form");
 const newTitleInput = document.querySelector("#new-task-title");
 const newDescInput = document.querySelector("#new-task-desc");
@@ -26,10 +27,7 @@ const newStatusInput = document.querySelector("#new-task-status");
 const deleteTaskBtn = document.querySelector("#delete-task-button");
 const currentTitle = document.querySelector("#current-task-title-hide");
 const currentDesc = document.querySelector("#current-task-desc-hide");
-// Selected task card object & element
-let selectedTaskCardElement;
-let selectedTaskCardObj;
-let selectedTaskCardListObj;
+// LIST CONTROL
 // Add new list form
 document.addEventListener("click", (e) => {
   if (!e.target.matches(".add-list-title")) return;
@@ -52,11 +50,7 @@ document.addEventListener("click", (e) => {
     const addListForm = e.target.closest(".add-list");
     const addListTitle = addListForm.querySelector("#add-list-title").value;
     if (addListTitle) {
-      const newList = new TaskList(addListTitle);
-      jData.board.push(newList);
-      addListSection.remove();
-      renderNewList(newList, jData);
-      saveCanvas();
+      ListModel.addList(addListTitle, addListSection);
     } else {
       return;
     }
@@ -68,6 +62,26 @@ document.addEventListener("click", (e) => {
     return;
   }
 });
+// Change list order
+document.addEventListener("click", (e) => {
+  if (!e.target.matches(".list-order-change")) return;
+  const currentList = e.target.closest(".list-canvas");
+  const currentListTaskCanvas = currentList.querySelector(".task-card-canvas");
+  const currentListId = currentListTaskCanvas.dataset.listId;
+  const currentListObj = jData.board.find((list) => list.id === currentListId);
+  const toOrder = e.target.dataset.listOrder;
+  ListModel.changeOrder(currentListObj, toOrder);
+});
+// Delete list
+document.addEventListener("click", (e) => {
+  if (!e.target.matches(".list-delete")) return;
+  const currentList = e.target.closest(".list-canvas");
+  const currentListTaskCanvas = currentList.querySelector(".task-card-canvas");
+  const currentListId = currentListTaskCanvas.dataset.listId;
+  const currentListObj = jData.board.find((list) => list.id === currentListId);
+  ListModel.deleteList(currentListObj);
+});
+// TASK CARD CONTROL
 // Add new task card form
 document.addEventListener("click", (e) => {
   if (!e.target.matches(".add-task-btn")) return;
@@ -94,7 +108,13 @@ document.addEventListener("click", (e) => {
     const listObj = jData.board.find((list) => list.id === listId);
     const taskStatus = listObj.title;
     if (taskTitle) {
-      addTaskCard(taskTitle, taskStatus, listEle, listObj, addNewTaskCardForm);
+      TaskModel.addTaskCard(
+        taskTitle,
+        taskStatus,
+        listEle,
+        listObj,
+        addNewTaskCardForm
+      );
     } else {
       return;
     }
@@ -106,32 +126,6 @@ document.addEventListener("click", (e) => {
     return;
   }
 });
-// Change list order
-document.addEventListener("click", (e) => {
-  if (!e.target.matches(".list-order-change")) return;
-  const currentList = e.target.closest(".list-canvas");
-  const currentListTaskCanvas = currentList.querySelector(".task-card-canvas");
-  const currentListId = currentListTaskCanvas.dataset.listId;
-  const currentListObj = jData.board.find((list) => list.id === currentListId);
-  const toOrder = e.target.dataset.listOrder;
-  jData.board.splice(jData.board.indexOf(currentListObj), 1);
-  jData.board.splice(toOrder, 0, currentListObj);
-  clearBoard();
-  renderData(jData);
-  saveCanvas();
-});
-// Delete list
-document.addEventListener("click", (e) => {
-  if (!e.target.matches(".list-delete")) return;
-  const currentList = e.target.closest(".list-canvas");
-  const currentListTaskCanvas = currentList.querySelector(".task-card-canvas");
-  const currentListId = currentListTaskCanvas.dataset.listId;
-  const currentListObj = jData.board.find((list) => list.id === currentListId);
-  jData.board.splice(jData.board.indexOf(currentListObj), 1);
-  clearBoard();
-  renderData(jData);
-  saveCanvas();
-});
 // Update task card status
 document.addEventListener("click", (e) => {
   if (!e.target.matches(".data-status-change")) return;
@@ -140,20 +134,12 @@ document.addEventListener("click", (e) => {
   const currentListId = currentListEle.dataset.listId;
   const currentListObj = jData.board.find((list) => list.id === currentListId);
   const taskCard = e.target.closest(".task-card");
-  const listId = e.target.dataset.taskListId;
-  const listEle = document.querySelector(`[data-list-id="${listId}"]`);
-  const listObj = jData.board.find((list) => list.id === listId);
+  const toListId = e.target.dataset.taskListId;
+  const toListEle = document.querySelector(`[data-list-id="${toListId}"]`);
+  const toListObj = jData.board.find((list) => list.id === toListId);
   const taskId = taskCard.dataset.taskCardId;
   const task = currentListObj.taskCardSet.find((t) => t.id === taskId);
-  task.status = listObj.title;
-  currentListObj.taskCardSet.splice(
-    currentListObj.taskCardSet.indexOf(task),
-    1
-  );
-  listObj.taskCardSet.splice(listObj.taskCardSet.length, 0, task);
-  taskCard.remove();
-  renderNewTaskCard(task, listEle, jData);
-  saveCanvas();
+  TaskModel.updateStatus(task, currentListObj, toListObj, toListEle, taskCard);
 });
 // Set selected task card & toggle modal
 document.addEventListener("click", (e) => {
@@ -212,7 +198,10 @@ newTaskForm.addEventListener("submit", (e) => {
   // 1 1 1	1
   // y = AB' + AC
   if ((taskTitle && !taskDate) || (taskTitle && dateValid)) {
-    updateTaskCard(
+    TaskModel.updateTaskCard(
+      selectedTaskCardListObj,
+      selectedTaskCardObj,
+      selectedTaskCardElement,
       taskTitle,
       taskDesc,
       taskMember,
@@ -240,7 +229,11 @@ currentDesc.addEventListener("click", () => {
 });
 // Modal - delete Task
 deleteTaskBtn.addEventListener("click", () => {
-  deleteTaskCard();
+  TaskModel.deleteTaskCard(
+    selectedTaskCardListObj,
+    selectedTaskCardObj,
+    selectedTaskCardElement
+  );
 });
 // Modal - reset on close
 $("#new-task-modal").on("hide.bs.modal", () => {
@@ -256,9 +249,9 @@ $("#new-task-modal").on("hide.bs.modal", () => {
   const statusOption = document.querySelector("[data-modal-list-option]");
   statusOption.querySelectorAll("*").forEach((option) => option.remove());
 });
-
-// <-FUNCTIONS->
-// Drag and drop callback
+// DRAG AND DROP CONTROL
+dragDrop(dragComplete);
+// Callback
 function dragComplete(e) {
   const fromListId = e.startDropZone.dataset.listId;
   const fromListObj = jData.board.find((list) => list.id === fromListId);
@@ -278,70 +271,4 @@ function dragComplete(e) {
   saveCanvas();
   clearBoard();
   renderData(jData);
-}
-// Clear form messages
-function clearMessages(messages) {
-  messages.forEach((msg) => {
-    msg.classList.add("d-none");
-  });
-}
-// Generate date validation reference
-function dateValidRef() {
-  // Today w/o timestamp
-  const y = new Date(
-    new Date().getFullYear(),
-    new Date().getMonth(),
-    new Date().getDate()
-  );
-  // Today minus 1ms
-  const ref = new Date(y.setMilliseconds(y.getMilliseconds() - 1));
-  return ref;
-}
-// Add task card
-function addTaskCard(title, status, listEle, listObj, removeAddForm) {
-  const newTaskCard = new TaskCard(title, "", "", "", "", status);
-  listObj.taskCardSet.push(newTaskCard);
-  renderNewTaskCard(newTaskCard, listEle, jData);
-  saveCanvas();
-  removeAddForm.remove();
-}
-// Update task Card
-function updateTaskCard(title, desc, member, date, tag, status) {
-  // Status change?
-  const statusChange = selectedTaskCardObj.status === status ? false : true;
-  selectedTaskCardObj.title = title;
-  selectedTaskCardObj.desc = desc;
-  selectedTaskCardObj.member = member;
-  selectedTaskCardObj.date = date;
-  selectedTaskCardObj.tag = tag;
-  selectedTaskCardObj.status = status;
-  if (statusChange) {
-    const listObj = jData.board.find((list) => list.title === status);
-    const listId = listObj.id;
-    const listEle = document.querySelector(`[data-list-id="${listId}"]`);
-    selectedTaskCardListObj.taskCardSet.splice(
-      selectedTaskCardListObj.taskCardSet.indexOf(selectedTaskCardObj),
-      1
-    );
-    listObj.taskCardSet.splice(
-      listObj.taskCardSet.length,
-      0,
-      selectedTaskCardObj
-    );
-    selectedTaskCardElement.remove();
-    renderNewTaskCard(selectedTaskCardObj, listEle, jData);
-  } else {
-    renderUpdateTaskCard(selectedTaskCardObj, selectedTaskCardElement, jData);
-  }
-  saveCanvas();
-  $("#new-task-modal").modal("hide");
-}
-// Delete task card
-function deleteTaskCard() {
-  selectedTaskCardListObj.taskCardSet = selectedTaskCardListObj.taskCardSet.filter(
-    (task) => task.id !== selectedTaskCardObj.id
-  );
-  selectedTaskCardElement.remove();
-  saveCanvas();
-  $("#new-task-modal").modal("hide");
 }

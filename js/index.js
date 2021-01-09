@@ -1,5 +1,5 @@
 import { jData, saveCanvas } from "./dataManager.js";
-import { TaskCard } from "./constructors.js";
+import { TaskModel } from "./taskModel.js";
 // Selectors
 const ctaNewTaskButton = document.querySelector("#cta-new-task-btn");
 // CTA add new task & redirect
@@ -7,7 +7,7 @@ ctaNewTaskButton.addEventListener("click", () => {
   const ctaNewTaskTitle = document.querySelector("#cta-new-task-input").value;
   if (ctaNewTaskTitle) {
     const firstList = jData.board[0];
-    const ctaNewTask = new TaskCard(
+    const ctaNewTask = new TaskModel(
       ctaNewTaskTitle,
       "",
       "",
