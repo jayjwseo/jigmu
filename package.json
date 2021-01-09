@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html board-page.html",
-    "build": "parcel build index.html board-page.html"
+    "start": "parcel index.html board.html",
+    "build": "parcel build index.html board.html"
   },
   "repository": {
     "type": "git",

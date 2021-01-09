@@ -17,9 +17,9 @@ ctaNewTaskButton.addEventListener("click", () => {
     );
     firstList.taskCardSet.push(ctaNewTask);
     saveCanvas();
-    location.href = "board-page.html";
+    location.href = "board.html";
   } else {
-    location.href = "board-page.html";
+    location.href = "board.html";
   }
 });
 // CTA bar observer

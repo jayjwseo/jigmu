@@ -34,14 +34,10 @@ function dragDrop(dragCompleteInfo) {
           return e.clientY < rect.top + rect.height / 2;
         }
       );
-      console.log(closestTaskCardBelow);
       selectedTaskCard.classList.add("d-none");
       if (closestTaskCardBelow) {
         // Place above the existing task card
         dropCanvas.insertBefore(placeholder, closestTaskCardBelow);
-        console.log(
-          "First: " + Array.from(dropCanvas.children).indexOf(placeholder)
-        );
       } else {
         dropCanvas.append(placeholder);
       }
