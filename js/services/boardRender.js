@@ -1,4 +1,4 @@
-import { friendlyDate, truncateString } from "./utils.js";
+import { friendlyDate, truncateString } from "../utils/utils.js";
 // Create list menu order option element
 function createListOrderOption(jData, list) {
   const orderNumber = jData.board.indexOf(list);

@@ -1,6 +1,10 @@
-import { v4 as uuidV4 } from "../node_modules/uuid/dist/esm-browser/index.js";
-import { jData, saveCanvas } from "./dataManager.js";
-import { clearBoard, renderData, renderNewList } from "./boardRender.js";
+import { v4 as uuidV4 } from "../../node_modules/uuid/dist/esm-browser/index.js";
+import { jData, saveCanvas } from "../services/dataManager.js";
+import {
+  clearBoard,
+  renderData,
+  renderNewList,
+} from "../services/boardRender.js";
 // List model
 class ListModel {
   constructor(title) {

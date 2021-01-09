@@ -1,5 +1,5 @@
-import { jData, saveCanvas } from "./dataManager.js";
-import { TaskModel } from "./taskModel.js";
+import { jData, saveCanvas } from "../services/dataManager.js";
+import { TaskModel } from "../models/taskModel.js";
 // Selectors
 const ctaNewTaskButton = document.querySelector("#cta-new-task-btn");
 // CTA add new task & redirect

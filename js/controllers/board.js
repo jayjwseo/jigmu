@@ -1,15 +1,15 @@
-import { jData, saveCanvas } from "./dataManager.js";
+import { jData, saveCanvas } from "../services/dataManager.js";
 import {
   clearBoard,
   renderData,
   renderAddListForm,
   renderAddNewTaskCardForm,
   renderModalStatusOption,
-} from "./boardRender.js";
-import { dragDrop } from "./dragDrop.js";
-import { ListModel } from "./listModel.js";
-import { TaskModel } from "./taskModel.js";
-import { clearMessages, dateValidRef } from "./utils.js";
+} from "../services/boardRender.js";
+import { dragDrop } from "../services/dragDrop.js";
+import { ListModel } from "../models/listModel.js";
+import { TaskModel } from "../models/taskModel.js";
+import { clearMessages, dateValidRef } from "../utils/utils.js";
 // Render data
 renderData(jData);
 // Selected task global variables

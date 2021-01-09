@@ -1,6 +1,9 @@
-import { v4 as uuidV4 } from "../node_modules/uuid/dist/esm-browser/index.js";
-import { jData, saveCanvas } from "./dataManager.js";
-import { renderUpdateTaskCard, renderNewTaskCard } from "./boardRender.js";
+import { v4 as uuidV4 } from "../../node_modules/uuid/dist/esm-browser/index.js";
+import { jData, saveCanvas } from "../services/dataManager.js";
+import {
+  renderUpdateTaskCard,
+  renderNewTaskCard,
+} from "../services/boardRender.js";
 // Task model
 class TaskModel {
   constructor(title, desc, member, date, tag, status) {
