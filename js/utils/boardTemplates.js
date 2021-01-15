@@ -1,4 +1,4 @@
-import { v4 as uuidV4 } from "../../node_modules/uuid/dist/esm-browser/index.js";
+import { v4 as uuidV4 } from "uuid";
 // Templates
 const defaultTemplate = {
   board: [

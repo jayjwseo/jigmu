@@ -1,3 +1,6 @@
+import "bootstrap";
+import "../../css/landing.scss";
+import "@fortawesome/fontawesome-free/css/all.css";
 import { jData, saveCanvas } from "../services/dataManager.js";
 import { TaskModel } from "../models/taskModel.js";
 // Selectors

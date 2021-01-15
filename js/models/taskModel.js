@@ -1,4 +1,4 @@
-import { v4 as uuidV4 } from "../../node_modules/uuid/dist/esm-browser/index.js";
+import { v4 as uuidV4 } from "uuid";
 import { jData, saveCanvas } from "../services/dataManager.js";
 import {
   renderUpdateTaskCard,
@@ -13,15 +13,15 @@ class TaskModel {
     this.date = date;
     this.tag = tag;
     this.status = status;
+    this.checklist = [];
     this.id = uuidV4();
   }
   // Add task card
-  static addTaskCard(title, status, listEle, listObj, removeAddForm) {
+  static addTaskCard(title, status, listEle, listObj) {
     const newTaskCard = new TaskModel(title, "", "", "", "", status);
     listObj.taskCardSet.push(newTaskCard);
     renderNewTaskCard(newTaskCard, listEle, jData);
-    saveCanvas();
-    removeAddForm.remove();
+    return newTaskCard;
   }
   // Update status
   static updateStatus(task, currentListObj, toListObj, toListEle, taskCard) {
@@ -73,21 +73,12 @@ class TaskModel {
     } else {
       renderUpdateTaskCard(selectedTaskCardObj, selectedTaskCardElement, jData);
     }
-    saveCanvas();
-    $("#new-task-modal").modal("hide");
   }
   // Delete task card
-  static deleteTaskCard(
-    selectedTaskCardListObj,
-    selectedTaskCardObj,
-    selectedTaskCardElement
-  ) {
+  static deleteTaskCard(selectedTaskCardListObj, selectedTaskCardObj) {
     selectedTaskCardListObj.taskCardSet = selectedTaskCardListObj.taskCardSet.filter(
       (task) => task.id !== selectedTaskCardObj.id
     );
-    selectedTaskCardElement.remove();
-    saveCanvas();
-    $("#new-task-modal").modal("hide");
   }
 }
 // Export

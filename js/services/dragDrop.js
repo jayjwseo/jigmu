@@ -19,7 +19,6 @@ function dragDrop(dragCompleteInfo) {
     placeholder.innerHTML = "";
     // Mouse move function
     const mouseMove = (e) => {
-      // selectedTaskCard.classList.add("d-none");
       document.body.style.cursor = "grabbing";
       // Render drag-active clone
       document.body.append(selectedClone);
@@ -27,10 +26,10 @@ function dragDrop(dragCompleteInfo) {
       // Render placeholder
       const dropCanvas = dropZone(e.target);
       if (dropCanvas == null) return;
-      // Mouse position above top-half of a task card
       const closestTaskCardBelow = Array.from(dropCanvas.children).find(
         (child) => {
           const rect = child.getBoundingClientRect();
+          // Mouse position above top-half of a task card
           return e.clientY < rect.top + rect.height / 2;
         }
       );

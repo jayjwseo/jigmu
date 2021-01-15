@@ -1,3 +1,7 @@
+import $ from "jquery";
+import "bootstrap";
+import "../../css/board.scss";
+import "@fortawesome/fontawesome-free/css/all.css";
 import { jData, saveCanvas } from "../services/dataManager.js";
 import {
   clearBoard,
@@ -108,13 +112,9 @@ document.addEventListener("click", (e) => {
     const listObj = jData.board.find((list) => list.id === listId);
     const taskStatus = listObj.title;
     if (taskTitle) {
-      TaskModel.addTaskCard(
-        taskTitle,
-        taskStatus,
-        listEle,
-        listObj,
-        addNewTaskCardForm
-      );
+      TaskModel.addTaskCard(taskTitle, taskStatus, listEle, listObj);
+      saveCanvas();
+      addNewTaskCardForm.remove();
     } else {
       return;
     }
@@ -209,6 +209,8 @@ newTaskForm.addEventListener("submit", (e) => {
       taskTag,
       taskStatus
     );
+    saveCanvas();
+    $("#new-task-modal").modal("hide");
   } else if (!taskTitle) {
     errorDate.classList.add("d-none");
     errorFields.classList.remove("d-none");
@@ -229,11 +231,10 @@ currentDesc.addEventListener("click", () => {
 });
 // Modal - delete Task
 deleteTaskBtn.addEventListener("click", () => {
-  TaskModel.deleteTaskCard(
-    selectedTaskCardListObj,
-    selectedTaskCardObj,
-    selectedTaskCardElement
-  );
+  TaskModel.deleteTaskCard(selectedTaskCardListObj, selectedTaskCardObj);
+  selectedTaskCardElement.remove();
+  saveCanvas();
+  $("#new-task-modal").modal("hide");
 });
 // Modal - reset on close
 $("#new-task-modal").on("hide.bs.modal", () => {
