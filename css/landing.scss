@@ -115,13 +115,17 @@ p {
   font-weight: bold;
 }
 
+.top-section-fill {
+  padding-bottom: 10vh;
+}
+
 /* CTA Bar */
 .ctaBar {
   /* Set intersectionRatio < 1 by offsetting top by -1px*/
   top: -1px;
   padding: 1rem;
   background: transparent;
-  transition: 2s;
+  transition: 1s;
 }
 
 .ctaBar.isSticky {

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "parcel index.html board.html",
-    "start": "parcel index.html board.html",
-    "build": "parcel index.html board.html"
+    "dev": "parcel index.html",
+    "start": "parcel index.html",
+    "build": "parcel index.html"
   },
   "repository": {
     "type": "git",
@@ -24,15 +24,15 @@
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "sass": "^1.32.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "@fortawesome/fontawesome-free": "^5.15.2",
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
-    "parcel-bundler": "^1.12.4",
-    "sass": "^1.32.4"
+    "parcel-bundler": "^1.12.4"
   }
 }

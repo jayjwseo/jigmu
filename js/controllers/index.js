@@ -20,18 +20,16 @@ ctaNewTaskButton.addEventListener("click", () => {
     );
     firstList.taskCardSet.push(ctaNewTask);
     saveCanvas();
-    location.href = "board.html";
-  } else {
-    location.href = "board.html";
+    // location.href = "board.html";
   }
 });
 // CTA bar observer
 const ctaBar = document.querySelector(".ctaBar");
 const observer = new IntersectionObserver(
-  //Add .isSticky if not 100% visible
+  // Add .isSticky if not 100% visible
   ([e]) => e.target.classList.toggle("isSticky", e.intersectionRatio < 1),
-  //Run call back if not 100% visible
+  // Run call back if not 100% visible
   { threshold: [1] }
 );
-//Observe CTA bar
+// Observe CTA bar
 observer.observe(ctaBar);
