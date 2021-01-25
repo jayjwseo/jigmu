@@ -3,6 +3,11 @@ import "../../css/landing.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { jData, saveCanvas } from "../services/dataManager.js";
 import { TaskModel } from "../models/taskModel.js";
+// Enable transition after load
+window.addEventListener("load", () => {
+  document.querySelector("body").classList.remove("preload");
+  console.log(document.querySelector("body"));
+});
 // Selectors
 const ctaNewTaskButton = document.querySelector("#cta-new-task-btn");
 // CTA add new task & redirect

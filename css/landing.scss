@@ -31,6 +31,13 @@ body {
   background: linear-gradient(150deg, rgb(0, 121, 190), rgb(177, 0, 177));
 }
 
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
 p {
   font-size: 1.2rem;
 }
@@ -115,17 +122,14 @@ p {
   font-weight: bold;
 }
 
-.top-section-fill {
-  padding-bottom: 10vh;
-}
-
 /* CTA Bar */
 .ctaBar {
   /* Set intersectionRatio < 1 by offsetting top by -1px*/
   top: -1px;
   padding: 1rem;
   background: transparent;
-  transition: 1s;
+  transition: 2s;
+  margin-bottom: 7vh;
 }
 
 .ctaBar.isSticky {
