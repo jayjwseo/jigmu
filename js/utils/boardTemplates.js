@@ -9,7 +9,7 @@ const defaultTemplate = {
         {
           title: "Example Task",
           desc: "Click this task card to edit",
-          member: "JK Board",
+          member: "Jigmu",
           date: "2030-01-01",
           tag: "Blue",
           status: "TO DO",
@@ -127,7 +127,7 @@ const sampleData = {
         },
         {
           title: "Project Management Plan",
-          desc: "Use JK Board & Scrum",
+          desc: "Use Jigmu Board & Scrum",
           member: "Project Manager",
           date: "2020-12-31",
           tag: "Green",
@@ -170,7 +170,7 @@ const sampleData = {
         {
           title: "General Meeting",
           desc:
-            "Project scope - define features and functions of JK Board. Also discuss the core modules to be developed.",
+            "Project scope - define features and functions of Jigmu Board. Also discuss the core modules to be developed.",
           member: "",
           date: "",
           tag: "Blue",

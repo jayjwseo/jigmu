@@ -6,7 +6,9 @@ import { TaskModel } from "../models/taskModel.js";
 // Enable transition after load
 window.addEventListener("load", () => {
   document.querySelector("body").classList.remove("preload");
-  console.log(document.querySelector("body"));
+  console.log("Welcome to Jigmu!");
+  console.log("Developer: Jay JW Seo");
+  console.log("Find me @ https://me.jayjwseo.com");
 });
 // Selectors
 const ctaNewTaskButton = document.querySelector("#cta-new-task-btn");

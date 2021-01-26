@@ -16,6 +16,12 @@ import { TaskModel } from "../models/taskModel.js";
 import { clearMessages, dateValidRef } from "../utils/utils.js";
 // Render data
 renderData(jData);
+// Log greeting message
+window.addEventListener("load", () => {
+  console.log("Welcome to Jigmu!");
+  console.log("Developer: Jay JW Seo");
+  console.log("Find me @ https://me.jayjwseo.com");
+});
 // Selected task global variables
 let selectedTaskCardElement;
 let selectedTaskCardObj;

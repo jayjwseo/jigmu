@@ -1,5 +1,5 @@
 {
-  "name": "jkboard",
+  "name": "jigmu",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jayjwseo/jkboard.git"
+    "url": "git+https://github.com/jayjwseo/jigmu.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jayjwseo/jkboard/issues"
+    "url": "https://github.com/jayjwseo/jigmu/issues"
   },
-  "homepage": "https://github.com/jayjwseo/jkboard#readme",
+  "homepage": "https://jigmu.com",
   "dependencies": {
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",

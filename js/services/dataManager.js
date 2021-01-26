@@ -1,6 +1,6 @@
 import { defaultTemplate, sampleData } from "../utils/boardTemplates.js";
 // KEYS
-const LOCAL_STORAGE_PREFIX = "JKBOARD_BOARD_CANVAS";
+const LOCAL_STORAGE_PREFIX = "JIGMU_BOARD_CANVAS";
 const DATA_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-DATA`;
 // Data
 let jData = loadCanvas();
