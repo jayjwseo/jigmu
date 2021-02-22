@@ -14,6 +14,7 @@ import { dragDrop } from "../services/dragDrop.js";
 import { ListModel } from "../models/listModel.js";
 import { TaskModel } from "../models/taskModel.js";
 import { clearMessages, dateValidRef } from "../utils/utils.js";
+import { logOut, displayUsername, isUserNotAuth } from "../firebase/fb";
 // Render data
 renderData(jData);
 // Log greeting message
@@ -37,6 +38,20 @@ const newStatusInput = document.querySelector("#new-task-status");
 const deleteTaskBtn = document.querySelector("#delete-task-button");
 const currentTitle = document.querySelector("#current-task-title-hide");
 const currentDesc = document.querySelector("#current-task-desc-hide");
+// AUTH CONTROL
+let state = 0;
+// Log out
+const logOutBtn = document.querySelector("#log-out");
+logOutBtn.addEventListener("click", (e) => {
+  state = 1;
+  e.preventDefault();
+  logOut();
+});
+// Display username
+const userName = document.querySelector("#navbarDropdown");
+displayUsername(userName);
+// Check auth status and redirect
+isUserNotAuth(state);
 // LIST CONTROL
 // Add new list form
 document.addEventListener("click", (e) => {

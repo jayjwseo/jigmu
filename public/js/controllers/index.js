@@ -3,6 +3,8 @@ import "../../css/landing.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { jData, saveCanvas } from "../services/dataManager.js";
 import { TaskModel } from "../models/taskModel.js";
+import { isUserAuth } from "../firebase/fb";
+let state = 0;
 // Enable transition after load
 window.addEventListener("load", () => {
   document.querySelector("body").classList.remove("preload");
@@ -40,3 +42,5 @@ const observer = new IntersectionObserver(
 );
 // Observe CTA bar
 observer.observe(ctaBar);
+// Check auth status and redirect
+isUserAuth(state);

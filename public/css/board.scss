@@ -52,10 +52,15 @@ h2 {
 
 .board-logo {
   font-family: Pacifico;
+  cursor: default;
 }
 
 .user-name {
   font-weight: bold;
+}
+
+.user-drop a {
+  cursor: pointer;
 }
 
 .user-drop-item {
@@ -74,7 +79,6 @@ h2 {
   border-radius: 3px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
     rgba(9, 30, 66, 0.31) 0px 0px 1px 0px;
-  min-width: 8px;
 }
 
 @media (min-width: 576px) {
@@ -94,9 +98,10 @@ h2 {
   padding: 55px 7px 10px 7px;
   overflow-x: auto;
   overflow-y: auto;
-  background-image: url("../images/boardbg.jpg");
-  background-position: 50%;
-  background-size: cover;
+  background: linear-gradient(150deg, rgb(0, 121, 190), #6750b8);
+  // background-image: url("../images/boardbg.jpg");
+  // background-position: 50%;
+  // background-size: cover;
   user-select: none;
 }
 
