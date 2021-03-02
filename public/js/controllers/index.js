@@ -1,12 +1,13 @@
 import "bootstrap";
 import "../../css/landing.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
+import "regenerator-runtime/runtime";
 import { jData, saveCanvas } from "../services/dataManager.js";
 import { TaskModel } from "../models/taskModel.js";
 import { isUserAuth } from "../firebase/fb";
-let state = 0;
-// Enable transition after load
+// Enable transition onLoad
 window.addEventListener("load", () => {
+  isUserAuth();
   document.querySelector("body").classList.remove("preload");
   console.log("Welcome to Jigmu!");
   console.log("Developer: Jay JW Seo");
@@ -29,7 +30,6 @@ ctaNewTaskButton.addEventListener("click", () => {
     );
     firstList.taskCardSet.push(ctaNewTask);
     saveCanvas();
-    // location.href = "board.html";
   }
 });
 // CTA bar observer
@@ -42,5 +42,3 @@ const observer = new IntersectionObserver(
 );
 // Observe CTA bar
 observer.observe(ctaBar);
-// Check auth status and redirect
-isUserAuth(state);

@@ -3,6 +3,12 @@ import firebase from "firebase/app";
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
+// Import board templates
+import { defaultTemplate, sampleData } from "../utils/boardTemplates.js";
+// Import clear render
+import { clearBoard } from "../services/boardRender.js";
+// Import cta task
+// import { ctaTask } from "../controllers/index.js";
 // Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDt9lt-EmNCsA2jb11-9mH-z8ok4E2YJsM",
@@ -130,21 +136,51 @@ function displayUsername(userName) {
   });
 }
 // Check auth status and redirect
-function isUserNotAuth(state) {
+function isUserNotAuth() {
   auth.onAuthStateChanged((user) => {
-    if (!user && state === 0) {
+    if (!user) {
       window.location.assign("../login.html");
     }
   });
 }
 // Check auth status and redirect
-function isUserAuth(state) {
+function isUserAuth() {
   auth.onAuthStateChanged((user) => {
-    if (user && state === 0) {
+    if (user) {
       window.location.assign("../board.html");
     }
   });
 }
+// Database
+const docRef = db.collection("boards");
+// Realtime listener
+function listenData(renderData) {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      docRef.doc(user.uid).onSnapshot((ss) => {
+        if (!ss.data()) {
+          docRef.doc(user.uid).set(defaultTemplate);
+        } else {
+          clearBoard();
+          renderData(ss.data());
+        }
+      });
+    } else {
+      console.error("User not logged in");
+    }
+  });
+}
+// Update
+function updateData(jData) {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      docRef.doc(user.uid).set(jData);
+    } else {
+      console.error("User not logged in");
+    }
+  });
+}
+
 // Export
 export {
   emailPasswordSignUp,
@@ -156,4 +192,6 @@ export {
   resetPassword,
   isUserNotAuth,
   isUserAuth,
+  listenData,
+  updateData,
 };

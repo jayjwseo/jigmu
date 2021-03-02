@@ -1,3 +1,4 @@
+// LOCAL STORAGE USE
 import { defaultTemplate, sampleData } from "../utils/boardTemplates.js";
 // KEYS
 const LOCAL_STORAGE_PREFIX = "JIGMU_BOARD_CANVAS";
@@ -14,4 +15,4 @@ function saveCanvas() {
   localStorage.setItem(DATA_STORAGE_KEY, JSON.stringify(jData));
 }
 // Export
-export { jData, loadCanvas, saveCanvas };
+export { jData, saveCanvas };
