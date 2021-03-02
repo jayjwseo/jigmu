@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "parcel public/index.html public/board.html",
-    "build": "parcel build public/index.html public/board.html"
+    "build": "parcel build public/index.html"
   },
   "repository": {
     "type": "git",
