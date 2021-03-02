@@ -1,0 +1,100 @@
+@import "~bootstrap/scss/bootstrap";
+
+/* Global */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #192b4d;
+  font-family: "Nunito Sans";
+  background: linear-gradient(150deg, rgb(0, 121, 190), #6750b8);
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.logo {
+  user-select: none;
+  font-size: 2.5rem;
+  font-family: Pacifico;
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+  background: white;
+  border: none;
+  border-radius: 3px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #5e6c84;
+}
+
+.or {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #5e6c84;
+}
+
+.dot {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #5e6c84;
+}
+
+input:invalid {
+  background: linear-gradient(
+    150deg,
+    rgb(0, 121, 190, 0.1),
+    rgb(103, 80, 184, 0.1)
+  );
+}
+
+input:valid,
+input:focus {
+  background: white;
+}
+
+a {
+  color: rgb(0, 121, 190);
+}
+
+.form-button {
+  background: #059eb2;
+  font-weight: bold;
+  color: white;
+}
+
+.form-button:hover,
+.sso-button:hover {
+  background: #192b4d;
+  color: white;
+}
+
+.form-button:active,
+.form-button:focus,
+.sso-button:active,
+.sso-button:focus {
+  box-shadow: 0 3px 0 0 #192b4d;
+}
+
+.sso-button {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #5e6c84;
+  box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 0;
+  border-color: transparent;
+  margin-bottom: 16px;
+}

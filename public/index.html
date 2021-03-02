@@ -3,17 +3,17 @@
 
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HR0CFHMKZ"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HR0CFHMKZ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-0HR0CFHMKZ');
-    </script>
+    </script> -->
     <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Jigmu - The Most Intuitive Task Board Experience Starts Here.">
+    <meta name="description" content="Jigmu - The Most Intuitive Project Board Experience Starts Here.">
     <!-- Title -->
     <title>Jigmu</title>
     <!-- Fonts -->
@@ -24,6 +24,7 @@
     <!-- Favicon -->
     <link rel="icon" href="/images/favicon.ico">
     <!-- Scripts -->
+    <script defer src="js/firebase/fb.js"></script>
     <script defer src="js/controllers/index.js"></script>
 </head>
 
@@ -35,12 +36,12 @@
                 <a href="" class="landing-logo navbar-brand"><i class="fas fa-border-style"></i> Jigmu</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavItems"><span
                         class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="mainNavItems">
+                <div class="collapse navbar-collapse text-right" id="mainNavItems">
                     <div class="ml-auto">
-                        <button class="btn-login btn" type="button" data-target="">Log
-                            In</button>
-                        <button class="btn-signup btn" type="button" data-target="">Sign
-                            Up</button>
+                        <a href="login.html" class="btn-login btn" type="button" data-target="">Log
+                            In</a>
+                        <a href="signup.html" class="btn-signup btn" type="button" data-target="">Sign
+                            Up</a>
                     </div>
                 </div>
             </nav>
@@ -54,7 +55,7 @@
                 <div class="container">
                     <div class="chrome-sticky-gap-fix row align-items-center justify-content-center">
                         <div class="col-md-5 text-center text-sm-left mb-5">
-                            <h1>Jigmu : Task - The Most Intuitive Task Board Experience Starts Here.</h1>
+                            <h1>Jigmu : Task - The Most Intuitive Project Board Experience Starts Here.</h1>
                         </div>
                         <div class="col">
                             <img class="protect-img img-fluid" src="/images/jigmu.png" alt="banner image">
@@ -72,7 +73,7 @@
                             <input type="text" class="cta-form form-control" placeholder="Enter your first task here :)"
                                 id="cta-new-task-input">
                             <div class="input-group-append">
-                                <a href="board.html" class="cta-button btn" id="cta-new-task-btn">Get
+                                <a href="signup.html" class="cta-button btn" id="cta-new-task-btn">Get
                                     Started</a>
                             </div>
                         </div>

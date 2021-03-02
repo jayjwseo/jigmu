@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HR0CFHMKZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-0HR0CFHMKZ');
+    </script> -->
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Jigmu - The Most Intuitive Project Board Experience Starts Here.">
+    <!-- Title -->
+    <title>Jigmu</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+        rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.ico">
+    <!-- Scripts -->
+    <script defer src="js/firebase/fb.js"></script>
+    <script defer src="js/controllers/login.js"></script>
+</head>
+
+<body>
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="form-wrapper">
+            <div class="logo text-center mb-4"><i class="fas fa-border-style"></i> Jigmu</div>
+            <div class="card">
+                <div class="card-body py-0">
+                    <div class="card-title text-center my-4">Log in to Jigmu</div>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label class="d-none" for="email-login">E-mail</label>
+                            <input type="email" class="form-control" id="email-login" placeholder="Enter email"
+                                autocomplete="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="d-none" for="password-login">Password</label>
+                            <input type="password" class="form-control" id="password-login" placeholder="Enter password"
+                                autocomplete="new-password" required>
+                        </div>
+                        <div class="form-group text-danger" id="error-msg"></div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="form-button btn btn-block">Log In</button>
+                        </div>
+                    </form>
+                    <div class="or form-group text-center">
+                        OR
+                    </div>
+                    <button class="sso-button btn btn-block" id="google-login"><i class="fab fa-google"></i> Continue
+                        with Google</button>
+                    <button class="sso-button btn btn-block" id="github-login"><i class="fab fa-github"></i> Continue
+                        with
+                        Github</button>
+                    <div class="dropdown-divider mt-4"></div>
+                    <div class="w-100 text-center my-3">
+                        <a data-toggle="collapse" href="#reset-password-collapse" role="button">Reset password</a>
+                        <span class="dot mx-2">·
+                        </span>
+                        <a href="signup.html">Sign up for an account</a>
+                    </div>
+                    <div class="collapse" id="reset-password-collapse">
+                        <div class="card card-body mb-3">
+                            <form id="reset-password">
+                                <div class="form-group">
+                                    <label class="d-none" for="email-reset">Email for password reset</label>
+                                    <input type="email" class="form-control" id="email-reset"
+                                        placeholder="Enter email for password reset" autocomplete="username" required>
+                                </div>
+                                <div class="form-group text-info" id="sent-msg"></div>
+                                <div class="form-group text-danger" id="sent-error-msg"></div>
+                                <div class=" text-center">
+                                    <button type="submit" class="form-button btn btn-block">Send Password Reset
+                                        Link</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

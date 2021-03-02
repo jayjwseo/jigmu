@@ -3,18 +3,18 @@
 
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HR0CFHMKZ"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HR0CFHMKZ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-0HR0CFHMKZ');
-    </script>
+    </script> -->
     <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Jigmu - The Most Intuitive Task Board Experience Starts Here.">
+    <meta name="description" content="Jigmu - The Most Intuitive Project Board Experience Starts Here.">
     <!-- Title -->
     <title>Jigmu</title>
     <!-- Fonts -->
@@ -25,6 +25,7 @@
     <!-- Favicon -->
     <link rel="icon" href="/images/favicon.ico">
     <!-- Scripts -->
+    <script defer src="js/firebase/fb.js"></script>
     <script defer src="js/controllers/board.js"></script>
 </head>
 
@@ -33,7 +34,8 @@
         <!-- Navigation -->
         <section class="navigation">
             <nav class="navbar navbar-dark nav-bg navbar-expand py-1">
-                <a href="index.html" class="board-logo navbar-brand"><i class="fas fa-border-style"></i> Jigmu</a>
+                <a class="board-logo navbar-brand"><i class="fas fa-border-style"></i> Jigmu :
+                    Board</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -42,14 +44,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="position-sm-rel nav-item dropdown position-static active">
-                            <a class="user-name nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jay JW SEO
+                            <a class="user-name nav-link dropdown-toggle " id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </a>
-                            <div class="user-drop dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                                <a class="user-drop-item dropdown-item" href="#">Account</a>
-                                <a class="user-drop-item dropdown-item" href="#">Help</a>
+                            <div class="user-drop dropdown-menu dropdown-menu-right w-100"
+                                aria-labelledby="navbarDropdown">
+                                <a class="user-drop-item dropdown-item" href="#">Jigmu : Bulb</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="user-drop-item dropdown-item" href="#">Log Out</a>
+                                <a class="user-drop-item dropdown-item" id="log-out">Log Out</a>
                             </div>
                         </li>
                     </ul>

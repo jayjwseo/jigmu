@@ -19,9 +19,9 @@ class TaskModel {
   // Add task card
   static addTaskCard(title, status, listEle, listObj) {
     const newTaskCard = new TaskModel(title, "", "", "", "", status);
-    listObj.taskCardSet.push(newTaskCard);
-    renderNewTaskCard(newTaskCard, listEle, jData);
-    return newTaskCard;
+    listObj.taskCardSet.push(Object.assign({}, newTaskCard));
+    // renderNewTaskCard(newTaskCard, listEle, jData);
+    // return newTaskCard;
   }
   // Update status
   static updateStatus(task, currentListObj, toListObj, toListEle, taskCard) {
@@ -31,9 +31,9 @@ class TaskModel {
       1
     );
     toListObj.taskCardSet.splice(toListObj.taskCardSet.length, 0, task);
-    taskCard.remove();
-    renderNewTaskCard(task, toListEle, jData);
-    saveCanvas();
+    // taskCard.remove();
+    // renderNewTaskCard(task, toListEle, jData);
+    // saveCanvas();
   }
   // Update task Card
   static updateTaskCard(
@@ -45,7 +45,8 @@ class TaskModel {
     member,
     date,
     tag,
-    status
+    status,
+    jData
   ) {
     // Status change?
     const statusChange = selectedTaskCardObj.status === status ? false : true;
@@ -69,9 +70,9 @@ class TaskModel {
         selectedTaskCardObj
       );
       selectedTaskCardElement.remove();
-      renderNewTaskCard(selectedTaskCardObj, listEle, jData);
+      // renderNewTaskCard(selectedTaskCardObj, listEle, jData);
     } else {
-      renderUpdateTaskCard(selectedTaskCardObj, selectedTaskCardElement, jData);
+      // renderUpdateTaskCard(selectedTaskCardObj, selectedTaskCardElement, jData);
     }
   }
   // Delete task card
