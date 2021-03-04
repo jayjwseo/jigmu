@@ -8,10 +8,8 @@ import {
   resetPassword,
   isUserAuth,
 } from "../firebase/fb";
-// Check auth status and redirect
-window.addEventListener("load", () => {
-  isUserAuth();
-});
+// Check auth status and redirect listener
+isUserAuth();
 // Selectors
 const logInForm = document.querySelector("#login-form");
 const errorMsg = document.querySelector("#error-msg");

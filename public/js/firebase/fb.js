@@ -26,34 +26,34 @@ firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
 // Email and password sign up function
-function emailPasswordSignUp(name, email, password, errorMsg) {
-  if (!firebase.auth().currentUser) {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        const user = auth.currentUser;
-        user.sendEmailVerification().catch((error) => {
-          console.error("endEmailVerification Error " + error);
-        });
-        user
-          .updateProfile({
-            displayName: name,
-          })
-          .then(() => {
-            window.location.assign("../board.html");
-          })
-          .catch((error) => {
-            console.error("updateProfile Error " + error);
-          });
-      })
-      .catch((error) => {
-        console.error("signUp Error" + error);
-        errorMsg.textContent = error;
-      });
-  } else {
-    auth.signOut();
-  }
-}
+// function emailPasswordSignUp(name, email, password, errorMsg) {
+//   if (!firebase.auth().currentUser) {
+//     auth
+//       .createUserWithEmailAndPassword(email, password)
+//       .then(() => {
+//         const user = auth.currentUser;
+//         user.sendEmailVerification().catch((error) => {
+//           console.error("endEmailVerification Error " + error);
+//         });
+//         user
+//           .updateProfile({
+//             displayName: name,
+//           })
+//           .then(() => {
+//             window.location.assign("../board.html");
+//           })
+//           .catch((error) => {
+//             console.error("updateProfile Error " + error);
+//           });
+//       })
+//       .catch((error) => {
+//         console.error("signUp Error" + error);
+//         errorMsg.textContent = error;
+//       });
+//   } else {
+//     auth.signOut();
+//   }
+// }
 // Email and password login function
 function emailPasswordLogIn(email, password, errorMsg) {
   if (!firebase.auth().currentUser) {
@@ -120,9 +120,9 @@ function resetPassword(email, sentMsg, sentErrorMsg) {
 function logOut() {
   auth
     .signOut()
-    .then(() => {
-      window.location.assign("../index.html");
-    })
+    // .then(() => {
+    //   window.location.assign("../index.html");
+    // })
     .catch((error) => {
       console.error("logOut Error " + error);
     });
@@ -183,7 +183,7 @@ function updateData(jData) {
 
 // Export
 export {
-  emailPasswordSignUp,
+  // emailPasswordSignUp,
   emailPasswordLogIn,
   logOut,
   displayUsername,

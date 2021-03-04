@@ -32,9 +32,10 @@ import {
 } from "../firebase/fb";
 // Realtime database listener
 listenData(renderData);
-// onLoad
+// Check auth status and redirect listener
+isUserNotAuth();
+// On load
 window.addEventListener("load", () => {
-  isUserNotAuth();
   // Local Storage Code***
   // renderData(jData);
   console.log("Welcome to Jigmu!");
